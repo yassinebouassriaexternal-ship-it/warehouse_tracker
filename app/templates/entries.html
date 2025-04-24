@@ -49,4 +49,46 @@
     </div>
   </div>
 </div>
+
+{% if weeks and hours %}
+<div class="my-4">
+  <h5>Weekly Hours Trend</h5>
+  <canvas id="weeklyHoursChart" height="100"></canvas>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const weeks = {{ weeks|tojson }};
+  const hours = {{ hours|tojson }};
+  const ctx = document.getElementById('weeklyHoursChart').getContext('2d');
+  const weeklyHoursChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: weeks,
+          datasets: [{
+              label: 'Hours Worked',
+              data: hours,
+              borderColor: 'rgba(54, 162, 235, 1)',
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              fill: true,
+              tension: 0.2,
+              pointRadius: 4,
+              pointHoverRadius: 6
+          }]
+      },
+      options: {
+          scales: {
+              x: {
+                  title: { display: true, text: 'Week' }
+              },
+              y: {
+                  title: { display: true, text: 'Hours' },
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+</script>
+{% endif %}
 {% endblock %}

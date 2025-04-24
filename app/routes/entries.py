@@ -27,10 +27,24 @@ def view_entries():
         except ValueError:
             pass
 
+    # Calculate weekly hours for this worker
+    weekly_hours = (
+        processed_df[processed_df['worker_id'] == worker_id]
+        .groupby('week')['daily_hours']
+        .sum()
+        .reset_index()
+        .sort_values('week')
+    )
+    # Convert to lists for chart.js
+    weeks = weekly_hours['week'].tolist()
+    hours = weekly_hours['daily_hours'].tolist()
+
     return render_template('entries.html',
                            df_filtered=df_filtered,
                            worker_id=worker_id,
-                           week=week)
+                           week=week,
+                           weeks=weeks,
+                           hours=hours)
 
 @entries_bp.route('/update/<int:index>', methods=['GET', 'POST'])
 def update_entry_route(index):
