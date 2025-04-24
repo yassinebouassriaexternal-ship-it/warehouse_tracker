@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block title %}Agency Summary{% endblock %}
+
+{% block content %}
+<h1>Agency Summary</h1>
+<a class="btn btn-outline-secondary mb-3" href="{{ url_for('dashboard.dashboard') }}">
+  ← Back
+</a>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Agency</th>
+            <th>Month</th>
+            <th>Regular Hrs</th>
+            <th>OT Hrs</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in summary.to_dict(orient='records') %}
+          <tr>
+            <td>{{ r.Agency }}</td>
+            <td>{{ r.month }}</td>
+            <td>{{ "%.2f"|format(r.total_regular_hours) }}</td>
+            <td>{{ "%.2f"|format(r.total_overtime_hours) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

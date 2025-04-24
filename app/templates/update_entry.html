@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block title %}Update Entry #{{ index }}{% endblock %}
+
+{% block content %}
+<h1>Update Entry {{ index }}</h1>
+<form method="post" class="row g-3">
+  <div class="col-md-3">
+    <label class="form-label">Worker ID</label>
+    <input
+      name="worker_id"
+      class="form-control"
+      value="{{ entry.worker_id }}"
+    />
+  </div>
+  <div class="col-md-3">
+    <label class="form-label">Date</label>
+    <input
+      name="date"
+      type="date"
+      class="form-control"
+      value="{{ entry.date }}"
+    />
+  </div>
+  <div class="col-md-2">
+    <label class="form-label">Time In</label>
+    <input
+      name="time_in"
+      class="form-control"
+      value="{{ entry.time_in.strftime('%H:%M') }}"
+    />
+  </div>
+  <div class="col-md-2">
+    <label class="form-label">Time Out</label>
+    <input
+      name="time_out"
+      class="form-control"
+      value="{{ entry.time_out.strftime('%H:%M') }}"
+    />
+  </div>
+  <div class="col-md-2">
+    <label class="form-label">Lunch (min)</label>
+    <input
+      name="lunch_minutes"
+      type="number"
+      class="form-control"
+      value="{{ entry.lunch_minutes }}"
+    />
+  </div>
+  <div class="col-12 text-end">
+    <button class="btn btn-primary">Save</button>
+    <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.dashboard') }}">
+      Cancel
+    </a>
+  </div>
+</form>
+{% endblock %}

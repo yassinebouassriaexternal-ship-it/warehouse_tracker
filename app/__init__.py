@@ -1,0 +1,17 @@
+from flask import Flask
+from .config import Config
+
+def create_app():
+    app = Flask(__name__, static_folder='static', template_folder='templates')
+    app.config.from_object(Config)
+
+    # register Blueprints
+    from .routes.dashboard import dashboard_bp
+    from .routes.entries    import entries_bp
+    from .routes.agency     import agency_bp
+
+    app.register_blueprint(dashboard_bp)
+    app.register_blueprint(entries_bp)
+    app.register_blueprint(agency_bp)
+
+    return app

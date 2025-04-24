@@ -1,0 +1,24 @@
+/* Custom Styles for Warehouse Tracker */
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.card {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-title {
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.alert {
+    margin-bottom: 1.5rem;
+}
+
+/* Style for approaching overtime alert */
+tr:has(td:nth-child(5):not(:empty)) {
+    background-color: rgba(255, 193, 7, 0.2) !important;
+} 

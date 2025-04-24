@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">Upload Timesheet CSV</h5>
+    <form
+      action="{{ url_for('dashboard.upload') }}"
+      method="post"
+      enctype="multipart/form-data"
+      class="row g-3"
+    >
+      <div class="col-auto">
+        <input type="file" name="file" class="form-control" />
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-primary">Upload</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">Filter</h5>
+    <form method="get" action="{{ url_for('dashboard.dashboard') }}" class="row g-3">
+      <div class="col-md-4">
+        <label class="form-label">Worker ID</label>
+        <input
+          name="worker"
+          class="form-control"
+          value="{{ worker_filter }}"
+        />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Week #</label>
+        <input
+          name="week"
+          class="form-control"
+          value="{{ week_filter }}"
+        />
+      </div>
+      <div class="col-md-4 align-self-end">
+        <button class="btn btn-outline-secondary">Apply</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% if summary is not none and not summary.empty %}
+  <div class="card mb-4">
+    <div class="card-body">
+      <h2 class="card-title">Weekly Summary</h2>
+      <div class="table-responsive">
+        <table class="table table-hover table-striped align-middle">
+          <thead>
+            <tr>
+              <th>Worker</th>
+              <th>Week</th>
+              <th>Total hrs</th>
+              <th>Remaining</th>
+              <th>Alert</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in summary.to_dict(orient='records') %}
+            <tr>
+              <td>{{ r.worker_id }}</td>
+              <td>{{ r.week }}</td>
+              <td>{{ "%.2f"|format(r.total_hours) }}</td>
+              <td>{{ "%.2f"|format(r.remaining_hours) }}</td>
+              <td>
+                {% if r.alert == 'Overtime' %}
+                  <span style="color: red; font-weight: bold;">{{ r.alert }}</span>
+                {% else %}
+                  {{ r.alert }}
+                {% endif %}
+              </td>
+              <td>
+                <a
+                  class="btn btn-sm btn-primary"
+                  href="{{ url_for('entries.view_entries', worker_id=r.worker_id, week=r.week) }}"
+                >
+                  Details
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer text-end">
+      <div class="d-inline-flex gap-2">
+        <a class="btn btn-primary" href="{{ url_for('dashboard.export') }}">Export CSV</a>
+        <a class="btn btn-outline-secondary" href="{{ url_for('agency_summary.agency_summary') }}">
+          Agency
+        </a>
+      </div>
+    </div>
+  </div>
+{% else %}
+  <div class="alert alert-warning">
+    No timesheet data available. Please upload a CSV file to get started.
+  </div>
+{% endif %}
+{% endblock %}
