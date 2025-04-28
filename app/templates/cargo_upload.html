@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}Upload Cargo Volume{% endblock %}
+{% block content %}
+<h1>Upload Cargo Volume Data</h1>
+<form method="post" enctype="multipart/form-data" class="mb-4">
+  <div class="mb-3">
+    <label for="file" class="form-label">CSV File</label>
+    <input type="file" class="form-control" id="file" name="file" required>
+    <div class="form-text">Columns required: Date (MM/DD/YYYY), MAWB, Carton Number</div>
+  </div>
+  <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+{% endblock %} 

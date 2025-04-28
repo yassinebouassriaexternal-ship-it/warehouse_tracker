@@ -37,6 +37,9 @@
               Agency Summary
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('cargo.cargo_relationship') }}">Cargo Relationship</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -44,11 +47,14 @@
 
   <div style="padding-top:70px"></div>
   <div class="container py-4">
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
-        <div class="alert alert-info">
-          {% for m in messages %} <div>{{ m }}</div> {% endfor %}
-        </div>
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category if category in ['success', 'error', 'info'] else 'info' }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
       {% endif %}
     {% endwith %}
 

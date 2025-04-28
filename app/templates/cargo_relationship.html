@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block title %}Cargo & Worker Relationship{% endblock %}
+{% block content %}
+<h1>Cargo & Worker Relationship</h1>
+<form method="get" class="row g-3 mb-4">
+  <div class="col-md-3">
+    <label class="form-label">Time Span</label>
+    <select name="time_span" class="form-select">
+      <option value="day" {% if data and data.time_span == 'day' %}selected{% endif %}>Day</option>
+      <option value="month" {% if data and data.time_span == 'month' %}selected{% endif %}>Month</option>
+      <option value="year" {% if data and data.time_span == 'year' %}selected{% endif %}>Year</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label class="form-label">Cargo Metric</label>
+    <select name="cargo_metric" class="form-select">
+      <option value="mawb" {% if data and data.cargo_metric == 'mawb' %}selected{% endif %}>Total MAWB</option>
+      <option value="carton" {% if data and data.cargo_metric == 'carton' %}selected{% endif %}>Total Carton Number</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label class="form-label">Worker Metric</label>
+    <select name="worker_metric" class="form-select">
+      <option value="hours" {% if data and data.worker_metric == 'hours' %}selected{% endif %}>Total Hours</option>
+      <option value="labors" {% if data and data.worker_metric == 'labors' %}selected{% endif %}>Total Labors</option>
+    </select>
+  </div>
+  <div class="col-md-3 align-self-end">
+    <button class="btn btn-outline-secondary">Apply</button>
+    {% if data %}
+    <a class="btn btn-success ms-2" href="{{ url_for('cargo.export_cargo_relationship', time_span=data.time_span, cargo_metric=data.cargo_metric, worker_metric=data.worker_metric) }}">Export CSV</a>
+    {% endif %}
+  </div>
+</form>
+
+{% if data %}
+<div class="card mb-4">
+  <div class="card-body">
+    <canvas id="cargoWorkerChart" height="100"></canvas>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const labels = {{ data.labels|tojson|safe }};
+const cargo = {{ data.cargo|tojson|safe }};
+const worker = {{ data.worker|tojson|safe }};
+const cargoLabel = "{{ 'Total MAWB' if data.cargo_metric == 'mawb' else 'Total Carton Number' }}";
+const workerLabel = "{{ 'Total Hours' if data.worker_metric == 'hours' else 'Total Labors' }}";
+
+const ctx = document.getElementById('cargoWorkerChart').getContext('2d');
+const chart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      {
+        label: cargoLabel,
+        data: cargo,
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        yAxisID: 'y',
+        fill: false,
+        tension: 0.2
+      },
+      {
+        label: workerLabel,
+        data: worker,
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        yAxisID: 'y1',
+        fill: false,
+        tension: 0.2
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    stacked: false,
+    plugins: {
+      legend: { position: 'top' },
+      title: { display: true, text: 'Cargo Volume vs Worker Metric' }
+    },
+    scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+        title: { display: true, text: cargoLabel }
+      },
+      y1: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+        grid: { drawOnChartArea: false },
+        title: { display: true, text: workerLabel }
+      }
+    }
+  }
+});
+</script>
+{% endif %}
+{% endblock %} 

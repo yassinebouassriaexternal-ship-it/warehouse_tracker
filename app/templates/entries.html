@@ -58,17 +58,19 @@
 
 <!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chart.js Annotation Plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
 <script>
-  const weeks = {{ weeks|tojson }};
-  const hours = {{ hours|tojson }};
+  let chartWeeks = {{ weeks|tojson|safe }} || [];
+  let chartHours = {{ hours|tojson|safe }} || [];
   const ctx = document.getElementById('weeklyHoursChart').getContext('2d');
   const weeklyHoursChart = new Chart(ctx, {
       type: 'line',
       data: {
-          labels: weeks,
+          labels: chartWeeks,
           datasets: [{
               label: 'Hours Worked',
-              data: hours,
+              data: chartHours,
               borderColor: 'rgba(54, 162, 235, 1)',
               backgroundColor: 'rgba(54, 162, 235, 0.2)',
               fill: true,
@@ -85,6 +87,20 @@
               y: {
                   title: { display: true, text: 'Hours' },
                   beginAtZero: true
+              }
+          },
+          plugins: {
+              annotation: {
+                  annotations: {
+                      overtimeLine: {
+                          type: 'line',
+                          yMin: 40,
+                          yMax: 40,
+                          borderColor: 'red',
+                          borderWidth: 2,
+                          borderDash: [6, 6]
+                      }
+                  }
               }
           }
       }

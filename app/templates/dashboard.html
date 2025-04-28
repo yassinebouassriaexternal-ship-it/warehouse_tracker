@@ -4,18 +4,20 @@
 {% block content %}
 <div class="card mb-4">
   <div class="card-body">
-    <h5 class="card-title">Upload Timesheet CSV</h5>
-    <form
-      action="{{ url_for('dashboard.upload') }}"
-      method="post"
-      enctype="multipart/form-data"
-      class="row g-3"
-    >
-      <div class="col-auto">
-        <input type="file" name="file" class="form-control" />
+    <form action="{{ url_for('dashboard.upload') }}" method="post" enctype="multipart/form-data" class="row g-3 justify-content-center align-items-end">
+      <div class="col-md-4">
+        <label for="timesheet_file" class="form-label">Timesheet CSV</label>
+        <input type="file" name="timesheet_file" id="timesheet_file" class="form-control form-control-lg" accept=".csv" />
       </div>
-      <div class="col-auto">
-        <button class="btn btn-primary">Upload</button>
+      <div class="col-md-2 d-grid align-items-stretch">
+        <button type="submit" class="btn btn-primary btn-lg w-100 btn-upload-match" name="upload_type" value="timesheet">Upload Timesheet</button>
+      </div>
+      <div class="col-md-4">
+        <label for="cargo_file" class="form-label">Cargo Volume CSV</label>
+        <input type="file" name="cargo_file" id="cargo_file" class="form-control form-control-lg" accept=".csv" />
+      </div>
+      <div class="col-md-2 d-grid align-items-stretch">
+        <button type="submit" class="btn btn-outline-success btn-lg w-100 btn-upload-match" name="upload_type" value="cargo">Upload Cargo</button>
       </div>
     </form>
   </div>

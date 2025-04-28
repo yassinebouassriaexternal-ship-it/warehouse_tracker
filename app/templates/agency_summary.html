@@ -33,4 +33,52 @@
     </div>
   </div>
 </div>
+
+<div class="my-4">
+  <h5>Monthly Hours by Agency</h5>
+  <canvas id="agencyHoursChart" height="120"></canvas>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const months = {{ months|tojson|safe }};
+const agencies = {{ agencies|tojson|safe }};
+const agencyHours = {{ agency_hours|tojson|safe }};
+
+const colors = [
+  'rgba(54, 162, 235, 1)',
+  'rgba(255, 99, 132, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 159, 64, 1)'
+];
+
+const datasets = agencies.map((agency, idx) => ({
+  label: agency,
+  data: agencyHours[agency],
+  borderColor: colors[idx % colors.length],
+  backgroundColor: colors[idx % colors.length].replace('1)', '0.2)'),
+  fill: false,
+  tension: 0.2,
+  pointRadius: 4,
+  pointHoverRadius: 6
+}));
+
+const ctx = document.getElementById('agencyHoursChart').getContext('2d');
+const agencyHoursChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: months,
+    datasets: datasets
+  },
+  options: {
+    scales: {
+      x: { title: { display: true, text: 'Month' } },
+      y: { title: { display: true, text: 'Total Hours' }, beginAtZero: true }
+    }
+  }
+});
+</script>
 {% endblock %}
