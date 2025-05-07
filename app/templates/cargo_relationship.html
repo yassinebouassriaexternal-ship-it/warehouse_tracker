@@ -39,16 +39,23 @@
     <canvas id="cargoWorkerChart" height="100"></canvas>
   </div>
 </div>
+<!-- New Scatter Plot Dashboard -->
+<div class="card mb-4">
+  <div class="card-body">
+    <canvas id="scatterCargoWorkerChart" height="100"></canvas>
+  </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-const labels = {{ data.labels|tojson|safe }};
-const cargo = {{ data.cargo|tojson|safe }};
-const worker = {{ data.worker|tojson|safe }};
-const cargoLabel = "{{ 'Total MAWB' if data.cargo_metric == 'mawb' else 'Total Carton Number' }}";
-const workerLabel = "{{ 'Total Hours' if data.worker_metric == 'hours' else 'Total Labors' }}";
+var labels = {{ data.labels|tojson|safe }};
+var cargo = {{ data.cargo|tojson|safe }};
+var worker = {{ data.worker|tojson|safe }};
+var cargoLabel = "{{ 'Total MAWB' if data.cargo_metric == 'mawb' else 'Total Carton Number' }}";
+var workerLabel = "{{ 'Total Hours' if data.worker_metric == 'hours' else 'Total Labors' }}";
 
-const ctx = document.getElementById('cargoWorkerChart').getContext('2d');
-const chart = new Chart(ctx, {
+// Line chart (original)
+var ctx = document.getElementById('cargoWorkerChart').getContext('2d');
+var chart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: labels,
@@ -97,6 +104,139 @@ const chart = new Chart(ctx, {
       }
     }
   }
+});
+
+// Scatter plot data
+var scatterData = labels.map(function(label, i) {
+  return { x: cargo[i], y: worker[i], label: label };
+});
+
+// Linear regression calculation
+function linearRegression(data) {
+  var n = data.length;
+  var sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+  for (var i = 0; i < n; i++) {
+    sumX += data[i].x;
+    sumY += data[i].y;
+    sumXY += data[i].x * data[i].y;
+    sumXX += data[i].x * data[i].x;
+  }
+  var slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+  var intercept = (sumY - slope * sumX) / n;
+  return { slope: slope, intercept: intercept };
+}
+var lr = linearRegression(scatterData);
+// Regression line points (min and max x)
+var minX = Math.min.apply(null, cargo);
+var maxX = Math.max.apply(null, cargo);
+var regressionLine = [
+  { x: minX, y: lr.slope * minX + lr.intercept },
+  { x: maxX, y: lr.slope * maxX + lr.intercept }
+];
+
+// Outlier detection: residuals and stddev
+var residuals = scatterData.map(function(d) { return d.y - (lr.slope * d.x + lr.intercept); });
+var mean = residuals.reduce(function(a, b) { return a + b; }, 0) / residuals.length;
+var stddev = Math.sqrt(residuals.reduce(function(a, b) { return a + Math.pow(b - mean, 2); }, 0) / residuals.length);
+var outlierIndices = [];
+scatterData.forEach(function(d, i) {
+  if (Math.abs(residuals[i]) > 2 * stddev) {
+    outlierIndices.push(i);
+  }
+});
+
+// Prepare scatter datasets: normal and outliers
+var scatterNormal = [];
+var scatterOutliers = [];
+scatterData.forEach(function(d, i) {
+  if (outlierIndices.includes(i)) {
+    scatterOutliers.push(d);
+  } else {
+    scatterNormal.push(d);
+  }
+});
+
+// Scatter chart with regression line and outliers
+var scatterCtx = document.getElementById('scatterCargoWorkerChart').getContext('2d');
+var scatterChart = new Chart(scatterCtx, {
+  type: 'scatter',
+  data: {
+    datasets: [
+      {
+        label: cargoLabel + ' vs ' + workerLabel,
+        data: scatterNormal,
+        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        pointRadius: 5,
+        pointHoverRadius: 7
+      },
+      {
+        label: 'Outlier',
+        data: scatterOutliers,
+        backgroundColor: 'rgba(255, 0, 0, 0.8)',
+        borderColor: 'rgba(255, 0, 0, 1)',
+        pointRadius: 6,
+        pointHoverRadius: 9
+      },
+      {
+        label: 'Regression Line',
+        type: 'line',
+        data: regressionLine,
+        borderColor: 'rgba(255, 165, 0, 1)',
+        backgroundColor: 'rgba(255, 165, 0, 0.2)',
+        borderWidth: 2,
+        fill: false,
+        pointRadius: 0,
+        pointHoverRadius: 0,
+        order: 0,
+        showLine: true
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: true },
+      title: { display: true, text: cargoLabel + ' vs ' + workerLabel + ' (Scatter with Regression & Outliers)' },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            var d = context.raw;
+            if (context.dataset.label === 'Regression Line') {
+              return null;
+            }
+            var outlier = (context.dataset.label === 'Outlier') ? ' (Outlier)' : '';
+            return d.label + ': (' + cargoLabel + ': ' + d.x + ', ' + workerLabel + ': ' + d.y + ')' + outlier;
+          }
+        }
+      },
+      annotation: {
+        annotations: {}
+      }
+    },
+    scales: {
+      x: {
+        title: { display: true, text: cargoLabel },
+        beginAtZero: true
+      },
+      y: {
+        title: { display: true, text: workerLabel },
+        beginAtZero: true
+      }
+    }
+  },
+  plugins: [{
+    id: 'regressionEquation',
+    afterDraw: function(chart) {
+      var ctx = chart.ctx;
+      ctx.save();
+      ctx.font = '14px Arial';
+      ctx.fillStyle = 'rgba(255, 165, 0, 1)';
+      var eq = 'y = ' + lr.slope.toFixed(2) + 'x + ' + lr.intercept.toFixed(2);
+      ctx.fillText(eq, 40, 30);
+      ctx.restore();
+    }
+  }]
 });
 </script>
 {% endif %}

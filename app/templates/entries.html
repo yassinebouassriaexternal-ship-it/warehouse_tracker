@@ -107,4 +107,59 @@
   });
 </script>
 {% endif %}
+
+<!-- Worker Analysis Metrics Card -->
+{% if worker_metrics %}
+<div class="card my-4">
+  <div class="card-body">
+    <h5 class="card-title">Worker Analysis</h5>
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Avg. Hours/Day (This Month):</strong>
+            {{ worker_metrics.avg_hours_this_month|default('N/A')|round(2) }}
+          </li>
+          <li class="list-group-item">
+            <strong>Avg. Hours/Day (Last Month):</strong>
+            {{ worker_metrics.avg_hours_last_month|default('N/A')|round(2) }}
+          </li>
+          <li class="list-group-item">
+            <strong>Morning Shifts (%):</strong>
+            {{ (worker_metrics.morning_ratio * 100)|round(1) if worker_metrics.morning_ratio is not none else 'N/A' }}%
+          </li>
+          <li class="list-group-item">
+            <strong>Afternoon Shifts (%):</strong>
+            {{ (worker_metrics.afternoon_ratio * 100)|round(1) if worker_metrics.afternoon_ratio is not none else 'N/A' }}%
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Total Days Worked:</strong>
+            {{ worker_metrics.total_days_worked|default('N/A') }}
+          </li>
+          <li class="list-group-item">
+            <strong>Max Hours in a Day:</strong>
+            {{ worker_metrics.max_hours|default('N/A')|round(2) if worker_metrics.max_hours is not none else 'N/A' }}
+          </li>
+          <li class="list-group-item">
+            <strong>Min Hours in a Day:</strong>
+            {{ worker_metrics.min_hours|default('N/A')|round(2) if worker_metrics.min_hours is not none else 'N/A' }}
+          </li>
+          <li class="list-group-item">
+            <strong>Overtime Weeks (40+ hrs):</strong>
+            {{ worker_metrics.overtime_weeks|default('N/A') }}
+          </li>
+          <li class="list-group-item">
+            <strong>Longest Streak of Consecutive Workdays:</strong>
+            {{ worker_metrics.longest_streak|default('N/A') }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
 {% endblock %}

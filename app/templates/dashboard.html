@@ -69,7 +69,11 @@
           <tbody>
             {% for r in summary.to_dict(orient='records') %}
             <tr>
-              <td>{{ r.worker_id }}</td>
+              <td>
+                <a href="{{ url_for('entries.view_entries', worker_id=r.worker_id) }}" class="fw-bold text-decoration-none" style="color: black;">
+                  {{ r.worker_id }}
+                </a>
+              </td>
               <td>{{ r.week }}</td>
               <td>{{ "%.2f"|format(r.total_hours) }}</td>
               <td>{{ "%.2f"|format(r.remaining_hours) }}</td>

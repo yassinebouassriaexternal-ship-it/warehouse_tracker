@@ -14,9 +14,9 @@
 </head>
 <body>
   <!-- fixed‑top navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <nav class="navbar navbar-expand-lg" style="background-color: #FF5F05;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{ url_for('dashboard.dashboard') }}">
+      <a class="navbar-brand text-white" href="{{ url_for('dashboard.dashboard') }}">
         Warehouse Tracker
       </a>
       <button
@@ -30,15 +30,15 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('dashboard.dashboard') }}">Dashboard</a>
+            <a class="nav-link text-white" href="{{ url_for('dashboard.dashboard') }}">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('agency_summary.agency_summary') }}">
+            <a class="nav-link text-white" href="{{ url_for('agency_summary.agency_summary') }}">
               Agency Summary
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('cargo.cargo_relationship') }}">Cargo Relationship</a>
+            <a class="nav-link text-white" href="{{ url_for('cargo.cargo_relationship') }}">Cargo Relationship</a>
           </li>
         </ul>
       </div>
