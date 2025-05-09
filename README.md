@@ -9,28 +9,29 @@ A Flask web application for tracking and managing warehouse worker timesheets an
 - **Cargo/Worker Relationship Analysis**: Visualize the relationship between cargo volume (by MAWB or carton count) and worker hours/labors, with interactive time span controls (day, month, year).
 - **Detailed Entries**: View and edit individual timesheet entries.
 - **Agency Summary**: Track total regular and overtime hours by agency.
+- **Enhanced Labor Forecasting**: Predict next week's labor needs using Random Forest regression, incorporating cargo volume data.
 
 ## Installation
 
 1. Clone the repository:
-   ```
+   ```bash
    git clone [repository-url]
    cd warehouse_tracker
    ```
 
 2. Create a virtual environment and activate it:
-   ```
+   ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
 3. Install the dependencies:
-   ```
+   ```bash
    pip install -r requirements.txt
    ```
 
 4. Initialize the database (for cargo volume data):
-   ```
+   ```python
    python
    >>> from run import init_db
    >>> init_db()
@@ -39,7 +40,7 @@ A Flask web application for tracking and managing warehouse worker timesheets an
 ## Usage
 
 1. Start the application:
-   ```
+   ```bash
    python run.py
    ```
 
@@ -67,14 +68,14 @@ A Flask web application for tracking and managing warehouse worker timesheets an
 ## CSV Format Example
 
 **Timesheet:**
-```
+```csv
 worker_id,date,time_in,time_out,lunch_minutes,Agency
 W001,2023-06-01,08:00,16:30,30,AgencyA
 W002,2023-06-01,09:00,17:30,45,AgencyB
 ```
 
 **Cargo Volume:**
-```
+```csv
 Date,MAWB,Carton Number
 6/1/2023,1234567890,50
 6/1/2023,1234567891,30
@@ -87,6 +88,7 @@ Date,MAWB,Carton Number
 - Pandas is used for data processing and analysis
 - SQLAlchemy is used for cargo volume database storage
 - Bootstrap is used for the frontend UI
+- Scikit-learn is used for labor forecasting with Random Forest regression
 
 ## License
 
