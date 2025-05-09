@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from datetime import datetime
 from ..utils import process_timesheet
 from ..validation import validate_timesheet_data
-from ..models import CargoVolume
+from ..models import CargoVolume, TimesheetEntry, WageRate
 from .. import db
 import pandas as pd
 import io
@@ -13,8 +13,24 @@ dashboard_bp = Blueprint('dashboard', __name__)
 def dashboard():
     df = current_app.config.get('TIMESHEET_DF')
     if df is None or df.empty:
-        flash("No timesheet data available. Please upload CSV.")
-        return render_template('dashboard.html', summary=None, worker_filter='', week_filter='')
+        # Load from database if not in memory
+        entries = TimesheetEntry.query.all()
+        if not entries:
+            flash("No timesheet data available. Please upload CSV.")
+            return render_template('dashboard.html', summary=None, worker_filter='', week_filter='')
+        # Convert to DataFrame
+        df = pd.DataFrame([
+            {
+                'worker_id': e.worker_id,
+                'date': e.date,
+                'time_in': e.time_in,
+                'time_out': e.time_out,
+                'lunch_minutes': e.lunch_minutes,
+                'Agency': e.agency
+            }
+            for e in entries
+        ])
+        current_app.config['TIMESHEET_DF'] = df
 
     # Process the timesheet data
     processed_df, summary = process_timesheet(df.copy())
@@ -55,12 +71,39 @@ def upload():
                 stream = io.StringIO(timesheet_file.stream.read().decode("UTF8"), newline=None)
                 df = pd.read_csv(stream)
                 validate_timesheet_data(df)
+                # Persist to database
+                inserted = 0
+                for _, row in df.iterrows():
+                    # Parse date and time
+                    worker_id = str(row['worker_id']).strip()
+                    date_val = pd.to_datetime(row['date']).date()
+                    time_in_val = pd.to_datetime(str(row['time_in'])).time()
+                    time_out_val = pd.to_datetime(str(row['time_out'])).time()
+                    lunch_minutes = int(row['lunch_minutes']) if 'lunch_minutes' in row and not pd.isnull(row['lunch_minutes']) else 30
+                    agency = row['Agency'] if 'Agency' in row and not pd.isnull(row['Agency']) else None
+                    # Check for duplicate
+                    exists = TimesheetEntry.query.filter_by(worker_id=worker_id, date=date_val, time_in=time_in_val).first()
+                    if not exists:
+                        entry = TimesheetEntry(
+                            worker_id=worker_id,
+                            date=date_val,
+                            time_in=time_in_val,
+                            time_out=time_out_val,
+                            lunch_minutes=lunch_minutes,
+                            agency=agency
+                        )
+                        db.session.add(entry)
+                        inserted += 1
+                db.session.commit()
+                # Also update in-memory DataFrame for analytics
+                df['worker_id'] = df['worker_id'].astype(str).str.strip()
                 current_app.config['TIMESHEET_DF'] = df
-                flash(f'Successfully uploaded {timesheet_file.filename} with {len(df)} entries', 'success')
+                flash(f'Successfully uploaded {timesheet_file.filename} with {inserted} new entries', 'success')
                 did_upload = True
             except ValueError as e:
                 flash(f'Validation error (timesheet): {str(e)}', 'error')
             except Exception as e:
+                db.session.rollback()
                 flash(f'Error processing timesheet file: {str(e)}', 'error')
 
     # Handle cargo upload
@@ -114,3 +157,93 @@ def export():
     response = Response(csv_data, mimetype="text/csv")
     response.headers["Content-Disposition"] = "attachment; filename=timesheet_export.csv"
     return response
+
+@dashboard_bp.route('/wage_rates', methods=['GET', 'POST'])
+def wage_rates():
+    from ..models import WageRate, TimesheetEntry
+    # Handle filter
+    agency_filter = request.args.get('agency', '')
+    # Get all unique workers and their agencies from timesheet data
+    worker_agency = {}
+    all_entries = TimesheetEntry.query.all()
+    for e in all_entries:
+        if e.worker_id not in worker_agency:
+            worker_agency[e.worker_id] = e.agency
+    # Apply agency filter
+    filtered_workers = [w for w, a in worker_agency.items() if not agency_filter or (a == agency_filter)]
+    # Get all wage rates (all records, not just latest)
+    query = WageRate.query
+    if agency_filter:
+        query = query.filter(WageRate.agency == agency_filter)
+    all_wage_rates = query.order_by(WageRate.worker_id, WageRate.effective_date.desc()).all()
+    # Build list of dicts for template (show all rates)
+    workers = []
+    for rate in all_wage_rates:
+        workers.append({
+            'id': rate.id,
+            'worker_id': rate.worker_id,
+            'base_rate': rate.base_rate,
+            'role': rate.role,
+            'agency': rate.agency,
+            'markup': rate.markup,
+            'effective_date': rate.effective_date.strftime('%Y-%m-%d') if rate.effective_date else ''
+        })
+    # For filter dropdown
+    agencies = sorted(set(a for a in worker_agency.values() if a))
+    if request.method == 'POST':
+        worker_id = request.form.get('worker_id').strip()
+        base_rate = float(request.form.get('base_rate'))
+        role = request.form.get('role').strip() or None
+        agency = request.form.get('agency').strip() or None
+        effective_date_str = request.form.get('effective_date')
+        if not effective_date_str:
+            flash('Effective date is required.', 'error')
+            return redirect(url_for('dashboard.wage_rates', agency=agency_filter))
+        effective_date = pd.to_datetime(effective_date_str).date()
+        # Set markup automatically based on agency
+        if agency in ('JJ', 'JJ Staffing'):
+            markup = 0.25
+        elif agency in ('Stride', 'Stride Staffing'):
+            markup = 0.3
+        else:
+            markup = 0.0
+        # Always add a new WageRate record (do not overwrite)
+        rate = WageRate(worker_id=worker_id, base_rate=base_rate, role=role, agency=agency, markup=markup, effective_date=effective_date)
+        db.session.add(rate)
+        db.session.commit()
+        flash(f'Wage rate for {worker_id} on {effective_date} saved.', 'success')
+        return redirect(url_for('dashboard.wage_rates', agency=agency_filter))
+    return render_template('wage_rates.html', workers=workers, agencies=agencies, agency_filter=agency_filter)
+
+@dashboard_bp.route('/wage_rates/edit/<int:wage_rate_id>', methods=['GET', 'POST'])
+def edit_wage_rate(wage_rate_id):
+    wage_rate = WageRate.query.get_or_404(wage_rate_id)
+    if request.method == 'POST':
+        wage_rate.worker_id = request.form.get('worker_id').strip()
+        wage_rate.base_rate = float(request.form.get('base_rate'))
+        wage_rate.role = request.form.get('role').strip() or None
+        wage_rate.agency = request.form.get('agency').strip() or None
+        effective_date_str = request.form.get('effective_date')
+        if not effective_date_str:
+            flash('Effective date is required.', 'error')
+            return redirect(url_for('dashboard.edit_wage_rate', wage_rate_id=wage_rate_id))
+        wage_rate.effective_date = pd.to_datetime(effective_date_str).date()
+        # Set markup automatically based on agency
+        if wage_rate.agency in ('JJ', 'JJ Staffing'):
+            wage_rate.markup = 0.25
+        elif wage_rate.agency in ('Stride', 'Stride Staffing'):
+            wage_rate.markup = 0.3
+        else:
+            wage_rate.markup = 0.0
+        db.session.commit()
+        flash('Wage rate updated.', 'success')
+        return redirect(url_for('dashboard.wage_rates'))
+    return render_template('edit_wage_rate.html', wage_rate=wage_rate)
+
+@dashboard_bp.route('/wage_rates/delete/<int:wage_rate_id>', methods=['POST'])
+def delete_wage_rate(wage_rate_id):
+    wage_rate = WageRate.query.get_or_404(wage_rate_id)
+    db.session.delete(wage_rate)
+    db.session.commit()
+    flash('Wage rate deleted.', 'success')
+    return redirect(url_for('dashboard.wage_rates'))

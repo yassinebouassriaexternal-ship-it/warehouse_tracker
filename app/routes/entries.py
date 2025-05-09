@@ -6,6 +6,7 @@ from ..validation import (
 )
 import pandas as pd
 from datetime import datetime
+from ..models import TimesheetEntry
 
 entries_bp = Blueprint('entries', __name__)
 
@@ -14,8 +15,24 @@ def view_entries():
     # Retrieve the master DataFrame
     df = current_app.config.get('TIMESHEET_DF')
     if df is None or df.empty:
-        flash("No timesheet data available.", 'error')
-        return redirect(url_for('dashboard.dashboard'))
+        # Load from database if not in memory
+        entries = TimesheetEntry.query.all()
+        if not entries:
+            flash("No timesheet data available.", 'error')
+            return redirect(url_for('dashboard.dashboard'))
+        # Convert to DataFrame
+        df = pd.DataFrame([
+            {
+                'worker_id': e.worker_id,
+                'date': e.date,
+                'time_in': e.time_in,
+                'time_out': e.time_out,
+                'lunch_minutes': e.lunch_minutes,
+                'Agency': e.agency
+            }
+            for e in entries
+        ])
+        current_app.config['TIMESHEET_DF'] = df
 
     # Get filters
     worker_id = request.args.get('worker_id', '')

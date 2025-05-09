@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block title %}Wage Rates{% endblock %}
+{% block content %}
+<h1>Wage Rates Management</h1>
+<div class="mb-3">
+  <form method="get" class="row g-3 align-items-end">
+    <div class="col-md-3">
+      <label class="form-label">Filter by Agency</label>
+      <select name="agency" class="form-select" onchange="this.form.submit()">
+        <option value="">All Agencies</option>
+        {% for agency in agencies %}
+        <option value="{{ agency }}" {% if agency_filter == agency %}selected{% endif %}>{{ agency }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </form>
+</div>
+<div class="card mb-4">
+  <div class="card-body">
+    <form method="post" class="row g-3 align-items-end">
+      <div class="col-md-2">
+        <label class="form-label">Worker ID</label>
+        <input name="worker_id" class="form-control" required />
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Base Rate ($/hr)</label>
+        <input name="base_rate" type="number" step="0.01" class="form-control" required />
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Role</label>
+        <select name="role" class="form-select">
+          <option value="">(Any)</option>
+          <option value="general">General Labor</option>
+          <option value="forklift">Forklift Operator</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Agency</label>
+        <select name="agency" class="form-select">
+          <option value="">(Any)</option>
+          {% for agency in agencies %}
+          <option value="{{ agency }}">{{ agency }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Effective Date</label>
+        <input name="effective_date" type="date" class="form-control" required />
+      </div>
+      <div class="col-md-2 d-flex align-items-end">
+        <button class="btn btn-primary w-100">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Current Wage Rates</h5>
+    <div class="table-responsive">
+      <table class="table table-hover table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Worker ID</th>
+            <th>Base Rate</th>
+            <th>Role</th>
+            <th>Agency</th>
+            <th>Markup</th>
+            <th>Effective Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for w in workers %}
+          <tr>
+            <td>{{ w.worker_id }}</td>
+            <td>{% if w.base_rate %}${{ '%.2f'|format(w.base_rate) }}{% endif %}</td>
+            <td>{{ w.role or '' }}</td>
+            <td>{{ w.agency or '' }}</td>
+            <td>{% if w.markup %}{{ (w.markup * 100)|round(1) }}%{% endif %}</td>
+            <td>{{ w.effective_date or '' }}</td>
+            <td>
+              <a href="{{ url_for('dashboard.edit_wage_rate', wage_rate_id=w.id) }}" class="btn btn-sm btn-primary">Edit</a>
+              <form method="post" action="{{ url_for('dashboard.delete_wage_rate', wage_rate_id=w.id) }}" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this wage rate?');">Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %} 

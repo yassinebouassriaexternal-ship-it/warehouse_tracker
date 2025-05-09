@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}Edit Wage Rate{% endblock %}
+{% block content %}
+<h1>Edit Wage Rate</h1>
+<a class="btn btn-outline-secondary mb-3" href="{{ url_for('dashboard.wage_rates') }}">← Back</a>
+<div class="card">
+  <div class="card-body">
+    <form method="post" class="row g-3 align-items-end">
+      <div class="col-md-2">
+        <label class="form-label">Worker ID</label>
+        <input name="worker_id" class="form-control" value="{{ wage_rate.worker_id }}" required />
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Base Rate ($/hr)</label>
+        <input name="base_rate" type="number" step="0.01" class="form-control" value="{{ wage_rate.base_rate }}" required />
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Role</label>
+        <select name="role" class="form-select">
+          <option value="" {% if not wage_rate.role %}selected{% endif %}>(Any)</option>
+          <option value="general" {% if wage_rate.role == 'general' %}selected{% endif %}>General Labor</option>
+          <option value="forklift" {% if wage_rate.role == 'forklift' %}selected{% endif %}>Forklift Operator</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Agency</label>
+        <input name="agency" class="form-control" value="{{ wage_rate.agency or '' }}" />
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Effective Date</label>
+        <input name="effective_date" type="date" class="form-control" value="{{ wage_rate.effective_date }}" required />
+      </div>
+      <div class="col-md-2 d-flex align-items-end">
+        <button class="btn btn-primary w-100">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %} 

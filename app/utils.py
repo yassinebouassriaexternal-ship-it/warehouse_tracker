@@ -22,11 +22,15 @@ def process_timesheet(df, rounding_interval=None):
 
     def convert_time(value, date_val):
         # If the value is already a Timestamp, return it; otherwise, combine with date_val.
+        import datetime
         if isinstance(value, pd.Timestamp):
             return value
+        elif isinstance(value, datetime.time):
+            # Already a time object, combine with date
+            return datetime.datetime.combine(date_val, value)
         else:
             # Combine the date (converted to string) with the time string.
-            return pd.to_datetime(str(date_val) + ' ' + value)
+            return pd.to_datetime(str(date_val) + ' ' + str(value))
 
     # Replace the conversion lines with lambdas that call convert_time
     df['time_in'] = df.apply(lambda row: convert_time(row['time_in'], row['date']), axis=1)
@@ -100,5 +104,6 @@ def calculate_agency_hours(df, rounding_interval=None):
         total_regular_hours=('regular_hours', 'sum'),
         total_overtime_hours=('overtime_hours', 'sum')
     ).reset_index()
-    
+    # Add total_hours column
+    agency_summary['total_hours'] = agency_summary['total_regular_hours'] + agency_summary['total_overtime_hours']
     return agency_summary

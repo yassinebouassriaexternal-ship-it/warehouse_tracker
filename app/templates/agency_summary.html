@@ -15,8 +15,8 @@
           <tr>
             <th>Agency</th>
             <th>Month</th>
-            <th>Regular Hrs</th>
-            <th>OT Hrs</th>
+            <th>Total Hours</th>
+            <th>Total Cost</th>
           </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
           <tr>
             <td>{{ r.Agency }}</td>
             <td>{{ r.month }}</td>
-            <td>{{ "%.2f"|format(r.total_regular_hours) }}</td>
-            <td>{{ "%.2f"|format(r.total_overtime_hours) }}</td>
+            <td>{{ '%.2f'|format(r.total_hours) }}</td>
+            <td>${{ '%.2f'|format(r.total_cost) }}</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -35,8 +35,8 @@
 </div>
 
 <div class="my-4">
-  <h5>Monthly Hours by Agency</h5>
-  <canvas id="agencyHoursChart" height="120"></canvas>
+  <h5>Monthly Cost by Agency</h5>
+  <canvas id="agencyCostChart" height="120"></canvas>
 </div>
 
 <!-- Chart.js CDN -->
@@ -44,7 +44,7 @@
 <script>
 const months = {{ months|tojson|safe }};
 const agencies = {{ agencies|tojson|safe }};
-const agencyHours = {{ agency_hours|tojson|safe }};
+const agencyCosts = {{ agency_costs|tojson|safe }};
 
 const colors = [
   'rgba(54, 162, 235, 1)',
@@ -57,7 +57,7 @@ const colors = [
 
 const datasets = agencies.map((agency, idx) => ({
   label: agency,
-  data: agencyHours[agency],
+  data: agencyCosts[agency],
   borderColor: colors[idx % colors.length],
   backgroundColor: colors[idx % colors.length].replace('1)', '0.2)'),
   fill: false,
@@ -66,8 +66,8 @@ const datasets = agencies.map((agency, idx) => ({
   pointHoverRadius: 6
 }));
 
-const ctx = document.getElementById('agencyHoursChart').getContext('2d');
-const agencyHoursChart = new Chart(ctx, {
+const ctx = document.getElementById('agencyCostChart').getContext('2d');
+const agencyCostChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: months,
@@ -76,7 +76,7 @@ const agencyHoursChart = new Chart(ctx, {
   options: {
     scales: {
       x: { title: { display: true, text: 'Month' } },
-      y: { title: { display: true, text: 'Total Hours' }, beginAtZero: true }
+      y: { title: { display: true, text: 'Total Cost ($)' }, beginAtZero: true }
     }
   }
 });
