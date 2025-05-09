@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}Manage Workers{% endblock %}
+{% block content %}
+<h1>Worker Management</h1>
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Worker ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for w in workers %}
+          <tr>
+            <td>{{ w.worker_id }}</td>
+            <td>
+              <form method="post" class="d-inline-flex align-items-center">
+                <input type="hidden" name="worker_id" value="{{ w.worker_id }}" />
+                <input type="hidden" name="action" value="edit_name" />
+                <input name="name" class="form-control form-control-sm me-2" value="{{ w.name or '' }}" style="width: 140px; display: inline-block;" />
+                <button class="btn btn-sm btn-outline-secondary">Save</button>
+              </form>
+            </td>
+            <td>
+              {% if w.is_active %}
+                <span class="badge bg-success">Active</span>
+              {% else %}
+                <span class="badge bg-secondary">Inactive</span>
+              {% endif %}
+            </td>
+            <td>
+              <form method="post" style="display:inline;">
+                <input type="hidden" name="worker_id" value="{{ w.worker_id }}" />
+                <input type="hidden" name="action" value="toggle_active" />
+                {% if w.is_active %}
+                  <button class="btn btn-sm btn-warning">Deactivate</button>
+                {% else %}
+                  <button class="btn btn-sm btn-success">Activate</button>
+                {% endif %}
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %} 

@@ -50,6 +50,42 @@
   </div>
 </div>
 
+<div class="card mb-4">
+  <div class="card-body text-end">
+    <div class="d-flex justify-content-end gap-2">
+      <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}">
+        <i class="bi bi-graph-up"></i> Labor Forecast
+      </a>
+      
+      {% if is_forecast %}
+        {% if show_all %}
+          <a class="btn btn-success" href="{{ url_for('dashboard.predict', show_all=0) }}">
+            <i class="bi bi-person-check"></i> Active Workers
+          </a>
+        {% else %}
+          <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.predict', show_all=1) }}">
+            <i class="bi bi-people"></i> All Workers
+          </a>
+        {% endif %}
+      {% else %}
+        {% if show_all %}
+          <a class="btn btn-success" href="{{ url_for('dashboard.dashboard', show_all=0) }}">
+            <i class="bi bi-person-check"></i> Active Workers
+          </a>
+        {% else %}
+          <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.dashboard', show_all=1) }}">
+            <i class="bi bi-people"></i> All Workers
+          </a>
+        {% endif %}
+      {% endif %}
+      
+      <a class="btn btn-info text-white" href="{{ url_for('dashboard.manage_workers') }}">
+        <i class="bi bi-gear"></i> Manage Workers
+      </a>
+    </div>
+  </div>
+</div>
+
 {% if summary is not none and not summary.empty %}
   <div class="card mb-4">
     <div class="card-body">
@@ -110,6 +146,40 @@
 {% else %}
   <div class="alert alert-warning">
     No timesheet data available. Please upload a CSV file to get started.
+  </div>
+{% endif %}
+
+{% if predictions is not none %}
+  <div class="card mb-4">
+    <div class="card-body">
+      <h2 class="card-title">Next Week Labor Forecast</h2>
+      <div class="table-responsive">
+        <table class="table table-hover table-striped align-middle">
+          <thead>
+            <tr>
+              <th>Worker</th>
+              <th>Predicted Hours</th>
+              <th>Overtime Risk</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in predictions.to_dict(orient='records') %}
+            <tr>
+              <td>{{ r.worker_id }}</td>
+              <td>{{ '%.2f'|format(r.predicted_hours) }}</td>
+              <td>
+                {% if r.overtime_risk %}
+                  <span style="color: red; font-weight: bold;">At Risk</span>
+                {% else %}
+                  <span style="color: green;">No</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 {% endif %}
 {% endblock %}

@@ -15,6 +15,13 @@
     </div>
   </form>
 </div>
+<div class="mb-3 text-end">
+  {% if show_all %}
+    <a class="btn btn-outline-primary" href="{{ url_for('dashboard.wage_rates', agency=agency_filter, show_all=0) }}">Show Only Active Workers</a>
+  {% else %}
+    <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.wage_rates', agency=agency_filter, show_all=1) }}">Show All Workers</a>
+  {% endif %}
+</div>
 <div class="card mb-4">
   <div class="card-body">
     <form method="post" class="row g-3 align-items-end">
@@ -79,7 +86,7 @@
             <td>{% if w.markup %}{{ (w.markup * 100)|round(1) }}%{% endif %}</td>
             <td>{{ w.effective_date or '' }}</td>
             <td>
-              <a href="{{ url_for('dashboard.edit_wage_rate', wage_rate_id=w.id) }}" class="btn btn-sm btn-primary">Edit</a>
+              <a href="{{ url_for('dashboard.edit_wage_rate', wage_rate_id=w.id, agency=agency_filter, show_all=show_all|int) }}" class="btn btn-sm btn-primary">Edit</a>
               <form method="post" action="{{ url_for('dashboard.delete_wage_rate', wage_rate_id=w.id) }}" style="display:inline;">
                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this wage rate?');">Delete</button>
               </form>

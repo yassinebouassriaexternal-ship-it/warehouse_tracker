@@ -15,6 +15,8 @@
           <tr>
             <th>Agency</th>
             <th>Month</th>
+            <th>Regular Hours</th>
+            <th>Overtime Hours</th>
             <th>Total Hours</th>
             <th>Total Cost</th>
           </tr>
@@ -24,6 +26,8 @@
           <tr>
             <td>{{ r.Agency }}</td>
             <td>{{ r.month }}</td>
+            <td>{{ '%.2f'|format(r.total_regular_hours) }}</td>
+            <td>{{ '%.2f'|format(r.total_overtime_hours) }}</td>
             <td>{{ '%.2f'|format(r.total_hours) }}</td>
             <td>${{ '%.2f'|format(r.total_cost) }}</td>
           </tr>
@@ -37,6 +41,11 @@
 <div class="my-4">
   <h5>Monthly Cost by Agency</h5>
   <canvas id="agencyCostChart" height="120"></canvas>
+</div>
+
+<div class="my-4">
+  <h5>Regular Hours vs. Overtime Hours by Agency</h5>
+  <canvas id="hoursChart" height="120"></canvas>
 </div>
 
 <!-- Chart.js CDN -->
@@ -77,6 +86,39 @@ const agencyCostChart = new Chart(ctx, {
     scales: {
       x: { title: { display: true, text: 'Month' } },
       y: { title: { display: true, text: 'Total Cost ($)' }, beginAtZero: true }
+    }
+  }
+});
+
+// Regular Hours vs Overtime Hours Chart
+const regularHours = {{ regular_hours|tojson|safe }};
+const overtimeHours = {{ overtime_hours|tojson|safe }};
+
+const regularDatasets = agencies.map((agency, idx) => ({
+  label: `${agency} - Regular`,
+  data: regularHours[agency],
+  backgroundColor: colors[idx % colors.length].replace('1)', '0.7)'),
+  stack: 'Stack ' + idx
+}));
+
+const overtimeDatasets = agencies.map((agency, idx) => ({
+  label: `${agency} - Overtime`,
+  data: overtimeHours[agency],
+  backgroundColor: colors[idx % colors.length].replace('1)', '0.3)'),
+  stack: 'Stack ' + idx
+}));
+
+const hoursCtx = document.getElementById('hoursChart').getContext('2d');
+const hoursChart = new Chart(hoursCtx, {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [...regularDatasets, ...overtimeDatasets]
+  },
+  options: {
+    scales: {
+      x: { title: { display: true, text: 'Month' } },
+      y: { title: { display: true, text: 'Hours' }, beginAtZero: true, stacked: true }
     }
   }
 });

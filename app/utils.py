@@ -1,5 +1,12 @@
 import pandas as pd
 from datetime import datetime, timedelta
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+import numpy as np
+from sqlalchemy import select
+from flask import current_app
+from . import db
+from .models import CargoVolume
 
 def round_time(dt, round_to=15):
     """Round a datetime object to the nearest 'round_to' minutes."""
@@ -107,3 +114,50 @@ def calculate_agency_hours(df, rounding_interval=None):
     # Add total_hours column
     agency_summary['total_hours'] = agency_summary['total_regular_hours'] + agency_summary['total_overtime_hours']
     return agency_summary
+
+def forecast_labor_needs(df):
+    """
+    Forecast next week's total hours per worker and flag potential overtime using Random Forest regression.
+    Now includes cargo volume as a feature.
+    Returns a DataFrame with columns: worker_id, predicted_hours, overtime_risk.
+    """
+    # Prepare timesheet data
+    df['date'] = pd.to_datetime(df['date'])
+    df['week'] = df['date'].dt.isocalendar().week
+    df['year'] = df['date'].dt.isocalendar().year
+    weekly = df.groupby(['worker_id', 'year', 'week']).agg(total_hours=('daily_hours', 'sum')).reset_index()
+    # Aggregate cargo volume by week
+    cargo_df = pd.read_sql(select(CargoVolume), db.engine)
+    cargo_df['date'] = pd.to_datetime(cargo_df['date'])
+    cargo_df['week'] = cargo_df['date'].dt.isocalendar().week
+    cargo_df['year'] = cargo_df['date'].dt.isocalendar().year
+    cargo_weekly = cargo_df.groupby(['year', 'week']).agg(cargo_volume=('carton_number', 'sum')).reset_index()
+    # Join weekly labor with cargo volume
+    weekly = pd.merge(weekly, cargo_weekly, on=['year', 'week'], how='left')
+    weekly['cargo_volume'] = weekly['cargo_volume'].fillna(0)
+    results = []
+    for worker_id, group in weekly.groupby('worker_id'):
+        group = group.sort_values(['year', 'week'])
+        group = group.reset_index(drop=True)
+        group['week_idx'] = np.arange(len(group))
+        X = group[['week_idx', 'cargo_volume']].values
+        y = group['total_hours'].values
+        if len(group) < 2:
+            pred_hours = y[-1] if len(y) > 0 else 0
+        else:
+            model = RandomForestRegressor(n_estimators=100, random_state=42)
+            model.fit(X, y)
+            # Predict for next week
+            next_week_idx = len(group)
+            if len(group) >= 3:
+                next_cargo = group['cargo_volume'].iloc[-3:].mean()
+            else:
+                next_cargo = group['cargo_volume'].mean()
+            pred_hours = model.predict([[next_week_idx, next_cargo]])[0]
+        overtime_risk = pred_hours >= 40
+        results.append({
+            'worker_id': worker_id,
+            'predicted_hours': round(pred_hours, 2),
+            'overtime_risk': overtime_risk
+        })
+    return pd.DataFrame(results)

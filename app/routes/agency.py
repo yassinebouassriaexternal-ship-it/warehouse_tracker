@@ -65,6 +65,23 @@ def agency_summary():
                 else:
                     costs.append(0)
             agency_costs[agency] = costs
+            
+        # Extract regular and overtime hours data for chart
+        regular_hours = {}
+        overtime_hours = {}
+        for agency in agencies:
+            reg_hours = []
+            ovt_hours = []
+            for month in months:
+                row = summary[(summary['Agency'] == agency) & (summary['month'] == month)]
+                if not row.empty:
+                    reg_hours.append(float(row['total_regular_hours'].values[0]))
+                    ovt_hours.append(float(row['total_overtime_hours'].values[0]))
+                else:
+                    reg_hours.append(0)
+                    ovt_hours.append(0)
+            regular_hours[agency] = reg_hours
+            overtime_hours[agency] = ovt_hours
     except Exception as e:
         flash(str(e))
         return redirect(url_for('dashboard.dashboard'))
@@ -73,5 +90,7 @@ def agency_summary():
         summary=summary,
         agencies=agencies,
         months=months,
-        agency_costs=agency_costs
+        agency_costs=agency_costs,
+        regular_hours=regular_hours,
+        overtime_hours=overtime_hours
     )
