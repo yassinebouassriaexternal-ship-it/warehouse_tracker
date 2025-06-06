@@ -14,11 +14,9 @@ def create_app():
     from .routes.dashboard import dashboard_bp
     from .routes.entries    import entries_bp
     from .routes.agency     import agency_bp
-    from .routes.cargo      import cargo_bp
 
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(entries_bp)
     app.register_blueprint(agency_bp)
-    app.register_blueprint(cargo_bp)
 
     return app

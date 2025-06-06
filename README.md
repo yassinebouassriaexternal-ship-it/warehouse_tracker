@@ -1,15 +1,14 @@
 # Warehouse Tracker
 
-A Flask web application for tracking and managing warehouse worker timesheets and cargo volume. This application helps warehouse managers monitor work hours, prevent overtime, analyze cargo handling efficiency, and generate agency summaries.
+A Flask web application for tracking and managing warehouse worker timesheets. This application helps warehouse managers monitor work hours, prevent overtime, and generate agency summaries.
 
 ## Features
 
-- **CSV Upload/Export**: Upload timesheet and cargo volume CSV files directly from the dashboard. Export processed data.
+- **CSV Upload/Export**: Upload timesheet CSV files directly from the dashboard. Export processed data.
 - **Dashboard**: Weekly summary of worker hours with overtime alerts.
-- **Cargo/Worker Relationship Analysis**: Visualize the relationship between cargo volume (by MAWB or carton count) and worker hours/labors, with interactive time span controls (day, month, year).
 - **Detailed Entries**: View and edit individual timesheet entries.
 - **Agency Summary**: Track total regular and overtime hours by agency.
-- **Enhanced Labor Forecasting**: Predict next week's labor needs using Random Forest regression, incorporating cargo volume data.
+- **Labor Forecasting**: Predict next week's labor needs using linear regression.
 
 ## Installation
 
@@ -30,7 +29,7 @@ A Flask web application for tracking and managing warehouse worker timesheets an
    pip install -r requirements.txt
    ```
 
-4. Initialize the database (for cargo volume data):
+4. Initialize the database:
    ```python
    python
    >>> from run import init_db
@@ -57,13 +56,6 @@ A Flask web application for tracking and managing warehouse worker timesheets an
      - `time_out`: Clock-out time (HH:MM)
      - `lunch_minutes`: Lunch break duration in minutes (optional, defaults to 30)
      - `Agency`: Agency name (required for agency summary)
-   - **Cargo Volume CSV**: Columns required:
-     - `Date`: Cargo date (MM/DD/YYYY or M/D/YY)
-     - `MAWB`: Unique order identifier (if repeated, only the first date is counted)
-     - `Carton Number`: Total carton number for that MAWB
-
-4. **Analyze Data:**
-   - Use the "Cargo Relationship" page to visualize the relationship between cargo volume and worker hours/labors, with options to aggregate by day, month, or year.
 
 ## CSV Format Example
 
@@ -74,21 +66,13 @@ W001,2023-06-01,08:00,16:30,30,AgencyA
 W002,2023-06-01,09:00,17:30,45,AgencyB
 ```
 
-**Cargo Volume:**
-```csv
-Date,MAWB,Carton Number
-6/1/2023,1234567890,50
-6/1/2023,1234567891,30
-6/2/2023,1234567890,20  # Only the first date for each MAWB is counted
-```
-
 ## Development
 
 - The application uses Flask as the web framework
 - Pandas is used for data processing and analysis
-- SQLAlchemy is used for cargo volume database storage
+- SQLAlchemy is used for database storage
 - Bootstrap is used for the frontend UI
-- Scikit-learn is used for labor forecasting with Random Forest regression
+- Scikit-learn is used for labor forecasting with linear regression
 
 ## License
 

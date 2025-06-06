@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.models import Worker, TimesheetEntry, CargoVolume, WageRate
+from app.models import Worker, TimesheetEntry, WageRate
 import sqlite3
 from sqlalchemy.exc import OperationalError
 
@@ -24,10 +24,6 @@ with app.app_context():
         if not check_table_exists(Worker):
             print("Worker table needs to be created")
             tables_needed.append(Worker.__table__)
-            
-        if not check_table_exists(CargoVolume):
-            print("CargoVolume table needs to be created")
-            tables_needed.append(CargoVolume.__table__)
             
         if not check_table_exists(WageRate):
             print("WageRate table needs to be created")

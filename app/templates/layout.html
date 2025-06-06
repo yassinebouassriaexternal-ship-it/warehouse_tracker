@@ -12,6 +12,8 @@
     href="{{ url_for('static', filename='css/custom.css') }}"
   >
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
   <!-- fixed‑top navbar -->
@@ -38,9 +40,7 @@
               Agency Summary
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="{{ url_for('cargo.cargo_relationship') }}">Cargo Relationship</a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link text-white" href="{{ url_for('dashboard.wage_rates') }}">Wage Rates</a>
           </li>
@@ -68,6 +68,10 @@
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
   ></script>
+  <!-- jQuery and DataTables JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

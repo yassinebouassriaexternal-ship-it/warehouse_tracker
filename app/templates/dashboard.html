@@ -4,84 +4,74 @@
 {% block content %}
 <div class="card mb-4">
   <div class="card-body">
-    <form action="{{ url_for('dashboard.upload') }}" method="post" enctype="multipart/form-data" class="row g-3 justify-content-center align-items-end">
-      <div class="col-md-4">
-        <label for="timesheet_file" class="form-label">Timesheet CSV</label>
-        <input type="file" name="timesheet_file" id="timesheet_file" class="form-control form-control-lg" accept=".csv" />
+    <form action="{{ url_for('dashboard.upload') }}" method="post" enctype="multipart/form-data" class="row g-2 justify-content-center align-items-center flex-nowrap">
+      <div class="col-auto">
+        <label for="timesheet_file" class="form-label mb-0 me-2"><i class="bi bi-upload me-1"></i>Timesheet CSV</label>
+        <input type="file" name="timesheet_file" id="timesheet_file" class="form-control form-control-sm d-inline-block" style="width:auto; display:inline-block;" accept=".csv" />
+        <button type="submit" class="btn btn-outline-primary btn-sm ms-2" name="upload_type" value="timesheet" data-bs-toggle="tooltip" title="Upload Timesheet"><i class="bi bi-arrow-up-circle"></i></button>
       </div>
-      <div class="col-md-2 d-grid align-items-stretch">
-        <button type="submit" class="btn btn-primary btn-lg w-100 btn-upload-match" name="upload_type" value="timesheet">Upload Timesheet</button>
-      </div>
-      <div class="col-md-4">
-        <label for="cargo_file" class="form-label">Cargo Volume CSV</label>
-        <input type="file" name="cargo_file" id="cargo_file" class="form-control form-control-lg" accept=".csv" />
-      </div>
-      <div class="col-md-2 d-grid align-items-stretch">
-        <button type="submit" class="btn btn-outline-success btn-lg w-100 btn-upload-match" name="upload_type" value="cargo">Upload Cargo</button>
-      </div>
+
     </form>
   </div>
 </div>
 
 <div class="card mb-4">
   <div class="card-body">
-    <h5 class="card-title">Filter</h5>
-    <form method="get" action="{{ url_for('dashboard.dashboard') }}" class="row g-3">
-      <div class="col-md-4">
-        <label class="form-label">Worker ID</label>
-        <input
-          name="worker"
-          class="form-control"
-          value="{{ worker_filter }}"
-        />
-      </div>
-      <div class="col-md-4">
-        <label class="form-label">Week #</label>
-        <input
-          name="week"
-          class="form-control"
-          value="{{ week_filter }}"
-        />
-      </div>
-      <div class="col-md-4 align-self-end">
-        <button class="btn btn-outline-secondary">Apply</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div class="card mb-4">
-  <div class="card-body text-end">
-    <div class="d-flex justify-content-end gap-2">
-      <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}">
-        <i class="bi bi-graph-up"></i> Labor Forecast
-      </a>
-      
-      {% if is_forecast %}
-        {% if show_all %}
-          <a class="btn btn-success" href="{{ url_for('dashboard.predict', show_all=0) }}">
-            <i class="bi bi-person-check"></i> Active Workers
-          </a>
+    <div class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between gap-2">
+      <form method="get" action="{{ url_for('dashboard.dashboard') }}" class="d-flex flex-wrap flex-md-nowrap align-items-center gap-2 mb-0">
+        <div class="col-auto">
+          <label for="worker_filter" class="form-label mb-0 me-2"><i class="bi bi-person-badge me-1"></i>Worker ID</label>
+          <input
+            id="worker_filter"
+            name="worker"
+            class="form-control form-control-sm d-inline-block"
+            style="width:auto; display:inline-block;"
+            value="{{ worker_filter }}"
+          />
+        </div>
+        <div class="col-auto">
+          <label for="week_filter" class="form-label mb-0 me-2"><i class="bi bi-calendar-week me-1"></i>Week #</label>
+          <input
+            id="week_filter"
+            name="week"
+            class="form-control form-control-sm d-inline-block"
+            style="width:auto; display:inline-block;"
+            value="{{ week_filter }}"
+          />
+        </div>
+        <div class="col-auto align-self-end">
+          <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="tooltip" title="Apply filters"><i class="bi bi-funnel"></i></button>
+        </div>
+      </form>
+      <div class="d-flex gap-2 flex-wrap">
+        <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Forecast next week's labor needs">
+          <i class="bi bi-graph-up"></i> Labor Forecast
+        </a>
+        {% if is_forecast %}
+          {% if show_all %}
+            <a class="btn btn-success" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
+              <i class="bi bi-person-check"></i> Active Workers
+            </a>
+          {% else %}
+            <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.predict', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
+              <i class="bi bi-people"></i> All Workers
+            </a>
+          {% endif %}
         {% else %}
-          <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.predict', show_all=1) }}">
-            <i class="bi bi-people"></i> All Workers
-          </a>
+          {% if show_all %}
+            <a class="btn btn-success" href="{{ url_for('dashboard.dashboard', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
+              <i class="bi bi-person-check"></i> Active Workers
+            </a>
+          {% else %}
+            <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.dashboard', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
+              <i class="bi bi-people"></i> All Workers
+            </a>
+          {% endif %}
         {% endif %}
-      {% else %}
-        {% if show_all %}
-          <a class="btn btn-success" href="{{ url_for('dashboard.dashboard', show_all=0) }}">
-            <i class="bi bi-person-check"></i> Active Workers
-          </a>
-        {% else %}
-          <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.dashboard', show_all=1) }}">
-            <i class="bi bi-people"></i> All Workers
-          </a>
-        {% endif %}
-      {% endif %}
-      
-      <a class="btn btn-info text-white" href="{{ url_for('dashboard.manage_workers') }}">
-        <i class="bi bi-gear"></i> Manage Workers
-      </a>
+        <a class="btn btn-info text-white" href="{{ url_for('dashboard.manage_workers') }}" data-bs-toggle="tooltip" title="Manage worker list">
+          <i class="bi bi-gear"></i> Manage Workers
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -91,7 +81,7 @@
     <div class="card-body">
       <h2 class="card-title">Weekly Summary</h2>
       <div class="table-responsive">
-        <table class="table table-hover table-striped align-middle">
+        <table class="table table-hover table-striped align-middle" id="summary-table">
           <thead>
             <tr>
               <th>Worker</th>
@@ -115,7 +105,9 @@
               <td>{{ "%.2f"|format(r.remaining_hours) }}</td>
               <td>
                 {% if r.alert == 'Overtime' %}
-                  <span style="color: red; font-weight: bold;">{{ r.alert }}</span>
+                  <span class="badge bg-danger">{{ r.alert }}</span>
+                {% elif r.alert == 'Approaching overtime' %}
+                  <span class="badge bg-warning text-dark">{{ r.alert }}</span>
                 {% else %}
                   {{ r.alert }}
                 {% endif %}
@@ -124,6 +116,7 @@
                 <a
                   class="btn btn-sm btn-primary"
                   href="{{ url_for('entries.view_entries', worker_id=r.worker_id, week=r.week) }}"
+                  data-bs-toggle="tooltip" title="View details for this worker and week"
                 >
                   Details
                 </a>
@@ -137,9 +130,6 @@
     <div class="card-footer text-end">
       <div class="d-inline-flex gap-2">
         <a class="btn btn-primary" href="{{ url_for('dashboard.export') }}">Export CSV</a>
-        <a class="btn btn-outline-secondary" href="{{ url_for('agency_summary.agency_summary') }}">
-          Agency
-        </a>
       </div>
     </div>
   </div>
@@ -154,7 +144,7 @@
     <div class="card-body">
       <h2 class="card-title">Next Week Labor Forecast</h2>
       <div class="table-responsive">
-        <table class="table table-hover table-striped align-middle">
+        <table class="table table-hover table-striped align-middle" id="forecast-table">
           <thead>
             <tr>
               <th>Worker</th>
@@ -169,9 +159,9 @@
               <td>{{ '%.2f'|format(r.predicted_hours) }}</td>
               <td>
                 {% if r.overtime_risk %}
-                  <span style="color: red; font-weight: bold;">At Risk</span>
+                  <span class="badge bg-danger">At Risk</span>
                 {% else %}
-                  <span style="color: green;">No</span>
+                  <span class="badge bg-success">No</span>
                 {% endif %}
               </td>
             </tr>
