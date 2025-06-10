@@ -3,14 +3,36 @@
 
 {% block content %}
 <h1>Agency Summary</h1>
-<a class="btn btn-outline-secondary mb-3" href="{{ url_for('dashboard.dashboard') }}">
+<a class="btn btn-outline-secondary mb-3" href="{{ url_for('dashboard.dashboard') }}" data-bs-toggle="tooltip" title="Back to Dashboard">
   ← Back
 </a>
 
+<!-- Weekly Trends Section -->
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">
+      <i class="bi bi-graph-up me-2"></i>Weekly Hours Trends by Agency
+    </h5>
+    <p class="text-muted">Track total hours worked per week for each agency to identify trends and patterns.</p>
+    
+    {% if agency_weekly_hours and weeks %}
+      <canvas id="weeklyTrendsChart" height="100"></canvas>
+    {% else %}
+      <div class="alert alert-info">
+        <i class="bi bi-info-circle me-2"></i>No weekly trends data available.
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Monthly Summary Section -->
 <div class="card">
   <div class="card-body">
+    <h5 class="card-title">
+      <i class="bi bi-table me-2"></i>Monthly Summary
+    </h5>
     <div class="table-responsive">
-      <table class="table table-hover table-striped align-middle">
+      <table class="table table-hover table-striped align-middle" id="agency-summary-table">
         <thead>
           <tr>
             <th>Agency</th>
@@ -27,7 +49,15 @@
             <td>{{ r.Agency }}</td>
             <td>{{ r.month }}</td>
             <td>{{ '%.2f'|format(r.total_regular_hours) }}</td>
-            <td>{{ '%.2f'|format(r.total_overtime_hours) }}</td>
+            <td>
+              {% if r.total_overtime_hours >= 40 %}
+                <span class="badge bg-danger">{{ '%.2f'|format(r.total_overtime_hours) }}</span>
+              {% elif r.total_overtime_hours > 0 %}
+                <span class="badge bg-warning text-dark">{{ '%.2f'|format(r.total_overtime_hours) }}</span>
+              {% else %}
+                {{ '%.2f'|format(r.total_overtime_hours) }}
+              {% endif %}
+            </td>
             <td>{{ '%.2f'|format(r.total_hours) }}</td>
             <td>${{ '%.2f'|format(r.total_cost) }}</td>
           </tr>
@@ -51,9 +81,14 @@
 <!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+// Monthly data
 const months = {{ months|tojson|safe }};
 const agencies = {{ agencies|tojson|safe }};
 const agencyCosts = {{ agency_costs|tojson|safe }};
+
+// Weekly trends data
+const weeks = {{ weeks|tojson|safe }};
+const agencyWeeklyHours = {{ agency_weekly_hours|tojson|safe }};
 
 const colors = [
   'rgba(54, 162, 235, 1)',
@@ -122,5 +157,57 @@ const hoursChart = new Chart(hoursCtx, {
     }
   }
 });
+
+// Weekly Trends Chart
+if (weeks && weeks.length > 0 && agencyWeeklyHours) {
+  const weeklyDatasets = Object.keys(agencyWeeklyHours).map((agency, idx) => ({
+    label: agency,
+    data: agencyWeeklyHours[agency],
+    borderColor: colors[idx % colors.length],
+    backgroundColor: colors[idx % colors.length].replace('1)', '0.1)'),
+    fill: false,
+    tension: 0.3,
+    pointRadius: 3,
+    pointHoverRadius: 5,
+    pointBackgroundColor: colors[idx % colors.length],
+    pointBorderColor: colors[idx % colors.length]
+  }));
+
+  const weeklyCtx = document.getElementById('weeklyTrendsChart').getContext('2d');
+  const weeklyTrendsChart = new Chart(weeklyCtx, {
+    type: 'line',
+    data: {
+      labels: weeks,
+      datasets: weeklyDatasets
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: false
+        }
+      },
+      scales: {
+        x: { 
+          title: { display: true, text: 'Week' },
+          ticks: {
+            maxTicksLimit: 10
+          }
+        },
+        y: { 
+          title: { display: true, text: 'Total Hours' }, 
+          beginAtZero: true 
+        }
+      },
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      }
+    }
+  });
+}
 </script>
 {% endblock %}

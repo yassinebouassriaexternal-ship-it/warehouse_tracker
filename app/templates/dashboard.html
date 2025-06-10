@@ -84,10 +84,30 @@
         <table class="table table-hover table-striped align-middle" id="summary-table">
           <thead>
             <tr>
-              <th>Worker</th>
-              <th>Week</th>
-              <th>Total hrs</th>
-              <th>Remaining</th>
+              <th>
+                Worker
+                <button class="btn btn-sm btn-outline-secondary ms-1" onclick="sortTable(0, 'string')" data-bs-toggle="tooltip" title="Sort by Worker ID">
+                  <i class="bi bi-arrow-down-up"></i>
+                </button>
+              </th>
+              <th>
+                Week
+                <button class="btn btn-sm btn-outline-secondary ms-1" onclick="sortTable(1, 'number')" data-bs-toggle="tooltip" title="Sort by Week">
+                  <i class="bi bi-arrow-down-up"></i>
+                </button>
+              </th>
+              <th>
+                Total hrs
+                <button class="btn btn-sm btn-outline-secondary ms-1" onclick="sortTable(2, 'number')" data-bs-toggle="tooltip" title="Sort by Total Hours">
+                  <i class="bi bi-arrow-down-up"></i>
+                </button>
+              </th>
+              <th>
+                Remaining
+                <button class="btn btn-sm btn-outline-success ms-1" onclick="sortTable(3, 'number')" data-bs-toggle="tooltip" title="Sort by Remaining Hours">
+                  <i class="bi bi-sort-down-alt"></i>
+                </button>
+              </th>
               <th>Alert</th>
               <th></th>
             </tr>
@@ -172,4 +192,87 @@
     </div>
   </div>
 {% endif %}
+
+<script>
+let sortDirection = {}; // Track sort direction for each column
+
+function sortTable(columnIndex, dataType) {
+  const table = document.getElementById('summary-table');
+  const tbody = table.getElementsByTagName('tbody')[0];
+  const rows = Array.from(tbody.rows);
+  
+  // Determine sort direction
+  const currentDirection = sortDirection[columnIndex] || 'asc';
+  const newDirection = currentDirection === 'asc' ? 'desc' : 'asc';
+  sortDirection[columnIndex] = newDirection;
+  
+  // Update button icons to show current sort direction
+  updateSortIcons(columnIndex, newDirection);
+  
+  // Sort rows
+  rows.sort((a, b) => {
+    let aValue, bValue;
+    
+    if (dataType === 'number') {
+      aValue = parseFloat(a.cells[columnIndex].textContent.trim());
+      bValue = parseFloat(b.cells[columnIndex].textContent.trim());
+      
+      // Handle potential NaN values
+      if (isNaN(aValue)) aValue = 0;
+      if (isNaN(bValue)) bValue = 0;
+    } else {
+      aValue = a.cells[columnIndex].textContent.trim().toLowerCase();
+      bValue = b.cells[columnIndex].textContent.trim().toLowerCase();
+    }
+    
+    if (newDirection === 'asc') {
+      return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
+    } else {
+      return aValue > bValue ? -1 : aValue < bValue ? 1 : 0;
+    }
+  });
+  
+  // Clear tbody and re-append sorted rows
+  tbody.innerHTML = '';
+  rows.forEach(row => tbody.appendChild(row));
+}
+
+function updateSortIcons(activeColumn, direction) {
+  // Reset all icons to default
+  const buttons = document.querySelectorAll('#summary-table th button');
+  buttons.forEach((button, index) => {
+    const icon = button.querySelector('i');
+    if (index === activeColumn) {
+      // Update active column icon
+      if (direction === 'asc') {
+        icon.className = 'bi bi-sort-up';
+      } else {
+        icon.className = 'bi bi-sort-down';
+      }
+      button.classList.remove('btn-outline-secondary', 'btn-outline-success');
+      button.classList.add('btn-primary');
+    } else {
+      // Reset other column icons
+      if (index === 3) { // Remaining hours column
+        icon.className = 'bi bi-sort-down-alt';
+        button.classList.remove('btn-primary', 'btn-outline-secondary');
+        button.classList.add('btn-outline-success');
+      } else {
+        icon.className = 'bi bi-arrow-down-up';
+        button.classList.remove('btn-primary', 'btn-outline-success');
+        button.classList.add('btn-outline-secondary');
+      }
+    }
+  });
+}
+
+// Sort by remaining hours (descending) by default when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  const summaryTable = document.getElementById('summary-table');
+  if (summaryTable && summaryTable.getElementsByTagName('tbody')[0].rows.length > 0) {
+    sortTable(3, 'number'); // Sort by remaining hours column (index 3)
+    sortTable(3, 'number'); // Call twice to get descending order (most hours first)
+  }
+});
+</script>
 {% endblock %}

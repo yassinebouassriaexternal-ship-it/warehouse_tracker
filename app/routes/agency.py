@@ -3,8 +3,56 @@ from ..utils import calculate_agency_hours, process_timesheet
 from ..models import WageRate
 import numpy as np
 import pandas as pd
+from datetime import datetime
 
 agency_bp = Blueprint('agency_summary', __name__)
+
+def calculate_weekly_trends(df):
+    """Calculate weekly total hours by agency for trending analysis."""
+    if df is None or df.empty:
+        return {}, []
+    
+    # Ensure we have the daily_hours column
+    if 'daily_hours' not in df.columns:
+        df, _ = process_timesheet(df.copy())
+    
+    # Convert date to datetime if not already
+    df['date'] = pd.to_datetime(df['date'])
+    
+    # Add week information
+    df['year'] = df['date'].dt.year
+    df['week'] = df['date'].dt.isocalendar().week
+    df['week_start'] = df['date'].dt.to_period('W').dt.start_time.dt.date
+    
+    # Group by agency and week to get total hours
+    weekly_summary = df.groupby(['Agency', 'year', 'week', 'week_start']).agg(
+        total_hours=('daily_hours', 'sum')
+    ).reset_index()
+    
+    # Create week labels (e.g., "2023-W25")
+    weekly_summary['week_label'] = weekly_summary['year'].astype(str) + '-W' + weekly_summary['week'].astype(str).str.zfill(2)
+    
+    # Sort by week_start
+    weekly_summary = weekly_summary.sort_values('week_start')
+    
+    # Get unique agencies and weeks
+    agencies = sorted(weekly_summary['Agency'].unique().tolist())
+    weeks = weekly_summary['week_label'].unique().tolist()
+    
+    # Build agency weekly data dict
+    agency_weekly_hours = {}
+    for agency in agencies:
+        agency_data = weekly_summary[weekly_summary['Agency'] == agency]
+        hours_by_week = []
+        for week in weeks:
+            week_data = agency_data[agency_data['week_label'] == week]
+            if not week_data.empty:
+                hours_by_week.append(float(week_data['total_hours'].values[0]))
+            else:
+                hours_by_week.append(0)
+        agency_weekly_hours[agency] = hours_by_week
+    
+    return agency_weekly_hours, weeks
 
 @agency_bp.route('/agency_summary')
 def agency_summary():
@@ -18,6 +66,9 @@ def agency_summary():
         df, _ = process_timesheet(df.copy())
     try:
         summary = calculate_agency_hours(df.copy())
+        
+        # Calculate weekly trends for the trending chart
+        agency_weekly_hours, weeks = calculate_weekly_trends(df.copy())
         # --- Cost Calculation ---
         # Add cost columns to summary
         summary['total_cost'] = 0.0
@@ -92,5 +143,7 @@ def agency_summary():
         months=months,
         agency_costs=agency_costs,
         regular_hours=regular_hours,
-        overtime_hours=overtime_hours
+        overtime_hours=overtime_hours,
+        agency_weekly_hours=agency_weekly_hours,
+        weeks=weeks
     )
