@@ -1,0 +1,707 @@
+/* Glassmorphism/Liquid Glass Styles for Warehouse Tracker */
+
+/* CSS Variables for consistent theming */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  --glass-backdrop: blur(8px);
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --info-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-light: rgba(255, 255, 255, 0.9);
+}
+
+/* Clean White Background */
+body {
+  background: #ffffff;
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Glass Container Base */
+.glass-container {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.glass-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Navigation Bar Glass Effect */
+.navbar-glass {
+  background: rgba(255, 95, 5, 0.95) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand, .nav-link {
+  color: var(--text-light) !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+}
+
+/* Card Glass Effects */
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  margin-bottom: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px 0 rgba(31, 38, 135, 0.6);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.card-body {
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card-title {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-title i {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.4rem;
+}
+
+/* Glass Button Styles */
+.btn-glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-glass:hover::before {
+  left: 100%;
+}
+
+.btn-glass:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--text-primary);
+}
+
+/* Gradient Button Variants */
+.btn-primary-glass {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+}
+
+.btn-success-glass {
+  background: var(--success-gradient);
+  color: white;
+  border: none;
+}
+
+.btn-warning-glass {
+  background: var(--warning-gradient);
+  color: white;
+  border: none;
+}
+
+.btn-danger-glass {
+  background: var(--danger-gradient);
+  color: white;
+  border: none;
+}
+
+.btn-info-glass {
+  background: var(--info-gradient);
+  color: white;
+  border: none;
+}
+
+/* Table Glass Effects */
+.table-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-glass th {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.table-glass td {
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.table-glass tbody tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}
+
+/* Alert Glass Effects */
+.alert-glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.alert-success-glass {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.3);
+  color: #2e7d32;
+}
+
+.alert-danger-glass {
+  background: rgba(244, 67, 54, 0.1);
+  border-color: rgba(244, 67, 54, 0.3);
+  color: #c62828;
+}
+
+.alert-warning-glass {
+  background: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.3);
+  color: #f57c00;
+}
+
+.alert-info-glass {
+  background: rgba(33, 150, 243, 0.1);
+  border-color: rgba(33, 150, 243, 0.3);
+  color: #1565c0;
+}
+
+/* Form Glass Effects */
+.form-control-glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-control-glass:focus {
+  background: rgba(255, 255, 255, 1);
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.form-control-glass::placeholder {
+  color: rgba(45, 55, 72, 0.6);
+}
+
+/* Special styling for filter inputs to make them highly visible */
+.filter-input {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 2px solid #dee2e6 !important;
+  border-radius: 6px !important;
+  padding: 0.375rem 0.75rem !important;
+  font-size: 0.875rem !important;
+  min-width: 120px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.2s ease !important;
+}
+
+.filter-input:focus {
+  background: #ffffff !important;
+  border-color: #007bff !important;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25) !important;
+  outline: none !important;
+}
+
+.filter-input:hover {
+  border-color: #adb5bd !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Badge Glass Effects */
+.badge-glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  font-weight: 500;
+}
+
+.badge-danger-glass {
+  background: var(--danger-gradient);
+  color: white;
+  border: none;
+}
+
+.badge-warning-glass {
+  background: var(--warning-gradient);
+  color: white;
+  border: none;
+}
+
+.badge-success-glass {
+  background: var(--success-gradient);
+  color: white;
+  border: none;
+}
+
+/* Progress Bar Glass Effects */
+.progress-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  height: 24px;
+  overflow: hidden;
+}
+
+.progress-bar-glass {
+  background: var(--primary-gradient);
+  border-radius: 10px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Simplified Dashboard Metric Cards */
+.metric-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-color: #007bff;
+  background: #fdfdfd;
+}
+
+.metric-card h2 {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.metric-card i {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  color: #6c757d;
+}
+
+.metric-card p {
+  color: #495057;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.metric-card small {
+  color: #6c757d;
+  font-size: 0.8rem;
+}
+
+/* Clean overview section */
+.overview-section {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overview-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: #007bff;
+}
+
+.overview-section .card-title {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.75rem;
+}
+
+/* Simplified progress indicators */
+.progress-indicator-card {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-indicator-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-color: #007bff;
+  background: #fdfdfd;
+}
+
+.progress-indicator-card .card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 1rem;
+  border: none;
+  padding: 0;
+}
+
+/* Clean comparison section */
+.comparison-section {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.comparison-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-color: #007bff;
+  background: #f1f3f5;
+}
+
+.comparison-section .card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 1rem;
+  border: none;
+  padding: 0;
+}
+
+/* Consistent Page Layout Standards */
+.page-header {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-color: #007bff;
+}
+
+.page-header h1 {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.page-header h1 i {
+  color: #007bff;
+  font-size: 1.5rem;
+}
+
+/* Consistent Control Panel */
+.control-panel {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.control-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-color: #007bff;
+}
+
+/* Consistent Data Table Container */
+.data-section {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.data-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: #007bff;
+}
+
+.data-section .card-title {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.data-section .card-title i {
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+/* Chart Container Styling */
+.chart-section {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chart-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #007bff;
+}
+
+.chart-section h5 {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chart-section h5 i {
+  color: #007bff;
+}
+
+/* Enhanced Form Styling */
+.form-section {
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: #007bff;
+  background: #f1f3f5;
+}
+
+/* Action Button Styling */
+.action-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.action-buttons .btn {
+  transition: all 0.2s ease;
+  min-width: 160px;
+  text-align: center;
+  white-space: nowrap;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.action-buttons .btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Back Button Enhancement */
+.back-button {
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  transform: translateX(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .metric-card {
+    padding: 1.5rem;
+  }
+  
+  .metric-card h2 {
+    font-size: 2rem;
+  }
+  
+  .metric-card i {
+    font-size: 2.5rem;
+  }
+}
+
+/* Smooth page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading animation */
+.glass-loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+} 

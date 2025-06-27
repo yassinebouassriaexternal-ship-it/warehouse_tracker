@@ -49,7 +49,7 @@ def simple_timesheet_data():
             'time_in': datetime.combine(curr_date, time(9, 0)),
             'time_out': datetime.combine(curr_date, time(18, 0)),  # 9 hours including lunch
             'lunch_minutes': 60,
-            'Agency': 'TestAgency'
+            'agency': 'TestAgency'
         })
     
     # Worker2: 45 hours (9 hours x 5 days)
@@ -61,7 +61,7 @@ def simple_timesheet_data():
             'time_in': datetime.combine(curr_date, time(8, 0)),
             'time_out': datetime.combine(curr_date, time(18, 0)),  # 10 hours including lunch
             'lunch_minutes': 60,
-            'Agency': 'TestAgency'
+            'agency': 'TestAgency'
         })
     
     # Worker3: 30 hours (6 hours x 5 days)
@@ -73,7 +73,7 @@ def simple_timesheet_data():
             'time_in': datetime.combine(curr_date, time(9, 0)),
             'time_out': datetime.combine(curr_date, time(16, 0)),  # 7 hours including lunch
             'lunch_minutes': 60,
-            'Agency': 'TestAgency'
+            'agency': 'TestAgency'
         })
     
     df = pd.DataFrame(data)
@@ -98,7 +98,7 @@ def multi_agency_timesheet():
             'time_in': datetime.combine(curr_date, time(9, 0)),
             'time_out': datetime.combine(curr_date, time(18, 0)),
             'lunch_minutes': 60,
-            'Agency': 'Agency1'
+            'agency': 'Agency1'
         })
     
     # Agency1 - Worker2: 45 hours
@@ -110,7 +110,7 @@ def multi_agency_timesheet():
             'time_in': datetime.combine(curr_date, time(8, 0)),
             'time_out': datetime.combine(curr_date, time(18, 0)),
             'lunch_minutes': 60,
-            'Agency': 'Agency1'
+            'agency': 'Agency1'
         })
     
     # Agency2 - Worker3: 30 hours
@@ -122,7 +122,7 @@ def multi_agency_timesheet():
             'time_in': datetime.combine(curr_date, time(9, 0)),
             'time_out': datetime.combine(curr_date, time(16, 0)),
             'lunch_minutes': 60,
-            'Agency': 'Agency2'
+            'agency': 'Agency2'
         })
     
     # Agency2 - Worker4: 50 hours (extreme overtime case)
@@ -134,7 +134,7 @@ def multi_agency_timesheet():
             'time_in': datetime.combine(curr_date, time(8, 0)),
             'time_out': datetime.combine(curr_date, time(19, 0)),
             'lunch_minutes': 60,
-            'Agency': 'Agency2'
+            'agency': 'Agency2'
         })
     
     df = pd.DataFrame(data)
@@ -155,7 +155,7 @@ def multi_month_timesheet():
             'time_in': pd.Timestamp(datetime.combine(curr_date, time(9, 0))),
             'time_out': pd.Timestamp(datetime.combine(curr_date, time(18, 0))),
             'lunch_minutes': 60,
-            'Agency': 'TestAgency',
+            'agency': 'TestAgency',
             'daily_hours': 8.0
         })
     
@@ -168,7 +168,7 @@ def multi_month_timesheet():
             'time_in': pd.Timestamp(datetime.combine(curr_date, time(8, 0))),
             'time_out': pd.Timestamp(datetime.combine(curr_date, time(18, 0))),
             'lunch_minutes': 60,
-            'Agency': 'TestAgency',
+            'agency': 'TestAgency',
             'daily_hours': 9.0
         })
     
@@ -182,7 +182,7 @@ def multi_month_timesheet():
             'time_in': pd.Timestamp(datetime.combine(curr_date, time(9, 0))),
             'time_out': pd.Timestamp(datetime.combine(curr_date, time(17, 0))),
             'lunch_minutes': 60,
-            'Agency': 'TestAgency',
+            'agency': 'TestAgency',
             'daily_hours': 7.0
         })
     
@@ -195,7 +195,7 @@ def multi_month_timesheet():
             'time_in': pd.Timestamp(datetime.combine(curr_date, time(8, 0))),
             'time_out': pd.Timestamp(datetime.combine(curr_date, time(19, 0))),
             'lunch_minutes': 60,
-            'Agency': 'TestAgency',
+            'agency': 'TestAgency',
             'daily_hours': 10.0
         })
     
@@ -227,7 +227,7 @@ def test_regular_vs_overtime_calculation(simple_timesheet_data):
     agency_summary = calculate_agency_hours(processed_df)
     
     # Get the row for TestAgency
-    agency_row = agency_summary[agency_summary['Agency'] == 'TestAgency'].iloc[0]
+    agency_row = agency_summary[agency_summary['agency'] == 'TestAgency'].iloc[0]
     
     # Expected calculations:
     # Worker1: 40 regular, 0 overtime
@@ -245,8 +245,8 @@ def test_multi_agency_breakdown(multi_agency_timesheet):
     agency_summary = calculate_agency_hours(processed_df)
     
     # Get rows for each agency
-    agency1_row = agency_summary[agency_summary['Agency'] == 'Agency1'].iloc[0]
-    agency2_row = agency_summary[agency_summary['Agency'] == 'Agency2'].iloc[0]
+    agency1_row = agency_summary[agency_summary['agency'] == 'Agency1'].iloc[0]
+    agency2_row = agency_summary[agency_summary['agency'] == 'Agency2'].iloc[0]
     
     # Agency1 expected: 80 regular, 5 overtime
     assert agency1_row['total_regular_hours'] == 80.0
@@ -293,7 +293,7 @@ def test_zero_hours_edge_case():
         'time_in': [],
         'time_out': [],
         'lunch_minutes': [],
-        'Agency': [],
+        'agency': [],
         'daily_hours': [],
         'week': []
     })
@@ -302,7 +302,7 @@ def test_zero_hours_edge_case():
     empty_df = empty_df.assign(daily_hours=pd.Series(dtype=float))
     
     # This should now work without error
-    result = pd.DataFrame(columns=['Agency', 'month', 'total_regular_hours', 'total_overtime_hours', 'total_hours'])
+    result = pd.DataFrame(columns=['agency', 'month', 'total_regular_hours', 'total_overtime_hours', 'total_hours'])
     assert result.empty
 
 @pytest.mark.skip(reason="Worker table access causes errors in test environment")

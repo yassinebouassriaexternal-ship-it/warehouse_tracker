@@ -19,7 +19,7 @@ class WageRate(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     worker_id = db.Column(db.String(64), nullable=False, index=True)
     base_rate = db.Column(db.Float, nullable=True)  # e.g., 16 or 18
-    role = db.Column(db.String(64), nullable=True)   # e.g., 'general', 'forklift'
+    role = db.Column(db.String(64), nullable=True)   # e.g., 'general labor', 'forklift driver'
     agency = db.Column(db.String(128), nullable=True)
     markup = db.Column(db.Float, nullable=True)      # e.g., 0.25 for 25%
     effective_date = db.Column(db.Date, nullable=True)  # Now required

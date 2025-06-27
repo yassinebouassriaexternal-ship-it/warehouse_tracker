@@ -9,6 +9,7 @@ A Flask web application for tracking and managing warehouse worker timesheets. T
 - **Detailed Entries**: View and edit individual timesheet entries.
 - **Agency Summary**: Track total regular and overtime hours by agency.
 - **Labor Forecasting**: Predict next week's labor needs using linear regression.
+- **Automatic Wage Setup**: Automatically creates wage rates based on worker position (general labor: $16/hr, forklift driver: $18/hr).
 
 ## Installation
 
@@ -55,15 +56,16 @@ A Flask web application for tracking and managing warehouse worker timesheets. T
      - `time_in`: Clock-in time (HH:MM)
      - `time_out`: Clock-out time (HH:MM)
      - `lunch_minutes`: Lunch break duration in minutes (optional, defaults to 30)
-     - `Agency`: Agency name (required for agency summary)
+     - `agency`: Agency name (required for agency summary)
+     - `position`: Worker position ("general labor" or "forklift driver")
 
 ## CSV Format Example
 
 **Timesheet:**
 ```csv
-worker_id,date,time_in,time_out,lunch_minutes,Agency
-W001,2023-06-01,08:00,16:30,30,AgencyA
-W002,2023-06-01,09:00,17:30,45,AgencyB
+worker_id,date,time_in,time_out,lunch_minutes,agency,position
+W001,2023-06-01,08:00,16:30,30,AgencyA,general labor
+W002,2023-06-01,09:00,17:30,45,AgencyB,forklift driver
 ```
 
 ## Development

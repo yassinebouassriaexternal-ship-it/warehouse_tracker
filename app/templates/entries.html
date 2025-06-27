@@ -2,18 +2,27 @@
 {% block title %}Entries for {{ worker_id }} (Wk {{ week }}){% endblock %}
 
 {% block content %}
-<h1>Entries: {{ worker_id }}, Week {{ week }}</h1>
-<a
-  class="btn btn-outline-secondary mb-3"
-  href="{{ url_for('dashboard.dashboard', worker='', week=week) }}"
->
-  ← Back to Dashboard
-</a>
+<!-- Page Header -->
+<div class="page-header">
+  <h1>
+    <i class="bi bi-person-square"></i>
+    Entries: {{ worker_id }}, Week {{ week }}
+  </h1>
+</div>
 
-<div class="card">
-  <div class="card-body">
+<!-- Control Panel -->
+<div class="control-panel">
+  <div class="action-buttons">
+    <a class="btn btn-outline-secondary back-button" href="{{ url_for('dashboard.dashboard', worker='', week=week) }}" data-bs-toggle="tooltip" title="Back to Dashboard">
+      <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+    </a>
+  </div>
+</div>
+
+<!-- Time Entries Data Table -->
+<div class="data-section">
     <div class="table-responsive">
-      <table class="table table-hover table-striped align-middle">
+      <table class="table table-hover table-striped align-middle" id="entries-table">
         <thead>
           <tr>
             <th>#</th>
@@ -33,11 +42,20 @@
             <td>{{ r.time_in.strftime('%H:%M') }}</td>
             <td>{{ r.time_out.strftime('%H:%M') }}</td>
             <td>{{ r.lunch_minutes }}</td>
-            <td>{{ "%.2f"|format(r.daily_hours) }}</td>
+            <td>
+              {% if r.daily_hours >= 10 %}
+                <span class="badge bg-danger">{{ "%.2f"|format(r.daily_hours) }}</span>
+              {% elif r.daily_hours >= 8 %}
+                <span class="badge bg-warning text-dark">{{ "%.2f"|format(r.daily_hours) }}</span>
+              {% else %}
+                {{ "%.2f"|format(r.daily_hours) }}
+              {% endif %}
+            </td>
             <td>
               <a
                 class="btn btn-sm btn-warning"
                 href="{{ url_for('entries.update_entry_route', index=idx) }}"
+                data-bs-toggle="tooltip" title="Edit this entry"
               >
                 Edit
               </a>
@@ -47,12 +65,15 @@
         </tbody>
       </table>
     </div>
-  </div>
 </div>
 
 {% if weeks and hours %}
-<div class="my-4">
-  <h5>Weekly Hours Trend</h5>
+<!-- Weekly Hours Trend Chart -->
+<div class="chart-section">
+  <h5>
+    <i class="bi bi-graph-up"></i>
+    Weekly Hours Trend
+  </h5>
   <canvas id="weeklyHoursChart" height="100"></canvas>
 </div>
 
@@ -108,11 +129,12 @@
 </script>
 {% endif %}
 
-<!-- Worker Analysis Metrics Card -->
+<!-- Worker Analysis Metrics -->
 {% if worker_metrics %}
-<div class="card my-4">
-  <div class="card-body">
-    <h5 class="card-title">Worker Analysis</h5>
+<div class="data-section">
+    <h5 class="card-title">
+      <i class="bi bi-graph-up-arrow"></i>Worker Analysis
+    </h5>
     <div class="row">
       <div class="col-md-6">
         <ul class="list-group list-group-flush">
@@ -159,7 +181,6 @@
         </ul>
       </div>
     </div>
-  </div>
 </div>
 {% endif %}
 {% endblock %}

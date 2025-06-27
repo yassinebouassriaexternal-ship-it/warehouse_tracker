@@ -1,29 +1,46 @@
 {% extends "layout.html" %}
 {% block title %}Wage Rates{% endblock %}
 {% block content %}
-<h1>Wage Rates Management</h1>
-<div class="mb-3">
-  <form method="get" class="row g-3 align-items-end">
+<!-- Page Header -->
+<div class="page-header">
+  <h1>
+    <i class="bi bi-currency-dollar"></i>
+    Wage Rates Management
+  </h1>
+</div>
+
+<!-- Control Panel -->
+<div class="control-panel">
+  <div class="row g-3 align-items-end">
     <div class="col-md-3">
-      <label class="form-label">Filter by Agency</label>
-      <select name="agency" class="form-select" onchange="this.form.submit()">
-        <option value="">All Agencies</option>
-        {% for agency in agencies %}
-        <option value="{{ agency }}" {% if agency_filter == agency %}selected{% endif %}>{{ agency }}</option>
-        {% endfor %}
-      </select>
+      <form method="get">
+        <label class="form-label fw-semibold">Filter by Agency</label>
+        <select name="agency" class="form-select" onchange="this.form.submit()">
+          <option value="">All Agencies</option>
+          {% for agency in agencies %}
+          <option value="{{ agency }}" {% if agency_filter == agency %}selected{% endif %}>{{ agency }}</option>
+          {% endfor %}
+        </select>
+      </form>
     </div>
-  </form>
+    <div class="col-md-9">
+      <div class="action-buttons justify-content-end">
+        {% if show_all %}
+          <a class="btn btn-outline-primary" href="{{ url_for('dashboard.wage_rates', agency=agency_filter, show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
+            <i class="bi bi-person-check me-1"></i>Show Only Active Workers
+          </a>
+        {% else %}
+          <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.wage_rates', agency=agency_filter, show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
+            <i class="bi bi-people me-1"></i>Show All Workers
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </div>
-<div class="mb-3 text-end">
-  {% if show_all %}
-    <a class="btn btn-outline-primary" href="{{ url_for('dashboard.wage_rates', agency=agency_filter, show_all=0) }}">Show Only Active Workers</a>
-  {% else %}
-    <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.wage_rates', agency=agency_filter, show_all=1) }}">Show All Workers</a>
-  {% endif %}
-</div>
-<div class="card mb-4">
-  <div class="card-body">
+
+<!-- Add New Wage Rate Form -->
+<div class="form-section">
     <form method="post" class="row g-3 align-items-end">
       <div class="col-md-2">
         <label class="form-label">Worker ID</label>
@@ -37,8 +54,8 @@
         <label class="form-label">Role</label>
         <select name="role" class="form-select">
           <option value="">(Any)</option>
-          <option value="general">General Labor</option>
-          <option value="forklift">Forklift Operator</option>
+          <option value="general labor">General Labor</option>
+          <option value="forklift driver">Forklift Driver</option>
         </select>
       </div>
       <div class="col-md-2">
@@ -54,17 +71,21 @@
         <label class="form-label">Effective Date</label>
         <input name="effective_date" type="date" class="form-control" required />
       </div>
-      <div class="col-md-2 d-flex align-items-end">
-        <button class="btn btn-primary w-100">Save</button>
-      </div>
-    </form>
+              <div class="col-md-2 d-flex align-items-end">
+          <button class="btn btn-primary w-100">
+            <i class="bi bi-plus-circle me-1"></i>Save Wage Rate
+          </button>
+        </div>
+      </form>
   </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Current Wage Rates</h5>
+
+  <!-- Current Wage Rates Table -->
+  <div class="data-section">
+      <h5 class="card-title">
+        <i class="bi bi-table"></i>Current Wage Rates
+      </h5>
     <div class="table-responsive">
-      <table class="table table-hover table-striped align-middle">
+      <table class="table table-hover table-striped align-middle" id="wage-rates-table">
         <thead>
           <tr>
             <th>Worker ID</th>
@@ -86,16 +107,33 @@
             <td>{% if w.markup %}{{ (w.markup * 100)|round(1) }}%{% endif %}</td>
             <td>{{ w.effective_date or '' }}</td>
             <td>
-              <a href="{{ url_for('dashboard.edit_wage_rate', wage_rate_id=w.id, agency=agency_filter, show_all=show_all|int) }}" class="btn btn-sm btn-primary">Edit</a>
-              <form method="post" action="{{ url_for('dashboard.delete_wage_rate', wage_rate_id=w.id) }}" style="display:inline;">
-                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this wage rate?');">Delete</button>
-              </form>
+              <a href="{{ url_for('dashboard.edit_wage_rate', wage_rate_id=w.id, agency=agency_filter, show_all=show_all|int) }}" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="Edit wage rate">Edit</a>
+              <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ w.id }}" title="Delete wage rate">Delete</button>
+              <!-- Delete Confirmation Modal -->
+              <div class="modal fade" id="deleteModal{{ w.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ w.id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel{{ w.id }}">Confirm Delete</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure you want to delete this wage rate?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                      <form method="post" action="{{ url_for('dashboard.delete_wage_rate', wage_rate_id=w.id) }}" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
-  </div>
 </div>
 {% endblock %} 

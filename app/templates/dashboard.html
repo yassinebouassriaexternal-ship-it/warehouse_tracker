@@ -2,84 +2,211 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<div class="card mb-4">
-  <div class="card-body">
-    <form action="{{ url_for('dashboard.upload') }}" method="post" enctype="multipart/form-data" class="row g-2 justify-content-center align-items-center flex-nowrap">
-      <div class="col-auto">
-        <label for="timesheet_file" class="form-label mb-0 me-2"><i class="bi bi-upload me-1"></i>Timesheet CSV</label>
-        <input type="file" name="timesheet_file" id="timesheet_file" class="form-control form-control-sm d-inline-block" style="width:auto; display:inline-block;" accept=".csv" />
-        <button type="submit" class="btn btn-outline-primary btn-sm ms-2" name="upload_type" value="timesheet" data-bs-toggle="tooltip" title="Upload Timesheet"><i class="bi bi-arrow-up-circle"></i></button>
+<!-- Upload Section -->
+<div class="control-panel">
+    <form action="{{ url_for('dashboard.upload') }}" method="post" enctype="multipart/form-data" class="d-flex align-items-center gap-3 flex-wrap">
+      <div class="d-flex align-items-center gap-2">
+        <label for="timesheet_file" class="form-label mb-0 fw-semibold">
+          <i class="bi bi-upload me-1"></i>Timesheet CSV
+        </label>
+        <input type="file" name="timesheet_file" id="timesheet_file" class="form-control form-control-sm" style="width:250px;" accept=".csv" />
+        <button type="submit" class="btn btn-primary btn-sm px-3" name="upload_type" value="timesheet" data-bs-toggle="tooltip" title="Upload Timesheet">
+          <i class="bi bi-arrow-up-circle me-1"></i>Upload
+        </button>
       </div>
-
     </form>
-  </div>
 </div>
 
-<div class="card mb-4">
-  <div class="card-body">
-    <div class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between gap-2">
-      <form method="get" action="{{ url_for('dashboard.dashboard') }}" class="d-flex flex-wrap flex-md-nowrap align-items-center gap-2 mb-0">
-        <div class="col-auto">
-          <label for="worker_filter" class="form-label mb-0 me-2"><i class="bi bi-person-badge me-1"></i>Worker ID</label>
+<!-- Auto-selection notification -->
+{% if week_auto_selected %}
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  <i class="bi bi-info-circle me-2"></i>
+  <strong>Auto-selected week:</strong> No data available for the current week ({{ current_week }}). 
+  Showing data for the most recent week with available data (Week {{ week_filter }}).
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<!-- Filter and Actions Section -->
+<div class="control-panel">
+    <div class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between gap-3">
+      <form method="get" action="{{ url_for('dashboard.dashboard') }}" class="d-flex flex-wrap flex-md-nowrap align-items-center gap-3 mb-0">
+        <div class="d-flex align-items-center gap-2">
+          <label for="worker_filter" class="form-label mb-0 fw-semibold">
+            <i class="bi bi-person-badge me-1"></i>Worker ID
+          </label>
           <input
             id="worker_filter"
             name="worker"
-            class="form-control form-control-sm d-inline-block"
-            style="width:auto; display:inline-block;"
+            class="form-control form-control-sm filter-input"
+            placeholder="Enter Worker ID"
             value="{{ worker_filter }}"
+            style="width: 140px;"
           />
         </div>
-        <div class="col-auto">
-          <label for="week_filter" class="form-label mb-0 me-2"><i class="bi bi-calendar-week me-1"></i>Week #</label>
+        <div class="d-flex align-items-center gap-2">
+          <label for="week_filter" class="form-label mb-0 fw-semibold">
+            <i class="bi bi-calendar-week me-1"></i>Week #
+          </label>
           <input
             id="week_filter"
             name="week"
-            class="form-control form-control-sm d-inline-block"
-            style="width:auto; display:inline-block;"
+            class="form-control form-control-sm filter-input"
+            placeholder="Enter Week #"
             value="{{ week_filter }}"
+            style="width: 120px;"
           />
         </div>
-        <div class="col-auto align-self-end">
-          <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="tooltip" title="Apply filters"><i class="bi bi-funnel"></i></button>
-        </div>
+        <button class="btn btn-primary btn-sm px-3" data-bs-toggle="tooltip" title="Apply filters">
+          <i class="bi bi-funnel me-1"></i>Filter
+        </button>
       </form>
-      <div class="d-flex gap-2 flex-wrap">
+      <div class="action-buttons">
         <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Forecast next week's labor needs">
-          <i class="bi bi-graph-up"></i> Labor Forecast
+          <i class="bi bi-graph-up me-1"></i>Labor Forecast
         </a>
         {% if is_forecast %}
           {% if show_all %}
-            <a class="btn btn-success" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
-              <i class="bi bi-person-check"></i> Active Workers
+            <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
+              <i class="bi bi-person-check me-1"></i>Active Workers
             </a>
           {% else %}
-            <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.predict', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
-              <i class="bi bi-people"></i> All Workers
+            <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
+              <i class="bi bi-people me-1"></i>All Workers
             </a>
           {% endif %}
         {% else %}
           {% if show_all %}
-            <a class="btn btn-success" href="{{ url_for('dashboard.dashboard', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
-              <i class="bi bi-person-check"></i> Active Workers
+            <a class="btn btn-primary" href="{{ url_for('dashboard.dashboard', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
+              <i class="bi bi-person-check me-1"></i>Active Workers
             </a>
           {% else %}
-            <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.dashboard', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
-              <i class="bi bi-people"></i> All Workers
+            <a class="btn btn-primary" href="{{ url_for('dashboard.dashboard', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
+              <i class="bi bi-people me-1"></i>All Workers
             </a>
           {% endif %}
         {% endif %}
-        <a class="btn btn-info text-white" href="{{ url_for('dashboard.manage_workers') }}" data-bs-toggle="tooltip" title="Manage worker list">
-          <i class="bi bi-gear"></i> Manage Workers
+        <a class="btn btn-primary" href="{{ url_for('dashboard.manage_workers') }}" data-bs-toggle="tooltip" title="Manage worker list">
+          <i class="bi bi-gear me-1"></i>Manage Workers
         </a>
       </div>
     </div>
-  </div>
 </div>
 
+<!-- Weekly Summary Visualization -->
 {% if summary is not none and not summary.empty %}
-  <div class="card mb-4">
-    <div class="card-body">
-      <h2 class="card-title">Weekly Summary</h2>
+<div class="overview-section">
+    <h5 class="card-title">
+      <i class="bi bi-graph-up me-2"></i>Weekly Hours Overview - Week {{ chart_data.current_week }}
+    </h5>
+    
+    <!-- Main Metrics Row -->
+    <div class="row g-3 mb-4">
+      <!-- Current Week Total -->
+      <div class="col-md-3">
+        <div class="metric-card h-100">
+          <i class="bi bi-clock-fill"></i>
+          <h2 id="currentWeekTotal">{{ "%.0f"|format(chart_data.current_regular + chart_data.current_overtime) }}</h2>
+          <p class="mb-1 fw-semibold">Total Hours</p>
+          <small class="text-muted">Week {{ chart_data.current_week }}</small>
+        </div>
+      </div>
+      
+      <!-- Regular Hours -->
+      <div class="col-md-3">
+        <div class="metric-card h-100">
+          <i class="bi bi-check-circle-fill text-success"></i>
+          <h2 class="text-success">{{ "%.0f"|format(chart_data.current_regular) }}</h2>
+          <p class="mb-1 fw-semibold">Regular Hours</p>
+          <small class="text-muted">≤ 40hrs per worker</small>
+        </div>
+      </div>
+      
+      <!-- Overtime Hours -->
+      <div class="col-md-3">
+        <div class="metric-card h-100">
+          <i class="bi bi-exclamation-triangle-fill text-warning"></i>
+          <h2 class="text-warning">{{ "%.0f"|format(chart_data.current_overtime) }}</h2>
+          <p class="mb-1 fw-semibold">Overtime Hours</p>
+          <small class="text-muted">> 40hrs per worker</small>
+        </div>
+      </div>
+      
+      <!-- Week Comparison -->
+      <div class="col-md-3">
+        <div class="metric-card h-100">
+          <i class="bi bi-arrow-left-right text-info"></i>
+          <h2 class="text-info" id="weekChange">--</h2>
+          <p class="mb-1 fw-semibold">vs Last Week</p>
+          <small class="text-muted">Week {{ chart_data.previous_week }}</small>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Progress Indicators -->
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <div class="progress-indicator-card">
+            <h6 class="card-title">Overtime Percentage</h6>
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 me-3">
+                <div class="progress" style="height: 16px; background-color: #f1f3f4; border-radius: 8px;">
+                  <div class="progress-bar bg-warning" id="overtimeProgress" style="width: 0%; border-radius: 8px;"></div>
+                </div>
+              </div>
+              <span class="fw-bold text-dark" id="overtimePercent">0%</span>
+            </div>
+            <small class="text-muted">Percentage of total hours that are overtime</small>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="progress-indicator-card">
+            <h6 class="card-title">Week-over-Week Change</h6>
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 me-3">
+                <div class="progress" style="height: 16px; background-color: #f1f3f4; border-radius: 8px;">
+                  <div class="progress-bar" id="changeProgress" style="width: 0%; border-radius: 8px;"></div>
+                </div>
+              </div>
+              <span class="fw-bold text-dark" id="changePercent">0%</span>
+            </div>
+            <small class="text-muted">Change in total hours from last week</small>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Comparison Details -->
+    <div class="comparison-section">
+        <h6 class="card-title">Previous Week Comparison (Week {{ chart_data.previous_week }})</h6>
+        <div class="row text-center">
+          <div class="col-4">
+            <div class="border-end pe-3">
+              <h5 class="mb-1 text-dark">{{ "%.0f"|format(chart_data.previous_regular + chart_data.previous_overtime) }}</h5>
+              <small class="text-muted">Total Hours</small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="border-end pe-3">
+              <h5 class="mb-1 text-success">{{ "%.0f"|format(chart_data.previous_regular) }}</h5>
+              <small class="text-muted">Regular</small>
+            </div>
+          </div>
+          <div class="col-4">
+            <h5 class="mb-1 text-warning">{{ "%.0f"|format(chart_data.previous_overtime) }}</h5>
+            <small class="text-muted">Overtime</small>
+          </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if summary is not none and not summary.empty %}
+  <!-- Weekly Summary Data Table -->
+  <div class="data-section">
+      <h5 class="card-title">
+        <i class="bi bi-table"></i>Weekly Summary
+      </h5>
       <div class="table-responsive">
         <table class="table table-hover table-striped align-middle" id="summary-table">
           <thead>
@@ -146,12 +273,13 @@
           </tbody>
         </table>
       </div>
-    </div>
-    <div class="card-footer text-end">
-      <div class="d-inline-flex gap-2">
-        <a class="btn btn-primary" href="{{ url_for('dashboard.export') }}">Export CSV</a>
+      <div class="mt-3 text-end">
+        <div class="action-buttons justify-content-end">
+          <a class="btn btn-primary" href="{{ url_for('dashboard.export') }}">
+            <i class="bi bi-download me-1"></i>Export CSV
+          </a>
+        </div>
       </div>
-    </div>
   </div>
 {% else %}
   <div class="alert alert-warning">
@@ -160,9 +288,11 @@
 {% endif %}
 
 {% if predictions is not none %}
-  <div class="card mb-4">
-    <div class="card-body">
-      <h2 class="card-title">Next Week Labor Forecast</h2>
+  <!-- Labor Forecast Data Table -->
+  <div class="data-section">
+      <h5 class="card-title">
+        <i class="bi bi-graph-up"></i>Next Week Labor Forecast
+      </h5>
       <div class="table-responsive">
         <table class="table table-hover table-striped align-middle" id="forecast-table">
           <thead>
@@ -185,12 +315,11 @@
                 {% endif %}
               </td>
             </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+                      {% endfor %}
+        </tbody>
+      </table>
     </div>
-  </div>
+</div>
 {% endif %}
 
 <script>
@@ -266,13 +395,102 @@ function updateSortIcons(activeColumn, direction) {
   });
 }
 
+function initWeeklyDashboard() {
+  console.log('initWeeklyDashboard called');
+  
+  // Get chart data from backend
+  const chartData = {{ chart_data | tojson | safe }};
+  console.log('Chart data:', chartData);
+  
+  if (!chartData || typeof chartData !== 'object') {
+    console.log('No chart data available');
+    return;
+  }
+  
+  // Calculate metrics
+  const currentTotal = (chartData.current_regular || 0) + (chartData.current_overtime || 0);
+  const previousTotal = (chartData.previous_regular || 0) + (chartData.previous_overtime || 0);
+  const totalChange = previousTotal > 0 ? ((currentTotal - previousTotal) / previousTotal) * 100 : 0;
+  const overtimePercentage = currentTotal > 0 ? ((chartData.current_overtime || 0) / currentTotal) * 100 : 0;
+  
+  console.log('Calculations:', { currentTotal, previousTotal, totalChange, overtimePercentage });
+  
+  // Update week change display
+  const weekChangeElement = document.getElementById('weekChange');
+  if (weekChangeElement) {
+    const changeText = totalChange >= 0 ? `+${totalChange.toFixed(1)}%` : `${totalChange.toFixed(1)}%`;
+    weekChangeElement.textContent = changeText;
+    console.log('Updated weekChange to:', changeText);
+    
+    // Color coding for change card
+    const parentCard = weekChangeElement.closest('.card');
+    if (parentCard) {
+      parentCard.classList.remove('bg-info', 'bg-success', 'bg-danger');
+      if (Math.abs(totalChange) < 5) {
+        parentCard.classList.add('bg-info');
+      } else if (totalChange > 0) {
+        parentCard.classList.add('bg-success');
+      } else {
+        parentCard.classList.add('bg-danger');
+      }
+    }
+  }
+  
+  // Update overtime progress bar
+  const overtimeProgress = document.getElementById('overtimeProgress');
+  const overtimePercent = document.getElementById('overtimePercent');
+  if (overtimeProgress && overtimePercent) {
+    overtimeProgress.style.width = `${Math.min(overtimePercentage, 100)}%`;
+    overtimePercent.textContent = `${overtimePercentage.toFixed(1)}%`;
+    console.log('Updated overtime:', `${overtimePercentage.toFixed(1)}%`);
+    
+    // Color coding for overtime percentage
+    overtimeProgress.classList.remove('bg-success', 'bg-warning', 'bg-danger');
+    if (overtimePercentage < 10) {
+      overtimeProgress.classList.add('bg-success');
+    } else if (overtimePercentage < 25) {
+      overtimeProgress.classList.add('bg-warning');
+    } else {
+      overtimeProgress.classList.add('bg-danger');
+    }
+  }
+  
+  // Update change progress bar
+  const changeProgress = document.getElementById('changeProgress');
+  const changePercent = document.getElementById('changePercent');
+  if (changeProgress && changePercent) {
+    const absChange = Math.abs(totalChange);
+    changeProgress.style.width = `${Math.min(absChange, 100)}%`;
+    const changeText = totalChange >= 0 ? `+${totalChange.toFixed(1)}%` : `${totalChange.toFixed(1)}%`;
+    changePercent.textContent = changeText;
+    console.log('Updated change progress:', changeText);
+    
+    // Color coding for change
+    changeProgress.classList.remove('bg-success', 'bg-info', 'bg-danger');
+    if (Math.abs(totalChange) < 5) {
+      changeProgress.classList.add('bg-info');
+    } else if (totalChange > 0) {
+      changeProgress.classList.add('bg-success');
+    } else {
+      changeProgress.classList.add('bg-danger');
+    }
+  }
+}
+
 // Sort by remaining hours (descending) by default when page loads
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOMContentLoaded event fired');
+  
   const summaryTable = document.getElementById('summary-table');
   if (summaryTable && summaryTable.getElementsByTagName('tbody')[0].rows.length > 0) {
     sortTable(3, 'number'); // Sort by remaining hours column (index 3)
     sortTable(3, 'number'); // Call twice to get descending order (most hours first)
   }
+  
+  // Initialize the weekly dashboard with a small delay to ensure DOM is ready
+  setTimeout(function() {
+    initWeeklyDashboard();
+  }, 100);
 });
 </script>
 {% endblock %}

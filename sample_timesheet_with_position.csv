@@ -1,0 +1,6 @@
+worker_id,date,time_in,time_out,lunch_minutes,agency,position
+john123,2023-06-01,08:00,16:30,30,JJ Staffing,general labor
+mary456,2023-06-01,09:00,17:30,45,Stride Staffing,forklift driver
+bob789,2023-06-01,07:30,16:00,30,JJ Staffing,general labor
+alice101,2023-06-01,10:00,18:30,60,Stride Staffing,forklift driver
+tom202,2023-06-02,08:15,16:45,30,JJ Staffing,general labor 

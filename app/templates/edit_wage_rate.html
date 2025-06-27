@@ -1,10 +1,25 @@
 {% extends "layout.html" %}
 {% block title %}Edit Wage Rate{% endblock %}
 {% block content %}
-<h1>Edit Wage Rate</h1>
-<a class="btn btn-outline-secondary mb-3" href="{{ url_for('dashboard.wage_rates') }}">← Back</a>
-<div class="card">
-  <div class="card-body">
+<!-- Page Header -->
+<div class="page-header">
+  <h1>
+    <i class="bi bi-pencil-square"></i>
+    Edit Wage Rate
+  </h1>
+</div>
+
+<!-- Control Panel -->
+<div class="control-panel">
+  <div class="action-buttons">
+    <a class="btn btn-outline-secondary back-button" href="{{ url_for('dashboard.wage_rates') }}">
+      <i class="bi bi-arrow-left me-1"></i>Back to Wage Rates
+    </a>
+  </div>
+</div>
+
+<!-- Edit Form -->
+<div class="form-section">
     <form method="post" class="row g-3 align-items-end">
       <div class="col-md-2">
         <label class="form-label">Worker ID</label>
@@ -18,8 +33,8 @@
         <label class="form-label">Role</label>
         <select name="role" class="form-select">
           <option value="" {% if not wage_rate.role %}selected{% endif %}>(Any)</option>
-          <option value="general" {% if wage_rate.role == 'general' %}selected{% endif %}>General Labor</option>
-          <option value="forklift" {% if wage_rate.role == 'forklift' %}selected{% endif %}>Forklift Operator</option>
+          <option value="general labor" {% if wage_rate.role == 'general labor' %}selected{% endif %}>General Labor</option>
+          <option value="forklift driver" {% if wage_rate.role == 'forklift driver' %}selected{% endif %}>Forklift Driver</option>
         </select>
       </div>
       <div class="col-md-2">
@@ -30,10 +45,11 @@
         <label class="form-label">Effective Date</label>
         <input name="effective_date" type="date" class="form-control" value="{{ wage_rate.effective_date }}" required />
       </div>
-      <div class="col-md-2 d-flex align-items-end">
-        <button class="btn btn-primary w-100">Save</button>
-      </div>
-    </form>
+              <div class="col-md-2 d-flex align-items-end">
+          <button class="btn btn-primary w-100">
+            <i class="bi bi-check-circle me-1"></i>Update Wage Rate
+          </button>
+        </div>
+      </form>
   </div>
-</div>
 {% endblock %} 
