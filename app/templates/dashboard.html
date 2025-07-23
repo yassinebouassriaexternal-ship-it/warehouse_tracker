@@ -15,62 +15,88 @@
   </div>
 </div>
 
-<div class="card mb-4">
-  <div class="card-body">
-    <div class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between gap-2">
-      <form method="get" action="{{ url_for('dashboard.dashboard') }}" class="d-flex flex-wrap flex-md-nowrap align-items-center gap-2 mb-0">
-        <div class="col-auto">
-          <label for="worker_filter" class="form-label mb-0 me-2"><i class="bi bi-person-badge me-1"></i>Worker ID</label>
-          <input
-            id="worker_filter"
-            name="worker"
-            class="form-control form-control-sm d-inline-block"
-            style="width:auto; display:inline-block;"
-            value="{{ worker_filter }}"
-          />
-        </div>
-        <div class="col-auto">
-          <label for="week_filter" class="form-label mb-0 me-2"><i class="bi bi-calendar-week me-1"></i>Week #</label>
-          <input
-            id="week_filter"
-            name="week"
-            class="form-control form-control-sm d-inline-block"
-            style="width:auto; display:inline-block;"
-            value="{{ week_filter }}"
-          />
-        </div>
-        <div class="col-auto align-self-end">
-          <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="tooltip" title="Apply filters"><i class="bi bi-funnel"></i></button>
-        </div>
-      </form>
-      <div class="d-flex gap-2 flex-wrap">
-        <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Forecast next week's labor needs">
-          <i class="bi bi-graph-up"></i> Labor Forecast
-        </a>
-        {% if is_forecast %}
-          {% if show_all %}
-            <a class="btn btn-success" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
-              <i class="bi bi-person-check"></i> Active Workers
-            </a>
+<!-- Filters Row: Agency and Week -->
+<div class="row mb-3">
+  <div class="col-md-4">
+    <form method="get" class="d-flex align-items-end gap-2">
+      <input type="hidden" name="worker" value="{{ worker_filter }}">
+      <label for="agency" class="form-label mb-0">Filter by Agency:</label>
+      <select name="agency" id="agency" class="form-select" onchange="this.form.submit()">
+        <option value="">All Agencies</option>
+        {% for agency in agencies %}
+        <option value="{{ agency }}" {% if agency_filter == agency %}selected{% endif %}>{{ agency }}</option>
+        {% endfor %}
+      </select>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <form method="get" class="d-flex align-items-end gap-2">
+      <input type="hidden" name="agency" value="{{ agency_filter }}">
+      <input type="hidden" name="worker" value="{{ worker_filter }}">
+      <label for="week" class="form-label mb-0">Filter by Week:</label>
+      <select name="week" id="week" class="form-select" onchange="this.form.submit()">
+        {% for w in all_weeks %}
+        <option value="{{ w }}" {% if week_filter|int == w %}selected{% endif %}>Week {{ w }}</option>
+        {% endfor %}
+      </select>
+    </form>
+  </div>
+</div>
+
+<!-- Metrics Summary Section -->
+<div class="row mb-4">
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm bg-light border-primary">
+      <div class="card-body">
+        <div class="fw-bold fs-5 text-primary"><i class="bi bi-calendar-week me-1"></i>{{ metrics.total_hours_current|round(2) }}</div>
+        <div class="text-muted">Current Week Hours</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm bg-light border-info">
+      <div class="card-body">
+        <div class="fw-bold fs-5 text-info"><i class="bi bi-calendar3 me-1"></i>{{ metrics.total_hours_last|round(2) }}</div>
+        <div class="text-muted">Last Week Hours</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm bg-light border-success">
+      <div class="card-body">
+        <div class="fw-bold fs-5 text-success">
+          <i class="bi bi-graph-up-arrow me-1"></i>
+          {% if metrics.week_over_week_change is not none and metrics.week_over_week_change == metrics.week_over_week_change %}
+            {{ metrics.week_over_week_change|round(1) }}%
           {% else %}
-            <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.predict', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
-              <i class="bi bi-people"></i> All Workers
-            </a>
+            N/A
           {% endif %}
-        {% else %}
-          {% if show_all %}
-            <a class="btn btn-success" href="{{ url_for('dashboard.dashboard', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
-              <i class="bi bi-person-check"></i> Active Workers
-            </a>
-          {% else %}
-            <a class="btn btn-outline-secondary" href="{{ url_for('dashboard.dashboard', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
-              <i class="bi bi-people"></i> All Workers
-            </a>
-          {% endif %}
-        {% endif %}
-        <a class="btn btn-info text-white" href="{{ url_for('dashboard.manage_workers') }}" data-bs-toggle="tooltip" title="Manage worker list">
-          <i class="bi bi-gear"></i> Manage Workers
-        </a>
+        </div>
+        <div class="text-muted">WoW Change</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm bg-light border-danger">
+      <div class="card-body">
+        <div class="fw-bold fs-5 text-danger"><i class="bi bi-alarm me-1"></i>{{ metrics.total_overtime_hours|round(2) }}</div>
+        <div class="text-muted">Total Overtime</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm bg-light border-warning">
+      <div class="card-body">
+        <div class="fw-bold fs-5 text-warning"><i class="bi bi-person-workspace me-1"></i>{{ metrics.avg_hours_per_worker|round(2) }}</div>
+        <div class="text-muted">Avg Hours/Worker</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm bg-light border-secondary">
+      <div class="card-body">
+        <div class="fw-bold fs-5 text-secondary"><i class="bi bi-people-fill me-1"></i>{{ metrics.num_workers }}</div>
+        <div class="text-muted">Workers</div>
       </div>
     </div>
   </div>

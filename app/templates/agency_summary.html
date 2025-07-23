@@ -7,24 +7,6 @@
   ← Back
 </a>
 
-<!-- Weekly Trends Section -->
-<div class="card mb-4">
-  <div class="card-body">
-    <h5 class="card-title">
-      <i class="bi bi-graph-up me-2"></i>Weekly Hours Trends by Agency
-    </h5>
-    <p class="text-muted">Track total hours worked per week for each agency to identify trends and patterns.</p>
-    
-    {% if agency_weekly_hours and weeks %}
-      <canvas id="weeklyTrendsChart" height="100"></canvas>
-    {% else %}
-      <div class="alert alert-info">
-        <i class="bi bi-info-circle me-2"></i>No weekly trends data available.
-      </div>
-    {% endif %}
-  </div>
-</div>
-
 <!-- Monthly Summary Section -->
 <div class="card">
   <div class="card-body">

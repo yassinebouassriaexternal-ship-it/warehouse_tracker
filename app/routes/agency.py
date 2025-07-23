@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, flash, redirect, url_for, current_app
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
 from ..utils import calculate_agency_hours, process_timesheet
-from ..models import WageRate
+from ..models import WageRate, Agency, AgencyMarkup
+from .. import db
 import numpy as np
 import pandas as pd
 from datetime import datetime
@@ -88,14 +89,22 @@ def agency_summary():
                 ).order_by(WageRate.effective_date.desc()).first()
                 if wage:
                     base_rate = wage.base_rate
-                    markup = wage.markup if wage.markup is not None else (0.25 if wage.agency == 'JJ' else 0.30 if wage.agency == 'Stride' else 0.0)
                 else:
                     role = entry['role'] if 'role' in entry and pd.notnull(entry['role']) else None
                     if role == 'forklift':
                         base_rate = 18.0
                     else:
                         base_rate = 16.0
-                    markup = 0.25 if agency == 'JJ' else 0.30 if agency == 'Stride' else 0.0
+                # --- Get correct agency markup ---
+                agency_obj = Agency.query.filter_by(name=agency).first()
+                markup = 0.0
+                if agency_obj:
+                    markup_obj = AgencyMarkup.query.filter(
+                        AgencyMarkup.agency_id == agency_obj.id,
+                        AgencyMarkup.effective_date <= entry_date
+                    ).order_by(AgencyMarkup.effective_date.desc()).first()
+                    if markup_obj:
+                        markup = markup_obj.markup
                 # Calculate cost for this entry
                 hours = entry['daily_hours']
                 cost = hours * base_rate * (1 + markup)
@@ -147,3 +156,59 @@ def agency_summary():
         agency_weekly_hours=agency_weekly_hours,
         weeks=weeks
     )
+
+@agency_bp.route('/manage_agencies', methods=['GET', 'POST'])
+def manage_agencies():
+    agencies = Agency.query.order_by(Agency.name).all()
+    selected_agency = None
+    markups = []
+    agency_id = request.args.get('agency_id', type=int)
+    if agency_id:
+        selected_agency = Agency.query.get(agency_id)
+        if selected_agency:
+            markups = AgencyMarkup.query.filter_by(agency_id=selected_agency.id).order_by(AgencyMarkup.effective_date.desc()).all()
+    if request.method == 'POST':
+        # Add new markup
+        agency_id = request.form.get('agency_id', type=int)
+        markup = request.form.get('markup', type=float)
+        effective_date = request.form.get('effective_date')
+        if agency_id and markup is not None and effective_date:
+            try:
+                effective_date = pd.to_datetime(effective_date).date()
+                new_markup = AgencyMarkup(agency_id=agency_id, markup=markup, effective_date=effective_date)
+                db.session.add(new_markup)
+                db.session.commit()
+                flash('Markup added successfully.', 'success')
+                return redirect(url_for('agency_summary.manage_agencies', agency_id=agency_id))
+            except Exception as e:
+                db.session.rollback()
+                flash(f'Error adding markup: {e}', 'error')
+    return render_template('manage_agencies.html', agencies=agencies, selected_agency=selected_agency, markups=markups)
+
+@agency_bp.route('/edit_agency_markup/<int:markup_id>', methods=['GET', 'POST'])
+def edit_agency_markup(markup_id):
+    markup = AgencyMarkup.query.get_or_404(markup_id)
+    if request.method == 'POST':
+        try:
+            markup.markup = float(request.form.get('markup'))
+            markup.effective_date = pd.to_datetime(request.form.get('effective_date')).date()
+            db.session.commit()
+            flash('Markup updated successfully.', 'success')
+            return redirect(url_for('agency_summary.manage_agencies', agency_id=markup.agency_id))
+        except Exception as e:
+            db.session.rollback()
+            flash(f'Error updating markup: {e}', 'error')
+    return render_template('edit_agency_markup.html', markup=markup)
+
+@agency_bp.route('/delete_agency_markup/<int:markup_id>', methods=['POST'])
+def delete_agency_markup(markup_id):
+    markup = AgencyMarkup.query.get_or_404(markup_id)
+    agency_id = markup.agency_id
+    try:
+        db.session.delete(markup)
+        db.session.commit()
+        flash('Markup deleted successfully.', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'Error deleting markup: {e}', 'error')
+    return redirect(url_for('agency_summary.manage_agencies', agency_id=agency_id))

@@ -1,0 +1,117 @@
+worker_id,base_rate,role,agency,markup,effective_date
+Alberto,18.0,forklift,JJ Staffing,0.25,2025-01-01
+Ana,16.0,general,Stride Staffing,0.3,2025-01-01
+Andry Sanchez,16.0,general,Stride Staffing,0.3,2025-01-01
+Angel Vicencio,16.0,general,JJ Staffing,0.25,2025-01-01
+Angelo Lozada,16.0,general,JJ Staffing,0.25,2025-01-01
+Argenis Navarro,16.0,general,JJ Staffing,0.25,2025-01-01
+Belarmino Soto,16.0,general,JJ Staffing,0.25,2025-01-01
+Bernie Pineda,16.0,general,JJ Staffing,0.25,2025-01-01
+Dionnys,16.0,general,JJ Staffing,0.25,2025-01-01
+Eder Chirinos,16.0,general,JJ Staffing,0.25,2025-01-01
+Edinson Gutierrez,16.0,general,JJ Staffing,0.25,2025-01-01
+Edwin,16.0,general,Stride Staffing,0.3,2025-01-01
+Eglis Ruiz,16.0,general,JJ Staffing,0.25,2025-01-01
+Elvis,16.0,general,JJ Staffing,0.25,2025-01-01
+Ely,16.0,general,Stride Staffing,0.3,2025-01-01
+Franklin Perozo,16.0,general,JJ Staffing,0.25,2025-01-01
+Franwyr,18.0,general,Stride Staffing,0.3,2025-01-01
+Frederick Sanchez,16.0,general,JJ Staffing,0.25,2025-01-01
+Gabriel Villegas,16.0,general,JJ Staffing,0.25,2025-01-01
+Geovanni Tramonte,16.0,general,JJ Staffing,0.25,2025-01-01
+Hector,16.0,general,Stride Staffing,0.3,2025-01-01
+Jancy Faria,16.0,general,JJ Staffing,0.25,2025-01-01
+Jean Carlos Faria,16.0,general,JJ Staffing,0.25,2025-01-01
+Jean Navas,16.0,general,JJ Staffing,0.25,2025-01-01
+Jessie Austin,18.0,forklift,Stride Staffing,0.3,2025-01-01
+Johaniel,16.0,general,JJ Staffing,0.25,2025-01-01
+Jonathan,18.0,forklift,Stride Staffing,0.3,2025-01-01
+Jose Camacho,16.0,general,Stride Staffing,0.3,2025-01-01
+Jose Gamarra,18.0,general,Stride Staffing,0.3,2025-01-01
+Jose Moffi,18.0,forklift,JJ Staffing,0.25,2025-01-01
+Juan,16.0,general,JJ Staffing,0.25,2025-01-01
+Ovidio,16.0,general,Stride Staffing,0.3,2025-01-01
+Pedro,16.0,general,Stride Staffing,0.3,2025-01-01
+Rafael Rodriguez,16.0,general,Stride Staffing,0.3,2025-01-01
+Sergio,18.0,general,Stride Staffing,0.3,2025-01-01
+Victor,16.0,general,Stride Staffing,0.3,2025-01-01
+Willis Davis,18.0,forklift,Stride Staffing,0.3,2025-01-01
+Yimen Quevedo,16.0,general,JJ Staffing,0.25,2025-01-01
+Yohanderson,18.0,forklift,JJ Staffing,0.25,2025-01-01
+Yoiner Avila,16.0,general,JJ Staffing,0.25,2025-01-01
+Francisco leonardi,16.0,general,JJ Staffing,0.25,2025-01-01
+Exandri Castro,16.0,general,JJ Staffing,0.25,2025-01-01
+Bryan,16.0,general,Stride Staffing,0.3,2025-01-01
+Pedro Martinez Gonzalez,16.0,general,Stride Staffing,0.3,2025-01-01
+Yorge Mendoza,16.0,general,Stride Staffing,0.3,2025-01-01
+Jose Leonados,16.0,general,JJ Staffing,0.25,2025-01-01
+Danyer Urdaneta,16.0,general,JJ Staffing,0.25,2025-01-01
+Jose Oliva Davila,18.0,forklift,Stride Staffing,0.3,2025-01-01
+John Carlos Sandante,16.0,general,Stride Staffing,0.3,2025-01-01
+Enrique Finol,16.0,general,Stride Staffing,0.3,2025-01-01
+Eulice mujica,16.0,general,JJ Staffing,0.25,2025-01-01
+Edinson monzon,16.0,general,JJ Staffing,0.25,2025-01-01
+David herrera,16.0,general,JJ Staffing,0.25,2025-01-01
+James Tatum,,,Stride Staffing,,
+Rene,,,Stride Staffing,,
+david herrera,,,JJ Staffing,,
+Edison Monzon,,,JJ Staffing,,
+Ramon Aguirre,,,Stride Staffing,,
+Josue Hernandez,,,Stride Staffing,,
+alberto,,,JJ Staffing,,
+angel vicencio,,,JJ Staffing,,
+angelo lozada,,,JJ Staffing,,
+argenis navarro,,,JJ Staffing,,
+belarmino soto,,,JJ Staffing,,
+bernie pineda,,,JJ Staffing,,
+danyer urdaneta,,,JJ Staffing,,
+dionnys,,,JJ Staffing,,
+eder chirinos,,,JJ Staffing,,
+edinson gutierrez,,,JJ Staffing,,
+edinson monzon,,,JJ Staffing,,
+eglis ruiz,,,JJ Staffing,,
+elvis,,,JJ Staffing,,
+eulice mujica,,,JJ Staffing,,
+exandri castro,,,JJ Staffing,,
+francisco leonardi,,,JJ Staffing,,
+franklin perozo,,,JJ Staffing,,
+frederick sanchez,,,JJ Staffing,,
+gabriel villegas,,,JJ Staffing,,
+geovanni tramonte,,,JJ Staffing,,
+jancy faria,,,JJ Staffing,,
+jean carlos faria,,,JJ Staffing,,
+jean navas,,,JJ Staffing,,
+johaniel,,,JJ Staffing,,
+jose leonados,,,JJ Staffing,,
+jose moffi,,,JJ Staffing,,
+juan,,,JJ Staffing,,
+yimen quevedo,,,JJ Staffing,,
+yohanderson,,,JJ Staffing,,
+yoiner avila,,,JJ Staffing,,
+ana,,,Stride Staffing,,
+andry sanchez,,,Stride Staffing,,
+bryan,,,Stride Staffing,,
+edwin,,,Stride Staffing,,
+ely,,,Stride Staffing,,
+enrique finol,,,Stride Staffing,,
+franwyr,,,Stride Staffing,,
+hector,,,Stride Staffing,,
+james tatum,,,Stride Staffing,,
+jessie austin,,,Stride Staffing,,
+john carlos sandante,,,Stride Staffing,,
+jonathan,,,Stride Staffing,,
+jose camacho,,,Stride Staffing,,
+jose gamarra,,,Stride Staffing,,
+jose oliva davila,,,Stride Staffing,,
+ovidio,,,Stride Staffing,,
+pedro,,,Stride Staffing,,
+pedro martinez gonzalez,,,Stride Staffing,,
+rafael rodriguez,,,Stride Staffing,,
+rene,,,Stride Staffing,,
+sergio,,,Stride Staffing,,
+victor,,,Stride Staffing,,
+willis davis,,,Stride Staffing,,
+yorge mendoza,,,Stride Staffing,,
+edison monzon,,,JJ Staffing,,
+ramon aguirre,,,Stride Staffing,,
+josue hernandez,,,Stride Staffing,,

@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.models import Worker, TimesheetEntry, WageRate
+from app.models import Worker, TimesheetEntry, WageRate, Agency, AgencyMarkup
 import sqlite3
 from sqlalchemy.exc import OperationalError
 

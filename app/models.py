@@ -35,4 +35,23 @@ class Worker(db.Model):
     is_active = db.Column(db.Boolean, default=True, nullable=False)
 
     def __repr__(self):
-        return f'<Worker {self.worker_id} {"Active" if self.is_active else "Inactive"}>' 
+        return f'<Worker {self.worker_id} {"Active" if self.is_active else "Inactive"}>'
+
+class Agency(db.Model):
+    __tablename__ = 'agency'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128), unique=True, nullable=False, index=True)
+    markups = db.relationship('AgencyMarkup', backref='agency', lazy=True, cascade='all, delete-orphan')
+
+    def __repr__(self):
+        return f'<Agency {self.name}>'
+
+class AgencyMarkup(db.Model):
+    __tablename__ = 'agency_markup'
+    id = db.Column(db.Integer, primary_key=True)
+    agency_id = db.Column(db.Integer, db.ForeignKey('agency.id'), nullable=False, index=True)
+    markup = db.Column(db.Float, nullable=False)
+    effective_date = db.Column(db.Date, nullable=False)
+
+    def __repr__(self):
+        return f'<AgencyMarkup {self.agency_id} {self.markup} {self.effective_date}>' 

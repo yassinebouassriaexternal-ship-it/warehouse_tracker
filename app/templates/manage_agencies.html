@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block title %}Manage Agencies{% endblock %}
+{% block content %}
+<h1>Manage Agencies</h1>
+<div class="row">
+  <div class="col-md-4">
+    <h5>Agencies</h5>
+    <ul class="list-group mb-3">
+      {% for agency in agencies %}
+      <li class="list-group-item {% if selected_agency and agency.id == selected_agency.id %}active{% endif %}">
+        <a href="{{ url_for('agency_summary.manage_agencies', agency_id=agency.id) }}" class="text-decoration-none {% if selected_agency and agency.id == selected_agency.id %}text-white{% endif %}">{{ agency.name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-8">
+    {% if selected_agency %}
+    <h5>Markups for {{ selected_agency.name }}</h5>
+    <form method="post" class="row g-3 align-items-end mb-4">
+      <input type="hidden" name="agency_id" value="{{ selected_agency.id }}" />
+      <div class="col-md-4">
+        <label class="form-label">Markup (%)</label>
+        <input name="markup" type="number" step="0.01" class="form-control" required />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Effective Date</label>
+        <input name="effective_date" type="date" class="form-control" required />
+      </div>
+      <div class="col-md-4 d-flex align-items-end">
+        <button class="btn btn-primary w-100">Add Markup</button>
+      </div>
+    </form>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Markup (%)</th>
+          <th>Effective Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for markup in markups %}
+        <tr>
+          <td>{{ '%.2f'|format(markup.markup * 100) }}</td>
+          <td>{{ markup.effective_date.strftime('%Y-%m-%d') }}</td>
+          <td>
+            <a href="{{ url_for('agency_summary.edit_agency_markup', markup_id=markup.id) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+            <form method="post" action="{{ url_for('agency_summary.delete_agency_markup', markup_id=markup.id) }}" style="display:inline-block" onsubmit="return confirm('Delete this markup?');">
+              <button class="btn btn-sm btn-outline-danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-info">Select an agency to manage markups.</div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %} 
