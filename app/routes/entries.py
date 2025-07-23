@@ -28,7 +28,7 @@ def view_entries():
                 'time_in': e.time_in,
                 'time_out': e.time_out,
                 'lunch_minutes': e.lunch_minutes,
-                'Agency': e.agency
+                'agency': e.agency
             }
             for e in entries
         ])

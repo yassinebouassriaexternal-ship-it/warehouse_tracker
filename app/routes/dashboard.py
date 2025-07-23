@@ -1,14 +1,70 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
 from datetime import datetime
 from ..utils import process_timesheet, forecast_labor_needs
-from ..validation import validate_timesheet_data
-from ..models import TimesheetEntry, WageRate, Worker, Agency
+from ..validation import validate_timesheet_data, normalize_position, get_base_rate_for_position, get_markup_for_agency
+from ..models import TimesheetEntry, WageRate, Worker
 from .. import db
 import pandas as pd
 import io
 import numpy as np
 
 dashboard_bp = Blueprint('dashboard', __name__)
+
+def prepare_weekly_chart_data(summary, week_filter):
+    """
+    Prepare data for the weekly summary visualization chart.
+    Returns aggregated totals for current week and previous week comparison.
+    """
+    current_week = int(week_filter) if week_filter else datetime.today().isocalendar()[1]
+    previous_week = current_week - 1 if current_week > 1 else 52
+    
+    # Get the full DataFrame for comparison
+    df = current_app.config.get('TIMESHEET_DF')
+    if df is None or df.empty:
+        return {
+            'weeks': [f'Week {previous_week}', f'Week {current_week}'],
+            'current_regular': 0,
+            'current_overtime': 0,
+            'previous_regular': 0,
+            'previous_overtime': 0,
+            'current_week': current_week,
+            'previous_week': previous_week
+        }
+    
+    # Process the full timesheet to get both weeks
+    processed_df, full_summary = process_timesheet(df.copy())
+    
+    # Calculate totals for current week
+    current_week_data = full_summary[full_summary['week'] == current_week]
+    current_total_regular = 0
+    current_total_overtime = 0
+    
+    for _, row in current_week_data.iterrows():
+        regular = min(row['total_hours'], 40.0)
+        overtime = max(row['total_hours'] - 40.0, 0.0)
+        current_total_regular += regular
+        current_total_overtime += overtime
+    
+    # Calculate totals for previous week
+    previous_week_data = full_summary[full_summary['week'] == previous_week]
+    previous_total_regular = 0
+    previous_total_overtime = 0
+    
+    for _, row in previous_week_data.iterrows():
+        regular = min(row['total_hours'], 40.0)
+        overtime = max(row['total_hours'] - 40.0, 0.0)
+        previous_total_regular += regular
+        previous_total_overtime += overtime
+    
+    return {
+        'weeks': [f'Week {previous_week}', f'Week {current_week}'],
+        'current_regular': current_total_regular,
+        'current_overtime': current_total_overtime,
+        'previous_regular': previous_total_regular,
+        'previous_overtime': previous_total_overtime,
+        'current_week': current_week,
+        'previous_week': previous_week
+    }
 
 @dashboard_bp.route('/', methods=['GET'])
 def dashboard():
@@ -96,6 +152,51 @@ def dashboard():
         'min_hours': min_hours
     }
 
+    # Apply filters
+    worker_filter = request.args.get('worker', '')
+    week_filter = request.args.get('week', '')
+    if worker_filter:
+        summary = summary[summary['worker_id'] == worker_filter]
+    
+    # Apply week filter first
+    week_explicitly_selected = bool(week_filter)
+    week_auto_selected = False
+    if week_filter:
+        try:
+            week_int = int(week_filter)
+            summary = summary[summary['week'] == week_int]
+        except ValueError:
+            pass
+    else:
+        # Auto-select week: show current week if it has data, otherwise show last week with data
+        current_week = datetime.today().isocalendar()[1]
+        available_weeks = sorted(summary['week'].unique(), reverse=True)
+        
+        if available_weeks:
+            if current_week in available_weeks:
+                # Current week has data, show it
+                selected_week = current_week
+            else:
+                # Current week has no data, show the most recent week with data
+                selected_week = available_weeks[0]
+                week_auto_selected = True
+        else:
+            # No data available, default to current week
+            selected_week = current_week
+            
+        summary = summary[summary['week'] == selected_week]
+        week_filter = str(selected_week)  # Update week_filter for template
+    
+    # Filter to only active workers unless show_all is set
+    # Show all workers who worked in the week if a specific week was selected
+    # Only filter by active status when showing default current week view
+    if not show_all and not week_explicitly_selected:
+        active_workers = {w.worker_id for w in Worker.query.filter_by(is_active=True).all()}
+        summary = summary[summary['worker_id'].isin(active_workers)]
+
+    # Prepare visualization data for the selected week
+    chart_data = prepare_weekly_chart_data(summary, week_filter)
+
     # Get list of available agencies for filter dropdown
     agencies = sorted(df['Agency'].dropna().unique().tolist()) if 'Agency' in df.columns else []
 
@@ -107,13 +208,9 @@ def dashboard():
                            predictions=None,
                            show_all=show_all,
                            is_forecast=False,
-                           chart_data=None, # Placeholder for chart data
+                           chart_data=chart_data,
                            week_auto_selected=week_auto_selected,
-                           current_week=datetime.today().isocalendar()[1],
-                           agencies=agencies,
-                           agency_filter=agency_filter,
-                           metrics=metrics,
-                           all_weeks=all_weeks)
+                           current_week=datetime.today().isocalendar()[1])
 
 @dashboard_bp.route('/upload', methods=['POST'])
 def upload():
@@ -132,8 +229,19 @@ def upload():
                 if 'Agency' not in df.columns and 'agency' in df.columns:
                     df['Agency'] = df['agency']
                 validate_timesheet_data(df)
+                # Collect worker first appearance dates for wage rate effective dates
+                worker_first_dates = {}
+                
+                # First pass: determine the first appearance date for each worker
+                for _, row in df.iterrows():
+                    worker_id = str(row['worker_id']).strip()
+                    date_val = pd.to_datetime(row['date']).date()
+                    if worker_id not in worker_first_dates or date_val < worker_first_dates[worker_id]:
+                        worker_first_dates[worker_id] = date_val
+                
                 # Persist to database
                 inserted = 0
+                wage_rates_created = 0
                 for _, row in df.iterrows():
                     # Parse date and time
                     worker_id = str(row['worker_id']).strip()
@@ -141,14 +249,9 @@ def upload():
                     time_in_val = pd.to_datetime(str(row['time_in'])).time()
                     time_out_val = pd.to_datetime(str(row['time_out'])).time()
                     lunch_minutes = int(row['lunch_minutes']) if 'lunch_minutes' in row and not pd.isnull(row['lunch_minutes']) else 30
-                    agency_name = row['Agency'] if 'Agency' in row and not pd.isnull(row['Agency']) else None
-                    # --- Auto-add agency if not exists ---
-                    if agency_name:
-                        agency_obj = Agency.query.filter_by(name=agency_name).first()
-                        if not agency_obj:
-                            agency_obj = Agency(name=agency_name)
-                            db.session.add(agency_obj)
-                            db.session.flush()  # get id for FK if needed
+                    agency = row['agency'] if 'agency' in row and not pd.isnull(row['agency']) else None
+                    position = normalize_position(row['position']) if 'position' in row and not pd.isnull(row['position']) else None
+                    
                     # Check for duplicate
                     exists = TimesheetEntry.query.filter_by(worker_id=worker_id, date=date_val, time_in=time_in_val).first()
                     if not exists:
@@ -158,38 +261,48 @@ def upload():
                             time_in=time_in_val,
                             time_out=time_out_val,
                             lunch_minutes=lunch_minutes,
-                            agency=agency_name
+                            agency=agency
                         )
                         db.session.add(entry)
                         inserted += 1
+                        
                         # --- Sync Worker table ---
                         worker_exists = Worker.query.filter_by(worker_id=worker_id).first()
                         if not worker_exists:
                             worker = Worker(worker_id=worker_id, is_active=True)
                             db.session.add(worker)
-                        # --- Sync WageRate table ---
-                        wage_rate_exists = WageRate.query.filter_by(worker_id=worker_id, agency=agency_name).first()
-                        if not wage_rate_exists:
-                            wage_rate = WageRate(worker_id=worker_id, agency=agency_name, base_rate=None, role=None, markup=None, effective_date=None)
-                            db.session.add(wage_rate)
+                        
+                        # --- Sync WageRate table with automatic rate setting ---
+                        wage_rate_exists = WageRate.query.filter_by(worker_id=worker_id, agency=agency).first()
+                        if not wage_rate_exists and position:
+                            try:
+                                base_rate = get_base_rate_for_position(position)
+                                markup = get_markup_for_agency(agency)
+                                effective_date = worker_first_dates[worker_id]
+                                
+                                wage_rate = WageRate(
+                                    worker_id=worker_id, 
+                                    agency=agency, 
+                                    base_rate=base_rate, 
+                                    role=position, 
+                                    markup=markup, 
+                                    effective_date=effective_date
+                                )
+                                db.session.add(wage_rate)
+                                wage_rates_created += 1
+                            except ValueError as e:
+                                flash(f'Warning: Could not set wage rate for {worker_id}: {str(e)}', 'warning')
                 db.session.commit()
                 # Also update in-memory DataFrame for analytics
                 df['worker_id'] = df['worker_id'].astype(str).str.strip()
                 current_app.config['TIMESHEET_DF'] = df
-                flash(f'Successfully uploaded {timesheet_file.filename} with {inserted} new entries', 'success')
+                
+                # Success message with wage rates info
+                if wage_rates_created > 0:
+                    flash(f'Successfully uploaded {timesheet_file.filename} with {inserted} new entries and created {wage_rates_created} wage rates', 'success')
+                else:
+                    flash(f'Successfully uploaded {timesheet_file.filename} with {inserted} new entries', 'success')
                 did_upload = True
-
-                # --- Always sync wage_rate table with all unique (worker_id, agency) pairs ---
-                unique_worker_agency = db.session.query(TimesheetEntry.worker_id, TimesheetEntry.agency).distinct().all()
-                added_wagerates = 0
-                for worker_id, agency in unique_worker_agency:
-                    wage_rate_exists = WageRate.query.filter_by(worker_id=worker_id, agency=agency).first()
-                    if not wage_rate_exists:
-                        wage_rate = WageRate(worker_id=worker_id, agency=agency, base_rate=None, role=None, markup=None, effective_date=None)
-                        db.session.add(wage_rate)
-                        added_wagerates += 1
-                if added_wagerates > 0:
-                    db.session.commit()
             except ValueError as e:
                 flash(f'Validation error (timesheet): {str(e)}', 'error')
             except Exception as e:
@@ -320,7 +433,16 @@ def predict():
         entries = TimesheetEntry.query.all()
         if not entries:
             flash("No timesheet data available. Please upload CSV.")
-            return render_template('dashboard.html', summary=None, predictions=None, worker_filter='', week_filter='', show_all=show_all, is_forecast=True)
+            # Create empty chart_data for template
+            chart_data = {
+                'current_week': datetime.today().isocalendar()[1],
+                'previous_week': datetime.today().isocalendar()[1] - 1,
+                'current_regular': 0,
+                'current_overtime': 0,
+                'previous_regular': 0,
+                'previous_overtime': 0
+            }
+            return render_template('dashboard.html', summary=None, predictions=None, worker_filter='', week_filter='', show_all=show_all, is_forecast=True, chart_data=chart_data)
         df = pd.DataFrame([
             {
                 'worker_id': e.worker_id,
@@ -328,17 +450,29 @@ def predict():
                 'time_in': e.time_in,
                 'time_out': e.time_out,
                 'lunch_minutes': e.lunch_minutes,
-                'Agency': e.agency
+                'agency': e.agency
             }
             for e in entries
         ])
         current_app.config['TIMESHEET_DF'] = df
-    processed_df, _ = process_timesheet(df.copy())
+    
+    # Process timesheet data to get summary for chart_data
+    processed_df, summary = process_timesheet(df.copy())
+    
+    # Get current week for chart data (use same logic as dashboard route)
+    current_week = datetime.today().isocalendar()[1]
+    current_week_data = summary[summary['week'] == current_week]
+    
+    # Prepare chart data similar to dashboard route
+    chart_data = prepare_weekly_chart_data(current_week_data, '')
+    
+    # Generate predictions
     predictions = forecast_labor_needs(processed_df)
     if not show_all:
         active_workers = {w.worker_id for w in Worker.query.filter_by(is_active=True).all()}
         predictions = predictions[predictions['worker_id'].isin(active_workers)]
-    return render_template('dashboard.html', summary=None, predictions=predictions, worker_filter='', week_filter='', show_all=show_all, is_forecast=True)
+    
+    return render_template('dashboard.html', summary=None, predictions=predictions, worker_filter='', week_filter='', show_all=show_all, is_forecast=True, chart_data=chart_data)
 
 @dashboard_bp.route('/workers', methods=['GET', 'POST'])
 def manage_workers():

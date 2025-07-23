@@ -3,8 +3,11 @@ from datetime import datetime, timedelta
 import re
 
 # Required columns for timesheet CSV
-REQUIRED_COLUMNS = ['worker_id', 'date', 'time_in', 'time_out', 'Agency']
+REQUIRED_COLUMNS = ['worker_id', 'date', 'time_in', 'time_out', 'agency', 'position']
 OPTIONAL_COLUMNS = ['lunch_minutes']
+
+# Valid position values
+VALID_POSITIONS = ['general labor', 'forklift driver']
 
 # Time format regex patterns
 TIME_PATTERN = re.compile(r'^([01]?[0-9]|2[0-3]):[0-5][0-9]$')
@@ -79,9 +82,34 @@ def validate_position(position):
     if not position or not isinstance(position, str):
         raise ValueError("Position must be a non-empty string")
     position_lower = position.strip().lower()
-    if position_lower not in ['general labor', 'forklift driver']:
-        raise ValueError("Position must be one of: general labor, forklift driver. Got: {}".format(position))
+    if position_lower not in VALID_POSITIONS:
+        raise ValueError(f"Position must be one of: {', '.join(VALID_POSITIONS)}. Got: {position}")
     return True
+
+def normalize_position(position):
+    """Normalize position to standard format."""
+    if not position:
+        return None
+    return position.strip().lower()
+
+def get_base_rate_for_position(position):
+    """Get the base hourly rate for a given position."""
+    normalized_position = normalize_position(position)
+    if normalized_position == 'general labor':
+        return 16.0
+    elif normalized_position == 'forklift driver':
+        return 18.0
+    else:
+        raise ValueError(f"Unknown position: {position}")
+
+def get_markup_for_agency(agency):
+    """Get the markup percentage for a given agency."""
+    if agency in ('JJ', 'JJ Staffing'):
+        return 0.25
+    elif agency in ('Stride', 'Stride Staffing'):
+        return 0.30
+    else:
+        return 0.0
 
 def calculate_shift_duration(time_in, time_out):
     """Calculate the duration of a shift, handling overnight cases."""

@@ -1,9 +1,16 @@
 {% extends "layout.html" %}
 {% block title %}Manage Workers{% endblock %}
 {% block content %}
-<h1>Worker Management</h1>
-<div class="card">
-  <div class="card-body">
+<!-- Page Header -->
+<div class="page-header">
+  <h1>
+    <i class="bi bi-people"></i>
+    Worker Management
+  </h1>
+</div>
+
+<!-- Worker Data Table -->
+<div class="data-section">
     <div class="table-responsive">
       <table class="table table-hover table-striped align-middle">
         <thead>
@@ -49,6 +56,5 @@
         </tbody>
       </table>
     </div>
-  </div>
 </div>
 {% endblock %} 

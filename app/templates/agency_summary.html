@@ -2,16 +2,66 @@
 {% block title %}Agency Summary{% endblock %}
 
 {% block content %}
-<h1>Agency Summary</h1>
-<a class="btn btn-outline-secondary mb-3" href="{{ url_for('dashboard.dashboard') }}" data-bs-toggle="tooltip" title="Back to Dashboard">
-  ← Back
-</a>
+<!-- Page Header -->
+<div class="page-header">
+  <h1>
+    <i class="bi bi-building"></i>
+    Agency Summary
+  </h1>
+</div>
+
+<!-- Control Panel -->
+<div class="control-panel">
+  <div class="action-buttons">
+    <a class="btn btn-outline-secondary back-button" href="{{ url_for('dashboard.dashboard') }}" data-bs-toggle="tooltip" title="Back to Dashboard">
+      <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+    </a>
+  </div>
+</div>
+
+<!-- Total Metrics Section -->
+<div class="data-section">
+    <h5 class="card-title">
+      <i class="bi bi-calculator"></i>Total Hours & Cost (All Agencies)
+    </h5>
+    <div class="table-responsive">
+      <table class="table table-hover table-striped align-middle" id="total-metrics-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Total Regular Hours</th>
+            <th>Total Overtime Hours</th>
+            <th>Total Hours</th>
+            <th>Total Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in monthly_totals.to_dict(orient='records') %}
+          <tr>
+            <td><strong>{{ r.month }}</strong></td>
+            <td>{{ '%.2f'|format(r.total_regular_hours) }}</td>
+            <td>
+              {% if r.total_overtime_hours >= 200 %}
+                <span class="badge bg-danger">{{ '%.2f'|format(r.total_overtime_hours) }}</span>
+              {% elif r.total_overtime_hours >= 100 %}
+                <span class="badge bg-warning text-dark">{{ '%.2f'|format(r.total_overtime_hours) }}</span>
+              {% else %}
+                {{ '%.2f'|format(r.total_overtime_hours) }}
+              {% endif %}
+            </td>
+            <td><strong>{{ '%.2f'|format(r.total_hours) }}</strong></td>
+            <td><strong>${{ '%.2f'|format(r.total_cost) }}</strong></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
 
 <!-- Monthly Summary Section -->
-<div class="card">
-  <div class="card-body">
+<div class="data-section">
     <h5 class="card-title">
-      <i class="bi bi-table me-2"></i>Monthly Summary
+      <i class="bi bi-table"></i>Monthly Summary by Agency
     </h5>
     <div class="table-responsive">
       <table class="table table-hover table-striped align-middle" id="agency-summary-table">
@@ -28,7 +78,7 @@
         <tbody>
           {% for r in summary.to_dict(orient='records') %}
           <tr>
-            <td>{{ r.Agency }}</td>
+            <td>{{ r.agency }}</td>
             <td>{{ r.month }}</td>
             <td>{{ '%.2f'|format(r.total_regular_hours) }}</td>
             <td>
@@ -47,16 +97,22 @@
         </tbody>
       </table>
     </div>
-  </div>
 </div>
 
-<div class="my-4">
-  <h5>Monthly Cost by Agency</h5>
+<!-- Chart Sections -->
+<div class="chart-section">
+  <h5>
+    <i class="bi bi-graph-up"></i>
+    Monthly Cost by Agency
+  </h5>
   <canvas id="agencyCostChart" height="120"></canvas>
 </div>
 
-<div class="my-4">
-  <h5>Regular Hours vs. Overtime Hours by Agency</h5>
+<div class="chart-section">
+  <h5>
+    <i class="bi bi-bar-chart"></i>
+    Regular Hours vs. Overtime Hours by Agency
+  </h5>
   <canvas id="hoursChart" height="120"></canvas>
 </div>
 
@@ -68,9 +124,7 @@ const months = {{ months|tojson|safe }};
 const agencies = {{ agencies|tojson|safe }};
 const agencyCosts = {{ agency_costs|tojson|safe }};
 
-// Weekly trends data
-const weeks = {{ weeks|tojson|safe }};
-const agencyWeeklyHours = {{ agency_weekly_hours|tojson|safe }};
+// No weekly trends data needed
 
 const colors = [
   'rgba(54, 162, 235, 1)',
@@ -140,56 +194,6 @@ const hoursChart = new Chart(hoursCtx, {
   }
 });
 
-// Weekly Trends Chart
-if (weeks && weeks.length > 0 && agencyWeeklyHours) {
-  const weeklyDatasets = Object.keys(agencyWeeklyHours).map((agency, idx) => ({
-    label: agency,
-    data: agencyWeeklyHours[agency],
-    borderColor: colors[idx % colors.length],
-    backgroundColor: colors[idx % colors.length].replace('1)', '0.1)'),
-    fill: false,
-    tension: 0.3,
-    pointRadius: 3,
-    pointHoverRadius: 5,
-    pointBackgroundColor: colors[idx % colors.length],
-    pointBorderColor: colors[idx % colors.length]
-  }));
 
-  const weeklyCtx = document.getElementById('weeklyTrendsChart').getContext('2d');
-  const weeklyTrendsChart = new Chart(weeklyCtx, {
-    type: 'line',
-    data: {
-      labels: weeks,
-      datasets: weeklyDatasets
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        title: {
-          display: false
-        }
-      },
-      scales: {
-        x: { 
-          title: { display: true, text: 'Week' },
-          ticks: {
-            maxTicksLimit: 10
-          }
-        },
-        y: { 
-          title: { display: true, text: 'Total Hours' }, 
-          beginAtZero: true 
-        }
-      },
-      interaction: {
-        mode: 'index',
-        intersect: false,
-      }
-    }
-  });
-}
 </script>
 {% endblock %}

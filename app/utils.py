@@ -86,18 +86,18 @@ def update_entry(df, index, **kwargs):
 def calculate_agency_hours(df, rounding_interval=None):
     """
     Calculate total regular and overtime hours worked by each agency, grouped by month.
-    The dataset must include an 'Agency' column.
+    The dataset must include an 'agency' column.
     Regular hours are capped at 40 hours per week per worker; overtime is any hour above 40 in a week.
     """
     processed_df, _ = process_timesheet(df, rounding_interval)
-    if 'Agency' not in processed_df.columns:
-        raise ValueError("The dataset does not include the 'Agency' column.")
+    if 'agency' not in processed_df.columns:
+        raise ValueError("The dataset does not include the 'agency' column.")
     
     # Create a month column in the format YYYY-MM based on the date
     processed_df['month'] = pd.to_datetime(processed_df['date']).dt.strftime('%Y-%m')
     
-    # Group by worker_id, week, Agency, and month to calculate weekly total hours for each worker
-    weekly_summary = processed_df.groupby(['worker_id', 'week', 'Agency', 'month']).agg(
+    # Group by worker_id, week, agency, and month to calculate weekly total hours for each worker
+    weekly_summary = processed_df.groupby(['worker_id', 'week', 'agency', 'month']).agg(
         weekly_total_hours=('daily_hours', 'sum')
     ).reset_index()
     
@@ -105,8 +105,8 @@ def calculate_agency_hours(df, rounding_interval=None):
     weekly_summary['regular_hours'] = weekly_summary['weekly_total_hours'].apply(lambda x: min(x, 40))
     weekly_summary['overtime_hours'] = weekly_summary['weekly_total_hours'].apply(lambda x: max(x - 40, 0))
     
-    # Now group by Agency and month to get total regular and overtime hours
-    agency_summary = weekly_summary.groupby(['Agency', 'month']).agg(
+    # Now group by agency and month to get total regular and overtime hours
+    agency_summary = weekly_summary.groupby(['agency', 'month']).agg(
         total_regular_hours=('regular_hours', 'sum'),
         total_overtime_hours=('overtime_hours', 'sum')
     ).reset_index()
