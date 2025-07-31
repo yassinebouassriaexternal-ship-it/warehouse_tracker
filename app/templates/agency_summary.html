@@ -108,24 +108,13 @@
   <canvas id="agencyCostChart" height="120"></canvas>
 </div>
 
-<div class="chart-section">
-  <h5>
-    <i class="bi bi-bar-chart"></i>
-    Regular Hours vs. Overtime Hours by Agency
-  </h5>
-  <canvas id="hoursChart" height="120"></canvas>
-</div>
-
 <!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-// Monthly data
+// Only keep code for the cost chart and other active charts
 const months = {{ months|tojson|safe }};
 const agencies = {{ agencies|tojson|safe }};
 const agencyCosts = {{ agency_costs|tojson|safe }};
-
-// No weekly trends data needed
-
 const colors = [
   'rgba(54, 162, 235, 1)',
   'rgba(255, 99, 132, 1)',
@@ -134,7 +123,6 @@ const colors = [
   'rgba(153, 102, 255, 1)',
   'rgba(255, 159, 64, 1)'
 ];
-
 const datasets = agencies.map((agency, idx) => ({
   label: agency,
   data: agencyCosts[agency],
@@ -145,7 +133,6 @@ const datasets = agencies.map((agency, idx) => ({
   pointRadius: 4,
   pointHoverRadius: 6
 }));
-
 const ctx = document.getElementById('agencyCostChart').getContext('2d');
 const agencyCostChart = new Chart(ctx, {
   type: 'line',
@@ -160,40 +147,5 @@ const agencyCostChart = new Chart(ctx, {
     }
   }
 });
-
-// Regular Hours vs Overtime Hours Chart
-const regularHours = {{ regular_hours|tojson|safe }};
-const overtimeHours = {{ overtime_hours|tojson|safe }};
-
-const regularDatasets = agencies.map((agency, idx) => ({
-  label: `${agency} - Regular`,
-  data: regularHours[agency],
-  backgroundColor: colors[idx % colors.length].replace('1)', '0.7)'),
-  stack: 'Stack ' + idx
-}));
-
-const overtimeDatasets = agencies.map((agency, idx) => ({
-  label: `${agency} - Overtime`,
-  data: overtimeHours[agency],
-  backgroundColor: colors[idx % colors.length].replace('1)', '0.3)'),
-  stack: 'Stack ' + idx
-}));
-
-const hoursCtx = document.getElementById('hoursChart').getContext('2d');
-const hoursChart = new Chart(hoursCtx, {
-  type: 'bar',
-  data: {
-    labels: months,
-    datasets: [...regularDatasets, ...overtimeDatasets]
-  },
-  options: {
-    scales: {
-      x: { title: { display: true, text: 'Month' } },
-      y: { title: { display: true, text: 'Hours' }, beginAtZero: true, stacked: true }
-    }
-  }
-});
-
-
 </script>
 {% endblock %}

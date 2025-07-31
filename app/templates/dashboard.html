@@ -2,95 +2,48 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<!-- Upload Section -->
-<div class="control-panel">
-    <form action="{{ url_for('dashboard.upload') }}" method="post" enctype="multipart/form-data" class="d-flex align-items-center gap-3 flex-wrap">
-      <div class="d-flex align-items-center gap-2">
-        <label for="timesheet_file" class="form-label mb-0 fw-semibold">
-          <i class="bi bi-upload me-1"></i>Timesheet CSV
-        </label>
-        <input type="file" name="timesheet_file" id="timesheet_file" class="form-control form-control-sm" style="width:250px;" accept=".csv" />
-        <button type="submit" class="btn btn-primary btn-sm px-3" name="upload_type" value="timesheet" data-bs-toggle="tooltip" title="Upload Timesheet">
-          <i class="bi bi-arrow-up-circle me-1"></i>Upload
-        </button>
-      </div>
-    </form>
-</div>
-
-<!-- Auto-selection notification -->
-{% if week_auto_selected %}
-<div class="alert alert-info alert-dismissible fade show" role="alert">
-  <i class="bi bi-info-circle me-2"></i>
-  <strong>Auto-selected week:</strong> No data available for the current week ({{ current_week }}). 
-  Showing data for the most recent week with available data (Week {{ week_filter }}).
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-{% endif %}
-
-<!-- Filter and Actions Section -->
-<div class="control-panel">
-    <div class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between gap-3">
-      <form method="get" action="{{ url_for('dashboard.dashboard') }}" class="d-flex flex-wrap flex-md-nowrap align-items-center gap-3 mb-0">
-        <div class="d-flex align-items-center gap-2">
-          <label for="worker_filter" class="form-label mb-0 fw-semibold">
-            <i class="bi bi-person-badge me-1"></i>Worker ID
-          </label>
-          <input
-            id="worker_filter"
-            name="worker"
-            class="form-control form-control-sm filter-input"
-            placeholder="Enter Worker ID"
-            value="{{ worker_filter }}"
-            style="width: 140px;"
-          />
-        </div>
-        <div class="d-flex align-items-center gap-2">
-          <label for="week_filter" class="form-label mb-0 fw-semibold">
-            <i class="bi bi-calendar-week me-1"></i>Week #
-          </label>
-          <input
-            id="week_filter"
-            name="week"
-            class="form-control form-control-sm filter-input"
-            placeholder="Enter Week #"
-            value="{{ week_filter }}"
-            style="width: 120px;"
-          />
-        </div>
-        <button class="btn btn-primary btn-sm px-3" data-bs-toggle="tooltip" title="Apply filters">
-          <i class="bi bi-funnel me-1"></i>Filter
-        </button>
-      </form>
-      <div class="action-buttons">
-        <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Forecast next week's labor needs">
-          <i class="bi bi-graph-up me-1"></i>Labor Forecast
-        </a>
-        {% if is_forecast %}
-          {% if show_all %}
-            <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
-              <i class="bi bi-person-check me-1"></i>Active Workers
-            </a>
-          {% else %}
-            <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
-              <i class="bi bi-people me-1"></i>All Workers
-            </a>
-          {% endif %}
-        {% else %}
-          {% if show_all %}
-            <a class="btn btn-primary" href="{{ url_for('dashboard.dashboard', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
-              <i class="bi bi-person-check me-1"></i>Active Workers
-            </a>
-          {% else %}
-            <a class="btn btn-primary" href="{{ url_for('dashboard.dashboard', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
-              <i class="bi bi-people me-1"></i>All Workers
-            </a>
-          {% endif %}
-        {% endif %}
-        <a class="btn btn-primary" href="{{ url_for('dashboard.manage_workers') }}" data-bs-toggle="tooltip" title="Manage worker list">
-          <i class="bi bi-gear me-1"></i>Manage Workers
-        </a>
-      </div>
+<!-- Upload Section and Action Buttons -->
+<div class="control-panel d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+  <form action="{{ url_for('dashboard.upload') }}" method="post" enctype="multipart/form-data" class="d-flex align-items-center gap-3 flex-wrap mb-0">
+    <div class="d-flex align-items-center gap-2">
+      <label for="timesheet_file" class="form-label mb-0 fw-semibold">
+        <i class="bi bi-upload me-1"></i>Timesheet CSV
+      </label>
+      <input type="file" name="timesheet_file" id="timesheet_file" class="form-control form-control-sm" style="width:250px;" accept=".csv" />
+      <button type="submit" class="btn btn-primary btn-sm px-3" name="upload_type" value="timesheet" data-bs-toggle="tooltip" title="Upload Timesheet">
+        <i class="bi bi-arrow-up-circle me-1"></i>Upload
+      </button>
     </div>
+  </form>
+  <div class="d-flex flex-wrap gap-2">
+    <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Forecast next week's labor needs">
+      <i class="bi bi-graph-up me-1"></i>Labor Forecast
+    </a>
+    {% if is_forecast %}
+      {% if show_all %}
+        <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
+          <i class="bi bi-person-check me-1"></i>Active Workers
+        </a>
+      {% else %}
+        <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
+          <i class="bi bi-people me-1"></i>All Workers
+        </a>
+      {% endif %}
+    {% else %}
+      {% if show_all %}
+        <a class="btn btn-primary" href="{{ url_for('dashboard.dashboard', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
+          <i class="bi bi-person-check me-1"></i>Active Workers
+        </a>
+      {% else %}
+        <a class="btn btn-primary" href="{{ url_for('dashboard.dashboard', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
+          <i class="bi bi-people me-1"></i>All Workers
+        </a>
+      {% endif %}
+    {% endif %}
+    <a class="btn btn-primary" href="{{ url_for('dashboard.manage_workers') }}" data-bs-toggle="tooltip" title="Manage worker list">
+      <i class="bi bi-gear me-1"></i>Manage Workers
+    </a>
+  </div>
 </div>
 
 <!-- Weekly Summary Visualization -->
@@ -198,6 +151,56 @@
           </div>
         </div>
     </div>
+</div>
+{% endif %}
+
+<!-- Filter Section: Directly above Weekly Summary -->
+{% if summary is not none and not summary.empty %}
+<div class="container-fluid mb-3">
+  <form method="get" action="{{ url_for('dashboard.dashboard') }}">
+    <div class="row g-2 align-items-end">
+      <div class="col-md-3">
+        <label for="agency_filter" class="form-label mb-0 fw-semibold">
+          <i class="bi bi-building me-1"></i>Agency
+        </label>
+        <select id="agency_filter" name="agency" class="form-select form-select-sm" onchange="this.form.form.submit()">
+          <option value="">All Agencies</option>
+          {% for agency in agencies %}
+          <option value="{{ agency }}" {% if agency_filter == agency %}selected{% endif %}>{{ agency }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="worker_filter" class="form-label mb-0 fw-semibold">
+          <i class="bi bi-person-badge me-1"></i>Worker ID
+        </label>
+        <input
+          id="worker_filter"
+          name="worker"
+          class="form-control form-control-sm filter-input"
+          placeholder="Enter Worker ID"
+          value="{{ worker_filter }}"
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="week_filter" class="form-label mb-0 fw-semibold">
+          <i class="bi bi-calendar-week me-1"></i>Week #
+        </label>
+        <input
+          id="week_filter"
+          name="week"
+          class="form-control form-control-sm filter-input"
+          placeholder="Enter Week #"
+          value="{{ week_filter }}"
+        />
+      </div>
+      <div class="col-md-3 d-flex align-items-end">
+        <button class="btn btn-primary btn-sm w-100" data-bs-toggle="tooltip" title="Apply filters">
+          <i class="bi bi-funnel me-1"></i>Filter
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
 {% endif %}
 

@@ -88,10 +88,13 @@ def dashboard():
             }
             for e in entries
         ])
-        # Normalize agency column name
-        if 'agency' in df.columns and 'Agency' not in df.columns:
-            df['Agency'] = df['agency']
-        current_app.config['TIMESHEET_DF'] = df
+    # Normalize agency column name and ensure it is always present
+    if 'agency' in df.columns and 'Agency' not in df.columns:
+        df['Agency'] = df['agency']
+    elif 'Agency' not in df.columns:
+        df['Agency'] = ''
+    print('DEBUG: Unique agencies in DataFrame:', df['Agency'].unique())
+    current_app.config['TIMESHEET_DF'] = df
 
     # Process the timesheet data
     processed_df, summary_full = process_timesheet(df.copy())
@@ -210,7 +213,9 @@ def dashboard():
                            is_forecast=False,
                            chart_data=chart_data,
                            week_auto_selected=week_auto_selected,
-                           current_week=datetime.today().isocalendar()[1])
+                           current_week=datetime.today().isocalendar()[1],
+                           agencies=agencies,
+                           agency_filter=agency_filter)
 
 @dashboard_bp.route('/upload', methods=['POST'])
 def upload():
