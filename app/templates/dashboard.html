@@ -47,90 +47,73 @@
 </div>
 
 <!-- Weekly Summary Visualization -->
-{% if summary is not none and not summary.empty %}
-<div class="overview-section">
-    <h5 class="card-title">
-      <i class="bi bi-graph-up me-2"></i>Weekly Hours Overview - Week {{ chart_data.current_week }}
-    </h5>
-    
-    <!-- Main Metrics Row -->
-    <div class="row g-3 mb-4">
-      <!-- Current Week Total -->
-      <div class="col-md-3">
-        <div class="metric-card h-100">
-          <i class="bi bi-clock-fill"></i>
-          <h2 id="currentWeekTotal">{{ "%.0f"|format(chart_data.current_regular + chart_data.current_overtime) }}</h2>
-          <p class="mb-1 fw-semibold">Total Hours</p>
-          <small class="text-muted">Week {{ chart_data.current_week }}</small>
+{% if summary is not none %}
+  {% if not summary.empty %}
+    <!-- Weekly Summary Visualization (Overview Section) -->
+    <div class="overview-section">
+      <h5 class="card-title">
+        <i class="bi bi-graph-up me-2"></i>Weekly Hours Overview - Week {{ chart_data.current_week }}
+      </h5>
+      <!-- Main Metrics Row -->
+      <div class="row g-3 mb-4">
+        <!-- Current Week Total -->
+        <div class="col-md-3">
+          <div class="metric-card h-100">
+            <i class="bi bi-clock-fill"></i>
+            <h2 id="currentWeekTotal">{{ "%.0f"|format(chart_data.current_regular + chart_data.current_overtime) }}</h2>
+            <p class="mb-1 fw-semibold">Total Hours</p>
+            <small class="text-muted">Week {{ chart_data.current_week }}</small>
+          </div>
+        </div>
+        <!-- Regular Hours -->
+        <div class="col-md-3">
+          <div class="metric-card h-100">
+            <i class="bi bi-check-circle-fill text-success"></i>
+            <h2 class="text-success">{{ "%.0f"|format(chart_data.current_regular) }}</h2>
+            <p class="mb-1 fw-semibold">Regular Hours</p>
+            <small class="text-muted">≤ 40hrs per worker</small>
+          </div>
+        </div>
+        <!-- Overtime Hours -->
+        <div class="col-md-3">
+          <div class="metric-card h-100">
+            <i class="bi bi-exclamation-triangle-fill text-warning"></i>
+            <h2 class="text-warning">{{ "%.0f"|format(chart_data.current_overtime) }}</h2>
+            <p class="mb-1 fw-semibold">Overtime Hours</p>
+            <small class="text-muted">> 40hrs per worker</small>
+          </div>
+        </div>
+        <!-- Week Comparison -->
+        <div class="col-md-3">
+          <div class="metric-card h-100">
+            <i class="bi bi-arrow-left-right text-info"></i>
+            <h2 class="text-info" id="weekChange">--</h2>
+            <p class="mb-1 fw-semibold">vs Last Week</p>
+            <small class="text-muted">Week {{ chart_data.previous_week }}</small>
+          </div>
         </div>
       </div>
-      
-      <!-- Regular Hours -->
-      <div class="col-md-3">
-        <div class="metric-card h-100">
-          <i class="bi bi-check-circle-fill text-success"></i>
-          <h2 class="text-success">{{ "%.0f"|format(chart_data.current_regular) }}</h2>
-          <p class="mb-1 fw-semibold">Regular Hours</p>
-          <small class="text-muted">≤ 40hrs per worker</small>
+      <!-- Progress Indicators -->
+      <div class="row g-3 mb-4">
+        <!-- Overtime Progress Bar -->
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Overtime %</label>
+          <div class="progress" style="height: 24px;">
+            <div id="overtimeProgress" class="progress-bar" role="progressbar" style="width: 0%"></div>
+            <span id="overtimePercent" class="position-absolute w-100 text-center fw-bold">0%</span>
+          </div>
+        </div>
+        <!-- Change Progress Bar -->
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Change vs Last Week</label>
+          <div class="progress" style="height: 24px;">
+            <div id="changeProgress" class="progress-bar" role="progressbar" style="width: 0%"></div>
+            <span id="changePercent" class="position-absolute w-100 text-center fw-bold">0%</span>
+          </div>
         </div>
       </div>
-      
-      <!-- Overtime Hours -->
-      <div class="col-md-3">
-        <div class="metric-card h-100">
-          <i class="bi bi-exclamation-triangle-fill text-warning"></i>
-          <h2 class="text-warning">{{ "%.0f"|format(chart_data.current_overtime) }}</h2>
-          <p class="mb-1 fw-semibold">Overtime Hours</p>
-          <small class="text-muted">> 40hrs per worker</small>
-        </div>
-      </div>
-      
-      <!-- Week Comparison -->
-      <div class="col-md-3">
-        <div class="metric-card h-100">
-          <i class="bi bi-arrow-left-right text-info"></i>
-          <h2 class="text-info" id="weekChange">--</h2>
-          <p class="mb-1 fw-semibold">vs Last Week</p>
-          <small class="text-muted">Week {{ chart_data.previous_week }}</small>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Progress Indicators -->
-    <div class="row g-3 mb-4">
-      <div class="col-md-6">
-        <div class="progress-indicator-card">
-            <h6 class="card-title">Overtime Percentage</h6>
-            <div class="d-flex align-items-center">
-              <div class="flex-grow-1 me-3">
-                <div class="progress" style="height: 16px; background-color: #f1f3f4; border-radius: 8px;">
-                  <div class="progress-bar bg-warning" id="overtimeProgress" style="width: 0%; border-radius: 8px;"></div>
-                </div>
-              </div>
-              <span class="fw-bold text-dark" id="overtimePercent">0%</span>
-            </div>
-            <small class="text-muted">Percentage of total hours that are overtime</small>
-        </div>
-      </div>
-      
-      <div class="col-md-6">
-        <div class="progress-indicator-card">
-            <h6 class="card-title">Week-over-Week Change</h6>
-            <div class="d-flex align-items-center">
-              <div class="flex-grow-1 me-3">
-                <div class="progress" style="height: 16px; background-color: #f1f3f4; border-radius: 8px;">
-                  <div class="progress-bar" id="changeProgress" style="width: 0%; border-radius: 8px;"></div>
-                </div>
-              </div>
-              <span class="fw-bold text-dark" id="changePercent">0%</span>
-            </div>
-            <small class="text-muted">Change in total hours from last week</small>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Comparison Details -->
-    <div class="comparison-section">
+      <!-- Previous Week Comparison -->
+      <div class="comparison-section mt-3">
         <h6 class="card-title">Previous Week Comparison (Week {{ chart_data.previous_week }})</h6>
         <div class="row text-center">
           <div class="col-4">
@@ -150,8 +133,9 @@
             <small class="text-muted">Overtime</small>
           </div>
         </div>
+      </div>
     </div>
-</div>
+  {% endif %}
 {% endif %}
 
 <!-- Filter Section: Directly above Weekly Summary -->
@@ -204,86 +188,92 @@
 </div>
 {% endif %}
 
-{% if summary is not none and not summary.empty %}
-  <!-- Weekly Summary Data Table -->
-  <div class="data-section">
-      <h5 class="card-title">
-        <i class="bi bi-table"></i>Weekly Summary
-      </h5>
-      <div class="table-responsive">
-        <table class="table table-hover table-striped align-middle" id="summary-table">
-          <thead>
-            <tr>
-              <th>
-                Worker
-                <button class="btn btn-sm btn-outline-secondary ms-1" onclick="sortTable(0, 'string')" data-bs-toggle="tooltip" title="Sort by Worker ID">
-                  <i class="bi bi-arrow-down-up"></i>
-                </button>
-              </th>
-              <th>
-                Week
-                <button class="btn btn-sm btn-outline-secondary ms-1" onclick="sortTable(1, 'number')" data-bs-toggle="tooltip" title="Sort by Week">
-                  <i class="bi bi-arrow-down-up"></i>
-                </button>
-              </th>
-              <th>
-                Total hrs
-                <button class="btn btn-sm btn-outline-secondary ms-1" onclick="sortTable(2, 'number')" data-bs-toggle="tooltip" title="Sort by Total Hours">
-                  <i class="bi bi-arrow-down-up"></i>
-                </button>
-              </th>
-              <th>
-                Remaining
-                <button class="btn btn-sm btn-outline-success ms-1" onclick="sortTable(3, 'number')" data-bs-toggle="tooltip" title="Sort by Remaining Hours">
-                  <i class="bi bi-sort-down-alt"></i>
-                </button>
-              </th>
-              <th>Alert</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for r in summary.to_dict(orient='records') %}
-            <tr>
-              <td>
-                <a href="{{ url_for('entries.view_entries', worker_id=r.worker_id) }}" class="fw-bold text-decoration-none" style="color: black;">
-                  {{ r.worker_id }}
-                </a>
-              </td>
-              <td>{{ r.week }}</td>
-              <td>{{ "%.2f"|format(r.total_hours) }}</td>
-              <td>{{ "%.2f"|format(r.remaining_hours) }}</td>
-              <td>
-                {% if r.alert == 'Overtime' %}
-                  <span class="badge bg-danger">{{ r.alert }}</span>
-                {% elif r.alert == 'Approaching overtime' %}
-                  <span class="badge bg-warning text-dark">{{ r.alert }}</span>
-                {% else %}
-                  {{ r.alert }}
-                {% endif %}
-              </td>
-              <td>
-                <a
-                  class="btn btn-sm btn-primary"
-                  href="{{ url_for('entries.view_entries', worker_id=r.worker_id, week=r.week) }}"
-                  data-bs-toggle="tooltip" title="View details for this worker and week"
-                >
-                  Details
-                </a>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      <div class="mt-3 text-end">
-        <div class="action-buttons justify-content-end">
-          <a class="btn btn-primary" href="{{ url_for('dashboard.export') }}">
-            <i class="bi bi-download me-1"></i>Export CSV
-          </a>
+{% if summary is not none %}
+  {% if not summary.empty %}
+    <!-- Weekly Summary Data Table -->
+    <div class="data-section">
+        <h5 class="card-title">
+          <i class="bi bi-table"></i>Weekly Summary
+        </h5>
+        <div class="table-responsive">
+          <table class="table table-hover table-striped align-middle" id="summary-table">
+            <thead>
+              <tr>
+                <th>
+                  Worker
+                  <button class="btn btn-sm btn-outline-secondary ms-1" onclick="sortTable(0, 'string')" data-bs-toggle="tooltip" title="Sort by Worker ID">
+                    <i class="bi bi-arrow-down-up"></i>
+                  </button>
+                </th>
+                <th>
+                  Week
+                  <button class="btn btn-sm btn-outline-secondary ms-1" onclick="sortTable(1, 'number')" data-bs-toggle="tooltip" title="Sort by Week">
+                    <i class="bi bi-arrow-down-up"></i>
+                  </button>
+                </th>
+                <th>
+                  Total hrs
+                  <button class="btn btn-sm btn-outline-secondary ms-1" onclick="sortTable(2, 'number')" data-bs-toggle="tooltip" title="Sort by Total Hours">
+                    <i class="bi bi-arrow-down-up"></i>
+                  </button>
+                </th>
+                <th>
+                  Remaining
+                  <button class="btn btn-sm btn-outline-success ms-1" onclick="sortTable(3, 'number')" data-bs-toggle="tooltip" title="Sort by Remaining Hours">
+                    <i class="bi bi-sort-down-alt"></i>
+                  </button>
+                </th>
+                <th>Alert</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for r in summary.to_dict(orient='records') %}
+              <tr>
+                <td>
+                  <a href="{{ url_for('entries.view_entries', worker_id=r.worker_id) }}" class="fw-bold text-decoration-none" style="color: black;">
+                    {{ r.worker_id }}
+                  </a>
+                </td>
+                <td>{{ r.week }}</td>
+                <td>{{ "%.2f"|format(r.total_hours) }}</td>
+                <td>{{ "%.2f"|format(r.remaining_hours) }}</td>
+                <td>
+                  {% if r.alert == 'Overtime' %}
+                    <span class="badge bg-danger">{{ r.alert }}</span>
+                  {% elif r.alert == 'Approaching overtime' %}
+                    <span class="badge bg-warning text-dark">{{ r.alert }}</span>
+                  {% else %}
+                    {{ r.alert }}
+                  {% endif %}
+                </td>
+                <td>
+                  <a
+                    class="btn btn-sm btn-primary"
+                    href="{{ url_for('entries.view_entries', worker_id=r.worker_id, week=r.week) }}"
+                    data-bs-toggle="tooltip" title="View details for this worker and week"
+                  >
+                    Details
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
-      </div>
-  </div>
+        <div class="mt-3 text-end">
+          <div class="action-buttons justify-content-end">
+            <a class="btn btn-primary" href="{{ url_for('dashboard.export') }}">
+              <i class="bi bi-download me-1"></i>Export CSV
+            </a>
+          </div>
+        </div>
+    </div>
+  {% else %}
+    <div class="alert alert-info">
+      No records found for the selected filters.
+    </div>
+  {% endif %}
 {% else %}
   <div class="alert alert-warning">
     No timesheet data available. Please upload a CSV file to get started.
@@ -325,6 +315,7 @@
 </div>
 {% endif %}
 
+{% if summary is not none and not summary.empty %}
 <script>
 let sortDirection = {}; // Track sort direction for each column
 
@@ -496,4 +487,5 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 100);
 });
 </script>
+{% endif %}
 {% endblock %}

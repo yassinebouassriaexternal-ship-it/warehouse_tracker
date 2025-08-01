@@ -53,8 +53,11 @@ def process_timesheet(df, rounding_interval=None):
     # Assign a week number (using ISO week from the original date)
     df['week'] = df['date'].apply(lambda d: datetime.combine(d, datetime.min.time()).isocalendar()[1])
     
-    # Group by worker and week to compute weekly hours
-    summary = df.groupby(['worker_id', 'week']).agg(total_hours=('daily_hours', 'sum')).reset_index()
+    # Group by worker and week to compute weekly hours, aggregating agency as a comma-separated string
+    summary = df.groupby(['worker_id', 'week']).agg(
+        total_hours=('daily_hours', 'sum'),
+        agencies_worked=('agency', lambda x: ', '.join(sorted(set(str(a) for a in x if pd.notnull(a)))))
+    ).reset_index()
     summary['remaining_hours'] = 40 - summary['total_hours']
     
     def alert_status(hours):

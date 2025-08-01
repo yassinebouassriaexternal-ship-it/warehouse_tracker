@@ -98,9 +98,9 @@ def dashboard():
 
     # Process the timesheet data
     processed_df, summary_full = process_timesheet(df.copy())
-    # Ensure summary has 'Agency' column for filtering
-    if 'Agency' in df.columns and 'Agency' not in summary_full.columns:
-        summary_full = summary_full.merge(df[['worker_id', 'Agency']].drop_duplicates(), on='worker_id', how='left')
+    # Remove this merge, as it can reintroduce duplicates:
+    # if 'Agency' in df.columns and 'Agency' not in summary_full.columns:
+    #     summary_full = summary_full.merge(df[['worker_id', 'Agency']].drop_duplicates(), on='worker_id', how='left')
 
     # --- Metrics Calculation (use full summary for hours, filtered summary for workers) ---
     current_week_num = int(request.args.get('week', '') or datetime.today().isocalendar()[1])
@@ -134,8 +134,8 @@ def dashboard():
         summary = summary[summary['week'] == selected_week]
         week_filter = str(selected_week)
     if agency_filter:
-        if 'Agency' in summary.columns:
-            summary = summary[summary['Agency'] == agency_filter]
+        if 'agencies_worked' in summary.columns:
+            summary = summary[summary['agencies_worked'].str.contains(agency_filter, na=False)]
     if worker_filter:
         summary = summary[summary['worker_id'] == worker_filter]
     # Calculate num_workers and avg_hours_per_worker from filtered summary
