@@ -1,0 +1,122 @@
+id,worker_id,base_rate,role,agency,markup,effective_date
+1,Ana,16.0,general labor,Stride Staffing,0.3,2025-01-01
+48,Jose Oliva Davila,18.0,forklift driver,Stride Staffing,0.3,2025-06-03
+99,Jose Chicas,16.0,general labor,Staffing for Texans,0.3,2025-07-21
+103,Carlos Mendoza,16.0,general labor,Staffing for Texans,0.3,2025-07-21
+108,Gerardo Navarro,16.0,general labor,Staffing for Texans,0.3,2025-07-27
+109,Mohamud Abdulkadir,16.0,general labor,Staffing for Texans,0.3,2025-07-27
+110,David Sandoval,16.0,general labor,Stride Staffing,0.3,2025-07-26
+112,Wendery Maestre,16.0,general labor,JJ Staffing,0.27,2025-07-17
+115,Edixon Javier Mendoza,16.0,general labor,Pro Staffing,0.25,2025-07-25
+124,Adlen Hoyt,16.0,general labor,Staffing for Texans,0.3,2025-08-01
+125,Aaron Griffin,18.0,forklift driver,Staffing for Texans,0.3,2025-08-03
+126,Adrian Mondragon,16.0,general labor,Stride Staffing,0.3,2025-07-22
+127,Alberto,16.0,general labor,JJ Staffing,0.25,2025-06-27
+128,Alex Torres,16.0,general labor,Staffing for Texans,0.3,2025-07-27
+129,Alfonso Costilla,16.0,general labor,Pro Staffing,0.25,2025-07-14
+130,Alfredo Millamizar,16.0,general labor,Staffing for Texans,0.3,2025-07-20
+131,Andres Suarez,16.0,general labor,Pro Staffing,0.25,2025-08-03
+132,Andry Sanchez,16.0,general labor,Stride Staffing,0.3,2025-04-05
+133,Angel Vicencio,16.0,general labor,JJ Staffing,0.25,2025-04-18
+134,Angelo Lozada,16.0,general labor,JJ Staffing,0.25,2025-03-30
+135,Argenis Navarro,16.0,general labor,JJ Staffing,0.25,2025-03-28
+136,Armando Vazquez,16.0,general labor,Pro Staffing,0.25,2025-07-16
+137,Aron Walton,18.0,forklift driver,Staffing for Texans,0.3,2025-08-03
+138,Axel Torres,16.0,general labor,Staffing for Texans,0.3,2025-08-03
+139,Belarmino Soto,16.0,general labor,JJ Staffing,0.25,2025-04-13
+140,Bernie Pineda,16.0,general labor,JJ Staffing,0.25,2025-04-03
+141,Brando Ortega,16.0,general labor,Staffing for Texans,0.3,2025-07-23
+142,Brayan Uzcategui,16.0,general labor,JJ Staffing,0.27,2025-07-16
+143,Bryan,16.0,general labor,Stride Staffing,0.3,2025-07-06
+144,Christian Amaya,16.0,general labor,Pro Staffing,0.25,2025-07-16
+145,Claudio Salazar,16.0,general labor,Stride Staffing,0.3,2025-07-23
+146,Cristian Diaz,16.0,general labor,Staffing for Texans,0.3,2025-07-24
+147,Dante Medina,16.0,general labor,Staffing for Texans,0.3,2025-07-29
+148,Danyer Urdaneta,16.0,general labor,JJ Staffing,0.27,2025-08-03
+149,David Diaz,16.0,general labor,Staffing for Texans,0.3,2025-07-24
+150,David Herrera,16.0,general labor,JJ Staffing,0.25,2025-06-10
+151,Deivis,16.0,general labor,Stride Staffing,0.3,2025-07-16
+152,Dionnys,16.0,general labor,JJ Staffing,0.25,2025-04-05
+153,Dirimo Vega,16.0,general labor,Staffing for Texans,0.3,2025-07-19
+154,Douglas Ordones,16.0,general labor,Stride Staffing,0.3,2025-06-14
+155,Eddy Rivera,16.0,general labor,Staffing for Texans,0.3,2025-07-29
+156,Eder Chirinos,16.0,general labor,JJ Staffing,0.25,2025-03-28
+157,Edinson Gutierrez,16.0,general labor,JJ Staffing,0.25,2025-03-21
+158,Edison Monzon,16.0,general labor,JJ Staffing,0.25,2025-06-06
+159,Edwin,16.0,general labor,Stride Staffing,0.3,2025-04-27
+160,Eglis Ruiz,16.0,general labor,JJ Staffing,0.25,2025-03-30
+161,Elvis,16.0,general labor,JJ Staffing,0.25,2025-04-29
+162,Ely,16.0,general labor,Stride Staffing,0.3,2025-04-23
+163,Enrique Finol,16.0,general labor,Stride Staffing,0.3,2025-06-25
+164,Erardo Diaz,16.0,general labor,Staffing for Texans,0.3,2025-07-24
+165,Eulice mujica,16.0,general labor,JJ Staffing,0.25,2025-06-05
+166,Exandri Castro,16.0,general labor,JJ Staffing,0.25,2025-05-30
+167,Francisco leonardi,16.0,general labor,JJ Staffing,0.25,2025-06-04
+168,Franklin Perozo,16.0,general labor,JJ Staffing,0.25,2025-04-03
+169,Franwyr,16.0,general labor,Stride Staffing,0.3,2025-08-02
+170,Frederick Sanchez,16.0,general labor,JJ Staffing,0.25,2025-04-05
+171,Gabriel Villegas,16.0,general labor,JJ Staffing,0.25,2025-03-27
+172,Gaudencio Garcia,16.0,general labor,Staffing for Texans,0.3,2025-07-28
+173,Geovanni Tramonte,16.0,general labor,JJ Staffing,0.25,2025-04-03
+174,Hector,16.0,general labor,Stride Staffing,0.3,2025-04-18
+175,Hector Marquez,18.0,forklift driver,Staffing for Texans,0.3,2025-08-03
+176,Hugo Macias,16.0,general labor,Staffing for Texans,0.3,2025-07-25
+177,Irian Gonzalez,16.0,general labor,Pro Staffing,0.25,2025-07-23
+178,Isaiah Romero,16.0,general labor,Stride Staffing,0.3,2025-06-25
+179,Ismel Benitez Perez,16.0,general labor,Staffing for Texans,0.3,2025-08-02
+180,Jaime Aguero,16.0,general labor,Stride Staffing,0.3,2025-07-03
+181,James Tatum,16.0,general labor,Stride Staffing,0.3,2025-06-09
+182,Jancy Faria,16.0,general labor,JJ Staffing,0.25,2025-03-26
+183,Jean Carlos Faria,16.0,general labor,JJ Staffing,0.25,2025-03-26
+184,Jean Navas,16.0,general labor,JJ Staffing,0.25,2025-06-26
+185,Jessie Austin,16.0,general labor,Stride Staffing,0.3,2025-02-06
+186,Jesus Cordova,16.0,general labor,Stride Staffing,0.3,2025-07-23
+187,Johaniel,16.0,general labor,JJ Staffing,0.25,2025-04-04
+188,John Carlos Sandante,16.0,general labor,Stride Staffing,0.3,2025-06-05
+189,Jonathan,16.0,general labor,Stride Staffing,0.3,2025-05-07
+190,Jonathan Venzuela,16.0,general labor,Pro Staffing,0.25,2025-07-19
+191,Jorge Perez,16.0,general labor,JJ Staffing,0.27,2025-08-03
+192,Jose A. Quevedo,16.0,general labor,Staffing for Texans,0.3,2025-07-18
+193,Jose Camacho,16.0,general labor,Stride Staffing,0.3,2025-04-28
+194,Jose Castillo,16.0,general labor,Pro Staffing,0.25,2025-07-24
+195,Jose Gamarra,16.0,general labor,Stride Staffing,0.3,2025-08-02
+196,Jose Leonados,16.0,general labor,JJ Staffing,0.25,2025-06-01
+197,Jose Moffi,16.0,general labor,JJ Staffing,0.25,2025-06-04
+198,Jose Villalobos,16.0,general labor,Pro Staffing,0.25,2025-07-16
+199,Joseph,16.0,general labor,Stride Staffing,0.3,2025-07-01
+200,Josue Hernandez,16.0,general labor,Stride Staffing,0.3,2025-06-14
+201,Juan,16.0,general labor,JJ Staffing,0.25,2025-04-27
+202,Kennett Acevedo,16.0,general labor,Pro Staffing,0.25,2025-07-14
+203,Luis A. Copete Meza,16.0,general labor,Staffing for Texans,0.3,2025-08-03
+204,Luis Perez,16.0,general labor,JJ Staffing,0.27,2025-07-16
+205,Luis Valero,16.0,general labor,JJ Staffing,0.27,2025-07-17
+206,Mark Garcia,16.0,general labor,Staffing for Texans,0.3,2025-08-03
+207,Mark Gonzalez,16.0,general labor,Stride Staffing,0.3,2025-06-30
+208,Marvin Martinez,16.0,general labor,Pro Staffing,0.25,2025-07-14
+209,Michael Cruz,16.0,general labor,Staffing for Texans,0.3,2025-07-22
+210,Miguel Yepez,16.0,general labor,Pro Staffing,0.25,2025-07-26
+211,Misael Sanchez,16.0,general labor,Staffing for Texans,0.3,2025-07-29
+212,Oliver,16.0,general labor,Stride Staffing,0.3,2025-07-20
+213,Ovidio,16.0,general labor,Stride Staffing,0.3,2025-04-24
+214,Pedro Martinez Gonzalez,16.0,general labor,Stride Staffing,0.3,2025-05-29
+215,Pier,16.0,general labor,Stride Staffing,0.3,2025-07-17
+216,Profilio Ortiz,16.0,general labor,Pro Staffing,0.25,2025-07-13
+217,Rafael Rodriguez,16.0,general labor,Stride Staffing,0.3,2025-04-13
+218,Ramiro Alvarez,16.0,general labor,Stride Staffing,0.3,2025-07-13
+219,Ramon Aguirre,16.0,general labor,Stride Staffing,0.3,2025-06-14
+220,Rene,16.0,general labor,Stride Staffing,0.3,2025-06-06
+221,Ricardo Rojas,16.0,general labor,Stride Staffing,0.3,2025-07-12
+222,Robert Fall,16.0,general labor,Pro Staffing,0.25,2025-08-03
+223,Ruben Gonzalez,16.0,general labor,Stride Staffing,0.3,2025-06-12
+224,Sergio,16.0,general labor,Stride Staffing,0.3,2025-08-02
+225,Victor,16.0,general labor,Stride Staffing,0.3,2025-04-09
+226,Willis Davis,16.0,general labor,Stride Staffing,0.3,2025-02-20
+227,Wilver Leal,16.0,general labor,Pro Staffing,0.25,2025-08-03
+228,Yadian Serrano,16.0,general labor,Staffing for Texans,0.3,2025-07-20
+229,Yahoska Alvarez,16.0,general labor,Pro Staffing,0.25,2025-07-13
+230,Yimen Quevedo,16.0,general labor,JJ Staffing,0.25,2025-04-15
+231,Yoansy,16.0,general labor,Stride Staffing,0.3,2025-07-18
+232,Yohanderson,16.0,general labor,JJ Staffing,0.25,2025-02-28
+233,Yoiner Avila,16.0,general labor,JJ Staffing,0.25,2025-04-13
+234,Yonathan Pirela,16.0,general labor,Pro Staffing,0.25,2025-07-21
+235,Yorge Mendoza,16.0,general labor,Stride Staffing,0.3,2025-05-29

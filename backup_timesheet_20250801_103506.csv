@@ -1,0 +1,1336 @@
+worker_id,date,time_in,time_out,lunch_minutes,agency
+Ana,2025-02-03,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-03,13:00:00,17:00:00,0,Stride Staffing
+Jessie Austin,2025-02-03,13:00:00,17:05:00,0,Stride Staffing
+Jonathan,2025-02-03,13:00:00,17:00:00,0,Stride Staffing
+Jose Gamarra,2025-02-03,13:00:00,17:00:00,0,Stride Staffing
+Sergio,2025-02-03,13:00:00,17:00:00,0,Stride Staffing
+Ana,2025-02-04,09:30:00,14:30:00,0,Stride Staffing
+Ana,2025-02-05,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-05,13:00:00,17:00:00,0,Stride Staffing
+Jonathan,2025-02-05,13:00:00,17:00:00,0,Stride Staffing
+Jose Gamarra,2025-02-05,13:00:00,17:00:00,0,Stride Staffing
+Sergio,2025-02-05,13:00:00,17:00:00,0,Stride Staffing
+Ana,2025-02-06,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-06,13:00:00,18:08:00,0,Stride Staffing
+Jessie Austin,2025-02-06,13:00:00,18:09:00,0,Stride Staffing
+Jonathan,2025-02-06,13:00:00,18:08:00,0,Stride Staffing
+Jose Gamarra,2025-02-06,13:00:00,18:08:00,0,Stride Staffing
+Sergio,2025-02-06,13:00:00,18:08:00,0,Stride Staffing
+Franwyr,2025-02-07,13:00:00,20:00:00,0,Stride Staffing
+Jonathan,2025-02-07,13:00:00,20:00:00,0,Stride Staffing
+Jose Gamarra,2025-02-07,13:00:00,20:00:00,0,Stride Staffing
+Sergio,2025-02-07,13:00:00,20:00:00,0,Stride Staffing
+Franwyr,2025-02-08,10:30:00,19:00:00,0,Stride Staffing
+Jonathan,2025-02-08,13:00:00,19:00:00,0,Stride Staffing
+Jose Gamarra,2025-02-08,10:30:00,19:00:00,0,Stride Staffing
+Sergio,2025-02-08,10:30:00,19:00:00,0,Stride Staffing
+Franwyr,2025-02-09,13:30:00,19:00:00,0,Stride Staffing
+Jonathan,2025-02-09,13:30:00,19:00:00,0,Stride Staffing
+Jose Gamarra,2025-02-09,13:30:00,19:00:00,0,Stride Staffing
+Sergio,2025-02-09,13:30:00,19:00:00,0,Stride Staffing
+Ana,2025-02-10,09:30:00,14:30:00,0,Stride Staffing
+Ana,2025-02-11,09:30:00,14:30:00,0,Stride Staffing
+Ana,2025-02-12,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-12,09:30:00,18:10:00,30,Stride Staffing
+Jonathan,2025-02-12,09:30:00,18:10:00,30,Stride Staffing
+Jose Gamarra,2025-02-12,09:30:00,18:10:00,30,Stride Staffing
+Sergio,2025-02-12,09:30:00,18:10:00,30,Stride Staffing
+Ana,2025-02-13,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-13,11:00:00,17:30:00,30,Stride Staffing
+Jonathan,2025-02-13,11:00:00,17:30:00,0,Stride Staffing
+Jose Gamarra,2025-02-13,11:00:00,17:30:00,30,Stride Staffing
+Sergio,2025-02-13,11:00:00,17:30:00,30,Stride Staffing
+Franwyr,2025-02-14,11:00:00,19:30:00,30,Stride Staffing
+Jonathan,2025-02-14,11:00:00,21:30:00,0,Stride Staffing
+Jose Gamarra,2025-02-14,11:00:00,19:30:00,30,Stride Staffing
+Sergio,2025-02-14,11:00:00,19:30:00,30,Stride Staffing
+Franwyr,2025-02-15,11:00:00,20:50:00,0,Stride Staffing
+Jonathan,2025-02-15,11:00:00,20:50:00,0,Stride Staffing
+Jose Gamarra,2025-02-15,11:00:00,20:50:00,0,Stride Staffing
+Sergio,2025-02-15,11:00:00,20:50:00,0,Stride Staffing
+Ana,2025-02-16,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-16,11:00:00,21:10:00,30,Stride Staffing
+Jonathan,2025-02-16,11:00:00,21:10:00,0,Stride Staffing
+Jose Gamarra,2025-02-16,11:00:00,21:10:00,30,Stride Staffing
+Sergio,2025-02-16,11:00:00,21:10:00,30,Stride Staffing
+Franwyr,2025-02-17,11:00:00,21:30:00,30,Stride Staffing
+Jonathan,2025-02-17,11:00:00,21:30:00,0,Stride Staffing
+Jose Gamarra,2025-02-17,11:00:00,21:30:00,30,Stride Staffing
+Sergio,2025-02-17,11:00:00,21:30:00,30,Stride Staffing
+Ana,2025-02-18,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-19,11:00:00,22:00:00,30,Stride Staffing
+Jonathan,2025-02-19,11:00:00,22:00:00,30,Stride Staffing
+Jose Gamarra,2025-02-19,11:00:00,22:00:00,30,Stride Staffing
+Sergio,2025-02-19,11:00:00,22:00:00,30,Stride Staffing
+Willis Davis,2025-02-19,11:00:00,19:30:00,30,Stride Staffing
+Ana,2025-02-20,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-20,12:00:00,21:30:00,0,Stride Staffing
+Jonathan,2025-02-20,12:00:00,21:30:00,0,Stride Staffing
+Jose Gamarra,2025-02-20,12:00:00,21:30:00,0,Stride Staffing
+Sergio,2025-02-20,12:00:00,21:30:00,0,Stride Staffing
+Willis Davis,2025-02-20,13:00:00,21:00:00,30,Stride Staffing
+Ana,2025-02-21,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-21,13:00:00,18:30:00,0,Stride Staffing
+Jonathan,2025-02-21,13:00:00,18:30:00,0,Stride Staffing
+Jose Gamarra,2025-02-21,13:00:00,18:30:00,0,Stride Staffing
+Sergio,2025-02-21,13:00:00,18:30:00,0,Stride Staffing
+Franwyr,2025-02-22,13:30:00,17:50:00,0,Stride Staffing
+Jonathan,2025-02-22,13:30:00,17:50:00,0,Stride Staffing
+Jose Gamarra,2025-02-22,13:30:00,17:50:00,0,Stride Staffing
+Sergio,2025-02-22,13:30:00,17:50:00,0,Stride Staffing
+Franwyr,2025-02-23,15:00:00,19:20:00,0,Stride Staffing
+Jonathan,2025-02-23,15:00:00,19:20:00,0,Stride Staffing
+Jose Gamarra,2025-02-23,15:00:00,19:20:00,0,Stride Staffing
+Sergio,2025-02-23,15:00:00,19:20:00,0,Stride Staffing
+Ana,2025-02-24,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-24,13:30:00,19:40:00,0,Stride Staffing
+Jonathan,2025-02-24,13:30:00,19:40:00,0,Stride Staffing
+Jose Gamarra,2025-02-24,13:30:00,19:40:00,0,Stride Staffing
+Sergio,2025-02-24,13:30:00,19:40:00,0,Stride Staffing
+Ana,2025-02-25,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-25,14:00:00,18:30:00,30,Stride Staffing
+Jonathan,2025-02-25,14:00:00,18:30:00,30,Stride Staffing
+Jose Gamarra,2025-02-25,14:00:00,18:30:00,30,Stride Staffing
+Sergio,2025-02-25,14:00:00,18:30:00,30,Stride Staffing
+Ana,2025-02-26,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-26,13:30:00,18:20:00,0,Stride Staffing
+Jonathan,2025-02-26,13:30:00,18:20:00,0,Stride Staffing
+Jose Gamarra,2025-02-26,13:30:00,18:20:00,0,Stride Staffing
+Jose Moffi,2025-02-26,13:00:00,18:00:00,0,JJ Staffing
+Sergio,2025-02-26,13:30:00,18:20:00,0,Stride Staffing
+Yohanderson,2025-02-26,13:00:00,18:15:00,0,JJ Staffing
+Ana,2025-02-27,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-02-27,10:00:00,19:05:00,30,Stride Staffing
+Jonathan,2025-02-27,10:00:00,19:05:00,30,Stride Staffing
+Jose Gamarra,2025-02-27,10:00:00,19:05:00,30,Stride Staffing
+Jose Moffi,2025-02-27,10:00:00,19:05:00,30,JJ Staffing
+Sergio,2025-02-27,10:00:00,19:05:00,30,Stride Staffing
+Yohanderson,2025-02-27,10:00:00,19:05:00,30,JJ Staffing
+Franwyr,2025-02-28,14:00:00,21:30:00,0,Stride Staffing
+Jonathan,2025-02-28,14:00:00,21:30:00,0,Stride Staffing
+Jose Gamarra,2025-02-28,14:00:00,21:30:00,0,Stride Staffing
+Jose Moffi,2025-02-28,15:00:00,21:30:00,30,JJ Staffing
+Sergio,2025-02-28,14:00:00,21:30:00,0,Stride Staffing
+Yohanderson,2025-02-28,15:00:00,21:30:00,0,JJ Staffing
+Franwyr,2025-03-01,10:00:00,15:30:00,30,Stride Staffing
+Jonathan,2025-03-01,10:00:00,16:30:00,30,Stride Staffing
+Jose Gamarra,2025-03-01,10:00:00,15:30:00,30,Stride Staffing
+Sergio,2025-03-01,10:00:00,15:30:00,30,Stride Staffing
+Franwyr,2025-03-02,11:00:00,15:40:00,30,Stride Staffing
+Jonathan,2025-03-02,11:00:00,15:40:00,30,Stride Staffing
+Jose Gamarra,2025-03-02,11:00:00,15:40:00,30,Stride Staffing
+Jose Moffi,2025-03-02,11:00:00,16:50:00,30,JJ Staffing
+Sergio,2025-03-02,11:00:00,15:40:00,30,Stride Staffing
+Ana,2025-03-03,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-03-03,10:00:00,21:50:00,30,Stride Staffing
+Jonathan,2025-03-03,10:00:00,21:50:00,30,Stride Staffing
+Jose Gamarra,2025-03-03,10:00:00,21:50:00,30,Stride Staffing
+Jose Moffi,2025-03-03,10:00:00,22:00:00,30,JJ Staffing
+Sergio,2025-03-03,10:00:00,21:50:00,30,Stride Staffing
+Ana,2025-03-04,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-03-04,11:00:00,14:00:00,0,Stride Staffing
+Jonathan,2025-03-04,11:00:00,14:00:00,0,Stride Staffing
+Jose Gamarra,2025-03-04,11:00:00,14:00:00,0,Stride Staffing
+Sergio,2025-03-04,11:00:00,14:00:00,0,Stride Staffing
+Alberto,2025-03-05,13:00:00,19:50:00,30,JJ Staffing
+Ana,2025-03-05,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-03-05,11:00:00,19:50:00,30,Stride Staffing
+Jonathan,2025-03-05,11:00:00,19:50:00,0,Stride Staffing
+Jose Gamarra,2025-03-05,11:00:00,19:50:00,30,Stride Staffing
+Jose Moffi,2025-03-05,11:00:00,19:50:00,30,JJ Staffing
+Sergio,2025-03-05,11:00:00,19:50:00,30,Stride Staffing
+Alberto,2025-03-06,11:00:00,18:15:00,0,JJ Staffing
+Ana,2025-03-06,09:30:00,14:30:00,0,Stride Staffing
+Jonathan,2025-03-06,11:00:00,18:00:00,0,Stride Staffing
+Jose Moffi,2025-03-06,11:00:00,18:15:00,0,JJ Staffing
+Alberto,2025-03-07,10:30:00,19:30:00,30,JJ Staffing
+Franwyr,2025-03-07,10:30:00,19:30:00,0,Stride Staffing
+Jonathan,2025-03-07,10:20:00,19:30:00,0,Stride Staffing
+Jose Gamarra,2025-03-07,10:30:00,19:30:00,0,Stride Staffing
+Jose Moffi,2025-03-07,10:30:00,19:30:00,30,JJ Staffing
+Sergio,2025-03-07,10:30:00,19:30:00,0,Stride Staffing
+Franwyr,2025-03-08,11:00:00,19:50:00,30,Stride Staffing
+Jose Gamarra,2025-03-08,11:00:00,19:50:00,30,Stride Staffing
+Jose Moffi,2025-03-08,11:00:00,15:55:00,30,JJ Staffing
+Sergio,2025-03-08,11:00:00,19:50:00,30,Stride Staffing
+Alberto,2025-03-09,10:00:00,22:27:00,30,JJ Staffing
+Edinson Gutierrez,2025-03-09,10:00:00,22:30:00,30,JJ Staffing
+Elvis,2025-03-09,10:00:00,22:30:00,30,JJ Staffing
+Jonathan,2025-03-09,10:30:00,22:33:00,30,Stride Staffing
+Ana,2025-03-10,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-03-10,13:30:00,20:50:00,0,Stride Staffing
+Jose Gamarra,2025-03-10,13:30:00,20:50:00,0,Stride Staffing
+Jose Moffi,2025-03-10,13:30:00,20:45:00,0,JJ Staffing
+Sergio,2025-03-10,13:30:00,20:50:00,0,Stride Staffing
+Alberto,2025-03-11,14:30:00,18:32:00,0,JJ Staffing
+Ana,2025-03-11,09:30:00,14:30:00,0,Stride Staffing
+Elvis,2025-03-11,14:30:00,18:35:00,0,JJ Staffing
+Jonathan,2025-03-11,10:30:00,18:35:00,30,Stride Staffing
+Alberto,2025-03-12,10:00:00,16:40:00,30,JJ Staffing
+Ana,2025-03-12,09:30:00,14:30:00,0,Stride Staffing
+Edinson Gutierrez,2025-03-12,10:00:00,16:40:00,30,JJ Staffing
+Elvis,2025-03-12,10:00:00,16:40:00,30,JJ Staffing
+Franwyr,2025-03-12,14:00:00,20:00:00,0,Stride Staffing
+Jonathan,2025-03-12,10:00:00,16:40:00,30,Stride Staffing
+Jose Gamarra,2025-03-12,14:00:00,20:00:00,0,Stride Staffing
+Jose Moffi,2025-03-12,14:00:00,20:00:00,0,JJ Staffing
+Sergio,2025-03-12,14:00:00,20:00:00,0,Stride Staffing
+Ana,2025-03-13,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-03-13,10:00:00,18:50:00,30,Stride Staffing
+Jose Gamarra,2025-03-13,10:00:00,18:50:00,30,Stride Staffing
+Jose Moffi,2025-03-13,10:00:00,18:50:00,30,JJ Staffing
+Sergio,2025-03-13,10:00:00,18:50:00,30,Stride Staffing
+Alberto,2025-03-14,09:30:00,19:00:00,30,JJ Staffing
+Edinson Gutierrez,2025-03-14,09:30:00,19:00:00,30,JJ Staffing
+Elvis,2025-03-14,09:30:00,19:00:00,30,JJ Staffing
+Franwyr,2025-03-14,14:30:00,21:15:00,0,Stride Staffing
+Jonathan,2025-03-14,09:30:00,19:00:00,30,Stride Staffing
+Jose Gamarra,2025-03-14,14:30:00,21:15:00,0,Stride Staffing
+Jose Moffi,2025-03-14,14:30:00,21:50:00,0,JJ Staffing
+Sergio,2025-03-14,14:30:00,21:15:00,0,Stride Staffing
+Alberto,2025-03-15,15:40:00,00:20:00,30,JJ Staffing
+Elvis,2025-03-15,15:30:00,00:20:00,0,JJ Staffing
+Franwyr,2025-03-15,09:30:00,21:50:00,30,Stride Staffing
+Jonathan,2025-03-15,15:30:00,00:20:00,30,Stride Staffing
+Jose Gamarra,2025-03-15,09:30:00,21:50:00,30,Stride Staffing
+Jose Moffi,2025-03-15,09:30:00,21:30:00,30,JJ Staffing
+Sergio,2025-03-15,09:30:00,21:50:00,30,Stride Staffing
+Alberto,2025-03-16,11:00:00,20:00:00,30,JJ Staffing
+Elvis,2025-03-16,11:00:00,20:00:00,30,JJ Staffing
+Jonathan,2025-03-16,11:00:00,22:56:00,30,Stride Staffing
+Alberto,2025-03-17,15:00:00,21:05:00,0,JJ Staffing
+Ana,2025-03-17,09:30:00,14:30:00,0,Stride Staffing
+Edinson Gutierrez,2025-03-17,15:00:00,21:05:00,0,JJ Staffing
+Elvis,2025-03-17,15:00:00,21:05:00,0,JJ Staffing
+Franwyr,2025-03-17,09:30:00,18:30:00,30,Stride Staffing
+Jonathan,2025-03-17,15:00:00,21:05:00,0,Stride Staffing
+Jose Gamarra,2025-03-17,09:30:00,18:30:00,30,Stride Staffing
+Jose Moffi,2025-03-17,09:30:00,18:00:00,30,JJ Staffing
+Sergio,2025-03-17,09:30:00,18:30:00,30,Stride Staffing
+Alberto,2025-03-18,09:30:00,16:30:00,30,JJ Staffing
+Ana,2025-03-18,09:30:00,14:30:00,0,Stride Staffing
+Edinson Gutierrez,2025-03-18,09:30:00,16:30:00,30,JJ Staffing
+Elvis,2025-03-18,09:30:00,16:30:00,30,JJ Staffing
+Franwyr,2025-03-18,15:00:00,22:20:00,0,Stride Staffing
+Jonathan,2025-03-18,08:30:00,19:45:00,30,Stride Staffing
+Jose Gamarra,2025-03-18,15:00:00,22:20:00,0,Stride Staffing
+Jose Moffi,2025-03-18,15:00:00,22:20:00,0,JJ Staffing
+Sergio,2025-03-18,15:00:00,22:20:00,0,Stride Staffing
+Alberto,2025-03-19,15:00:00,23:30:00,30,JJ Staffing
+Ana,2025-03-19,09:30:00,14:30:00,0,Stride Staffing
+Edinson Gutierrez,2025-03-19,15:00:00,22:35:00,30,JJ Staffing
+Elvis,2025-03-19,15:00:00,22:35:00,30,JJ Staffing
+Franwyr,2025-03-19,10:00:00,18:40:00,30,Stride Staffing
+Jonathan,2025-03-19,15:00:00,23:45:00,0,Stride Staffing
+Jose Gamarra,2025-03-19,10:00:00,18:40:00,30,Stride Staffing
+Jose Moffi,2025-03-19,10:00:00,18:40:00,30,JJ Staffing
+Sergio,2025-03-19,10:00:00,18:40:00,30,Stride Staffing
+Alberto,2025-03-20,15:00:00,00:00:00,30,JJ Staffing
+Ana,2025-03-20,09:30:00,14:30:00,0,Stride Staffing
+Edinson Gutierrez,2025-03-20,15:00:00,00:00:00,30,JJ Staffing
+Elvis,2025-03-20,15:00:00,00:00:00,30,JJ Staffing
+Franwyr,2025-03-20,08:30:00,20:30:00,30,Stride Staffing
+Jonathan,2025-03-20,15:00:00,00:00:00,0,Stride Staffing
+Jose Gamarra,2025-03-20,08:30:00,20:30:00,30,Stride Staffing
+Jose Moffi,2025-03-20,10:00:00,21:40:00,30,JJ Staffing
+Sergio,2025-03-20,08:30:00,20:30:00,30,Stride Staffing
+Alberto,2025-03-21,13:30:00,23:00:00,30,JJ Staffing
+Edinson Gutierrez,2025-03-21,13:30:00,23:00:00,0,JJ Staffing
+Elvis,2025-03-21,13:30:00,23:00:00,30,JJ Staffing
+Franwyr,2025-03-21,10:15:00,18:30:00,30,Stride Staffing
+Jonathan,2025-03-21,13:30:00,23:00:00,30,Stride Staffing
+Jose Gamarra,2025-03-21,10:15:00,18:30:00,30,Stride Staffing
+Jose Moffi,2025-03-21,08:30:00,18:15:00,30,JJ Staffing
+Sergio,2025-03-21,10:15:00,18:30:00,30,Stride Staffing
+Alberto,2025-03-22,14:00:00,23:20:00,30,JJ Staffing
+Argenis Navarro,2025-03-22,13:30:00,23:20:00,30,JJ Staffing
+Eglis Ruiz,2025-03-22,13:10:00,23:20:00,30,JJ Staffing
+Elvis,2025-03-22,14:06:00,23:20:00,30,JJ Staffing
+Franwyr,2025-03-22,09:10:00,17:30:00,30,Stride Staffing
+Jancy Faria,2025-03-22,09:30:00,17:30:00,30,JJ Staffing
+Jean Carlos Faria,2025-03-22,09:30:00,17:30:00,30,JJ Staffing
+Jonathan,2025-03-22,14:00:00,23:20:00,30,Stride Staffing
+Jose Gamarra,2025-03-22,09:10:00,17:30:00,30,Stride Staffing
+Jose Moffi,2025-03-22,08:30:00,17:30:00,30,JJ Staffing
+Sergio,2025-03-22,09:10:00,17:30:00,30,Stride Staffing
+Alberto,2025-03-23,15:00:00,19:30:00,0,JJ Staffing
+Argenis Navarro,2025-03-23,15:00:00,19:30:00,0,JJ Staffing
+Eglis Ruiz,2025-03-23,15:00:00,19:30:00,0,JJ Staffing
+Elvis,2025-03-23,15:00:00,19:30:00,0,JJ Staffing
+Franwyr,2025-03-23,09:20:00,15:10:00,30,Stride Staffing
+Jancy Faria,2025-03-23,09:30:00,15:40:00,30,JJ Staffing
+Jean Carlos Faria,2025-03-23,09:30:00,15:40:00,30,JJ Staffing
+Jonathan,2025-03-23,15:00:00,21:30:00,0,Stride Staffing
+Jose Gamarra,2025-03-23,09:20:00,15:10:00,30,Stride Staffing
+Jose Moffi,2025-03-23,08:30:00,15:05:00,30,JJ Staffing
+Sergio,2025-03-23,09:20:00,15:10:00,30,Stride Staffing
+Ana,2025-03-24,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-03-24,10:00:00,19:15:00,30,Stride Staffing
+Jancy Faria,2025-03-24,13:30:00,19:15:00,30,JJ Staffing
+Jean Carlos Faria,2025-03-24,13:30:00,19:15:00,30,JJ Staffing
+Jose Gamarra,2025-03-24,10:00:00,19:15:00,30,Stride Staffing
+Jose Moffi,2025-03-24,08:30:00,19:15:00,30,JJ Staffing
+Sergio,2025-03-24,10:00:00,19:15:00,30,Stride Staffing
+Alberto,2025-03-25,13:30:00,00:00:00,30,JJ Staffing
+Ana,2025-03-25,09:30:00,14:30:00,0,Stride Staffing
+Argenis Navarro,2025-03-25,13:30:00,00:00:00,30,JJ Staffing
+Eglis Ruiz,2025-03-25,13:30:00,00:00:00,30,JJ Staffing
+Elvis,2025-03-25,13:30:00,00:00:00,30,JJ Staffing
+Jonathan,2025-03-25,13:30:00,00:00:00,30,Stride Staffing
+Jose Moffi,2025-03-25,09:00:00,18:00:00,30,JJ Staffing
+Alberto,2025-03-26,14:00:00,00:30:00,30,JJ Staffing
+Ana,2025-03-26,09:30:00,14:30:00,0,Stride Staffing
+Argenis Navarro,2025-03-26,14:00:00,00:30:00,30,JJ Staffing
+Eglis Ruiz,2025-03-26,14:00:00,00:30:00,30,JJ Staffing
+Elvis,2025-03-26,14:00:00,00:30:00,30,JJ Staffing
+Franwyr,2025-03-26,09:00:00,18:30:00,30,Stride Staffing
+Gabriel Villegas,2025-03-26,14:00:00,00:30:00,30,JJ Staffing
+Jancy Faria,2025-03-26,09:30:00,18:00:00,30,JJ Staffing
+Jean Carlos Faria,2025-03-26,09:30:00,18:00:00,30,JJ Staffing
+Jose Gamarra,2025-03-26,09:00:00,18:30:00,30,Stride Staffing
+Jose Moffi,2025-03-26,09:00:00,18:00:00,30,JJ Staffing
+Sergio,2025-03-26,09:00:00,18:30:00,30,Stride Staffing
+Alberto,2025-03-27,10:35:00,17:35:00,30,JJ Staffing
+Ana,2025-03-27,09:30:00,14:30:00,0,Stride Staffing
+Argenis Navarro,2025-03-27,10:30:00,17:30:00,30,JJ Staffing
+Elvis,2025-03-27,10:35:00,17:35:00,30,JJ Staffing
+Franwyr,2025-03-27,13:00:00,22:25:00,0,Stride Staffing
+Gabriel Villegas,2025-03-27,10:30:00,17:30:00,30,JJ Staffing
+Jonathan,2025-03-27,13:00:00,22:25:00,0,Stride Staffing
+Jose Gamarra,2025-03-27,13:00:00,22:25:00,0,Stride Staffing
+Jose Moffi,2025-03-27,15:00:00,23:50:00,30,JJ Staffing
+Sergio,2025-03-27,13:00:00,22:25:00,0,Stride Staffing
+Alberto,2025-03-28,14:00:00,23:00:00,30,JJ Staffing
+Angelo Lozada,2025-03-28,09:00:00,18:00:00,30,JJ Staffing
+Argenis Navarro,2025-03-28,14:00:00,22:30:00,30,JJ Staffing
+Eder Chirinos,2025-03-28,14:00:00,22:40:00,0,JJ Staffing
+Eglis Ruiz,2025-03-28,14:00:00,22:40:00,30,JJ Staffing
+Elvis,2025-03-28,14:00:00,23:00:00,0,JJ Staffing
+Franwyr,2025-03-28,09:15:00,18:30:00,30,Stride Staffing
+Jonathan,2025-03-28,14:00:00,22:38:00,30,Stride Staffing
+Jose Gamarra,2025-03-28,09:15:00,18:30:00,30,Stride Staffing
+Jose Moffi,2025-03-28,09:30:00,17:50:00,30,JJ Staffing
+Sergio,2025-03-28,09:15:00,18:30:00,30,Stride Staffing
+Bernie Pineda,2025-03-29,22:20:00,00:45:00,0,JJ Staffing
+Eglis Ruiz,2025-03-29,15:00:00,00:45:00,0,JJ Staffing
+Elvis,2025-03-29,15:00:00,00:45:00,30,JJ Staffing
+Franklin Perozo,2025-03-29,22:20:00,00:45:00,0,JJ Staffing
+Jonathan,2025-03-29,14:30:00,01:15:00,0,Stride Staffing
+Alberto,2025-03-30,14:00:00,01:00:00,30,JJ Staffing
+Angelo Lozada,2025-03-30,09:30:00,17:50:00,30,JJ Staffing
+Bernie Pineda,2025-03-30,14:00:00,00:45:00,0,JJ Staffing
+Eglis Ruiz,2025-03-30,14:00:00,00:45:00,0,JJ Staffing
+Franklin Perozo,2025-03-30,14:00:00,00:45:00,0,JJ Staffing
+Franwyr,2025-03-30,08:30:00,17:50:00,30,Stride Staffing
+Jonathan,2025-03-30,14:30:00,01:00:00,0,Stride Staffing
+Jose Gamarra,2025-03-30,08:30:00,17:50:00,30,Stride Staffing
+Sergio,2025-03-30,08:30:00,17:50:00,30,Stride Staffing
+Ana,2025-03-31,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-03-31,13:20:00,21:15:00,0,Stride Staffing
+Jose Gamarra,2025-03-31,13:20:00,21:15:00,0,Stride Staffing
+Jose Moffi,2025-03-31,13:30:00,21:15:00,0,JJ Staffing
+Sergio,2025-03-31,13:20:00,21:15:00,0,Stride Staffing
+Alberto,2025-04-01,15:00:00,21:30:00,0,JJ Staffing
+Ana,2025-04-01,09:30:00,14:30:00,0,Stride Staffing
+Bernie Pineda,2025-04-01,09:30:00,15:30:00,30,JJ Staffing
+Elvis,2025-04-01,09:30:00,15:30:00,30,JJ Staffing
+Franklin Perozo,2025-04-01,09:30:00,15:30:00,30,JJ Staffing
+Franwyr,2025-04-01,15:00:00,21:30:00,0,Stride Staffing
+Geovanni Tramonte,2025-04-01,09:30:00,15:30:00,30,JJ Staffing
+Johaniel,2025-04-01,09:30:00,15:30:00,30,JJ Staffing
+Jonathan,2025-04-01,09:00:00,17:50:00,30,Stride Staffing
+Jose Gamarra,2025-04-01,15:00:00,21:30:00,0,Stride Staffing
+Sergio,2025-04-01,15:00:00,21:30:00,0,Stride Staffing
+Ana,2025-04-02,09:30:00,14:30:00,0,Stride Staffing
+Elvis,2025-04-02,15:00:00,21:25:00,0,JJ Staffing
+Franwyr,2025-04-02,09:10:00,18:20:00,30,Stride Staffing
+Jonathan,2025-04-02,15:00:00,21:25:00,0,Stride Staffing
+Jose Gamarra,2025-04-02,09:10:00,18:20:00,30,Stride Staffing
+Jose Moffi,2025-04-02,09:00:00,17:30:00,30,JJ Staffing
+Sergio,2025-04-02,09:10:00,18:20:00,30,Stride Staffing
+Alberto,2025-04-03,15:00:00,01:00:00,30,JJ Staffing
+Ana,2025-04-03,09:30:00,14:30:00,0,Stride Staffing
+Bernie Pineda,2025-04-03,15:00:00,23:15:00,30,JJ Staffing
+Elvis,2025-04-03,15:00:00,23:15:00,30,JJ Staffing
+Franklin Perozo,2025-04-03,15:00:00,23:15:00,30,JJ Staffing
+Geovanni Tramonte,2025-04-03,15:00:00,01:00:00,30,JJ Staffing
+Johaniel,2025-04-03,15:00:00,10:50:00,30,JJ Staffing
+Jonathan,2025-04-03,09:30:00,22:34:00,30,Stride Staffing
+Alberto,2025-04-04,13:30:00,01:00:00,30,JJ Staffing
+Elvis,2025-04-04,17:00:00,01:00:00,0,JJ Staffing
+Franwyr,2025-04-04,10:00:00,18:30:00,30,Stride Staffing
+Johaniel,2025-04-04,17:00:00,23:10:00,0,JJ Staffing
+Jonathan,2025-04-04,17:00:00,03:30:00,30,Stride Staffing
+Jose Gamarra,2025-04-04,10:00:00,18:30:00,30,Stride Staffing
+Jose Moffi,2025-04-04,10:00:00,18:30:00,30,JJ Staffing
+Sergio,2025-04-04,10:00:00,18:30:00,30,Stride Staffing
+Alberto,2025-04-05,15:00:00,22:25:00,30,JJ Staffing
+Andry Sanchez,2025-04-05,11:00:00,20:24:00,30,Stride Staffing
+Belarmino Soto,2025-04-05,11:00:00,20:25:00,30,JJ Staffing
+Dionnys,2025-04-05,09:00:00,19:34:00,30,JJ Staffing
+Elvis,2025-04-05,15:00:00,22:00:00,30,JJ Staffing
+Franwyr,2025-04-05,09:00:00,19:30:00,30,Stride Staffing
+Frederick Sanchez,2025-04-05,14:43:00,00:00:00,0,JJ Staffing
+Jean Navas,2025-04-05,11:00:00,00:00:00,30,JJ Staffing
+Jonathan,2025-04-05,15:20:00,00:50:00,30,Stride Staffing
+Jose Gamarra,2025-04-05,09:00:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-04-05,09:00:00,18:30:00,30,JJ Staffing
+Sergio,2025-04-05,09:00:00,19:30:00,30,Stride Staffing
+Yoiner Avila,2025-04-05,11:00:00,20:24:00,30,JJ Staffing
+Alberto,2025-04-06,12:00:00,23:50:00,30,JJ Staffing
+Belarmino Soto,2025-04-06,12:00:00,19:00:00,30,JJ Staffing
+Elvis,2025-04-06,12:00:00,23:50:00,30,JJ Staffing
+Jean Navas,2025-04-06,12:00:00,23:50:00,30,JJ Staffing
+Yimen Quevedo,2025-04-06,14:00:00,23:50:00,30,JJ Staffing
+Yoiner Avila,2025-04-06,12:00:00,19:00:00,30,JJ Staffing
+Ana,2025-04-07,09:30:00,14:30:00,0,Stride Staffing
+Elvis,2025-04-07,12:00:00,22:30:00,30,JJ Staffing
+Jean Navas,2025-04-07,12:00:00,22:30:00,30,JJ Staffing
+Jose Moffi,2025-04-07,12:00:00,22:30:00,30,JJ Staffing
+Yimen Quevedo,2025-04-07,12:00:00,22:30:00,30,JJ Staffing
+Yoiner Avila,2025-04-07,12:00:00,22:30:00,30,JJ Staffing
+Alberto,2025-04-08,10:10:00,18:04:00,30,JJ Staffing
+Ana,2025-04-08,09:30:00,14:30:00,0,Stride Staffing
+Belarmino Soto,2025-04-08,12:00:00,22:30:00,30,JJ Staffing
+Elvis,2025-04-08,10:10:00,17:30:00,30,JJ Staffing
+Franwyr,2025-04-08,14:00:00,22:30:00,0,Stride Staffing
+Hector,2025-04-08,11:00:00,17:48:00,30,Stride Staffing
+Jean Navas,2025-04-08,10:10:00,17:30:00,30,JJ Staffing
+Jonathan,2025-04-08,09:30:00,18:30:00,30,Stride Staffing
+Jose Gamarra,2025-04-08,14:00:00,22:30:00,0,Stride Staffing
+Jose Moffi,2025-04-08,14:00:00,22:30:00,0,JJ Staffing
+Rafael Rodriguez,2025-04-08,10:30:00,17:48:00,30,Stride Staffing
+Sergio,2025-04-08,14:00:00,22:30:00,0,Stride Staffing
+Victor,2025-04-08,11:49:00,17:48:00,0,Stride Staffing
+Yimen Quevedo,2025-04-08,09:30:00,17:30:00,30,JJ Staffing
+Yoiner Avila,2025-04-08,12:00:00,22:30:00,30,JJ Staffing
+Alberto,2025-04-09,12:00:00,20:30:00,30,JJ Staffing
+Ana,2025-04-09,09:30:00,14:30:00,0,Stride Staffing
+Belarmino Soto,2025-04-09,12:00:00,17:30:00,30,JJ Staffing
+Hector,2025-04-09,11:55:00,20:20:00,0,Stride Staffing
+Jonathan,2025-04-09,12:00:00,21:07:00,0,Stride Staffing
+Rafael Rodriguez,2025-04-09,12:00:00,17:00:00,0,Stride Staffing
+Victor,2025-04-09,12:00:00,17:00:00,0,Stride Staffing
+Yimen Quevedo,2025-04-09,12:00:00,20:25:00,30,JJ Staffing
+Alberto,2025-04-10,14:00:00,00:20:00,30,JJ Staffing
+Ana,2025-04-10,09:30:00,14:30:00,0,Stride Staffing
+Elvis,2025-04-10,14:00:00,00:25:00,30,JJ Staffing
+Franwyr,2025-04-10,09:30:00,20:50:00,30,Stride Staffing
+Hector,2025-04-10,11:55:00,00:20:00,30,Stride Staffing
+Jean Navas,2025-04-10,09:30:00,20:30:00,30,JJ Staffing
+Jonathan,2025-04-10,12:00:00,23:25:00,30,Stride Staffing
+Jose Gamarra,2025-04-10,09:30:00,20:50:00,30,Stride Staffing
+Jose Moffi,2025-04-10,09:30:00,20:50:00,30,JJ Staffing
+Rafael Rodriguez,2025-04-10,14:00:00,00:15:00,0,Stride Staffing
+Sergio,2025-04-10,09:30:00,20:50:00,30,Stride Staffing
+Yimen Quevedo,2025-04-10,09:27:00,18:30:00,30,JJ Staffing
+Yoiner Avila,2025-04-10,14:00:00,00:20:00,30,JJ Staffing
+Belarmino Soto,2025-04-11,13:30:00,20:00:00,30,JJ Staffing
+Elvis,2025-04-11,13:30:00,20:10:00,30,JJ Staffing
+Franwyr,2025-04-11,10:00:00,19:30:00,30,Stride Staffing
+Jonathan,2025-04-11,13:30:00,20:08:00,0,Stride Staffing
+Jose Gamarra,2025-04-11,10:00:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-04-11,11:00:00,19:00:00,30,JJ Staffing
+Sergio,2025-04-11,10:00:00,19:30:00,30,Stride Staffing
+Alberto,2025-04-12,13:00:00,21:55:00,30,JJ Staffing
+Belarmino Soto,2025-04-12,10:00:00,19:00:00,30,JJ Staffing
+Franwyr,2025-04-12,10:00:00,19:30:00,30,Stride Staffing
+Hector,2025-04-12,12:55:00,21:55:00,30,Stride Staffing
+Jean Navas,2025-04-12,10:00:00,19:00:00,30,JJ Staffing
+Jonathan,2025-04-12,13:00:00,21:55:00,30,Stride Staffing
+Jose Gamarra,2025-04-12,10:00:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-04-12,10:00:00,19:00:00,30,JJ Staffing
+Sergio,2025-04-12,10:00:00,19:30:00,30,Stride Staffing
+Yoiner Avila,2025-04-12,13:00:00,21:55:00,30,JJ Staffing
+Alberto,2025-04-13,09:30:00,18:10:00,30,JJ Staffing
+Belarmino Soto,2025-04-13,12:30:00,18:05:00,30,JJ Staffing
+Elvis,2025-04-13,09:30:00,18:05:00,30,JJ Staffing
+Franwyr,2025-04-13,15:00:00,23:11:00,0,Stride Staffing
+Jean Navas,2025-04-13,10:30:00,23:11:00,30,JJ Staffing
+Jonathan,2025-04-13,09:30:00,23:11:00,30,Stride Staffing
+Jose Gamarra,2025-04-13,15:00:00,23:11:00,0,Stride Staffing
+Jose Moffi,2025-04-13,15:00:00,18:00:00,0,JJ Staffing
+Rafael Rodriguez,2025-04-13,10:30:00,18:00:00,30,Stride Staffing
+Sergio,2025-04-13,15:00:00,23:11:00,0,Stride Staffing
+Yimen Quevedo,2025-04-13,10:30:00,17:00:00,30,JJ Staffing
+Yoiner Avila,2025-04-13,12:30:00,18:05:00,30,JJ Staffing
+Alberto,2025-04-14,14:00:00,22:40:00,30,JJ Staffing
+Ana,2025-04-14,09:30:00,14:30:00,0,Stride Staffing
+Elvis,2025-04-14,14:00:00,22:40:00,30,JJ Staffing
+Franwyr,2025-04-14,09:30:00,20:10:00,30,Stride Staffing
+Hector,2025-04-14,10:25:00,22:40:00,30,Stride Staffing
+Jean Navas,2025-04-14,10:30:00,22:40:00,30,JJ Staffing
+Jose Gamarra,2025-04-14,09:30:00,20:10:00,30,Stride Staffing
+Jose Moffi,2025-04-14,09:30:00,20:05:00,30,JJ Staffing
+Sergio,2025-04-14,09:30:00,20:10:00,30,Stride Staffing
+Alberto,2025-04-15,11:00:00,20:30:00,30,JJ Staffing
+Ana,2025-04-15,09:30:00,14:30:00,0,Stride Staffing
+Elvis,2025-04-15,11:00:00,20:30:00,30,JJ Staffing
+Jean Navas,2025-04-15,11:00:00,20:30:00,30,JJ Staffing
+Jonathan,2025-04-15,11:00:00,20:45:00,30,Stride Staffing
+Yimen Quevedo,2025-04-15,11:00:00,16:10:00,30,JJ Staffing
+Ana,2025-04-16,09:30:00,14:30:00,0,Stride Staffing
+Angel Vicencio,2025-04-16,13:39:00,23:45:00,0,JJ Staffing
+Franwyr,2025-04-16,09:30:00,22:00:00,30,Stride Staffing
+Hector,2025-04-16,15:25:00,22:45:00,30,Stride Staffing
+Jonathan,2025-04-16,15:30:00,01:35:00,30,Stride Staffing
+Jose Camacho,2025-04-16,10:35:00,23:45:00,30,Stride Staffing
+Jose Gamarra,2025-04-16,09:30:00,22:00:00,30,Stride Staffing
+Jose Moffi,2025-04-16,10:00:00,19:05:00,30,JJ Staffing
+Ovidio,2025-04-16,12:35:00,23:45:00,30,Stride Staffing
+Sergio,2025-04-16,09:30:00,22:00:00,30,Stride Staffing
+Alberto,2025-04-17,14:30:00,22:55:00,30,JJ Staffing
+Ana,2025-04-17,09:30:00,14:30:00,0,Stride Staffing
+Angel Vicencio,2025-04-17,14:00:00,22:55:00,30,JJ Staffing
+Elvis,2025-04-17,14:30:00,22:55:00,30,JJ Staffing
+Hector,2025-04-17,13:30:00,22:55:00,30,Stride Staffing
+Jean Navas,2025-04-17,14:30:00,22:55:00,30,JJ Staffing
+Jonathan,2025-04-17,14:00:00,22:55:00,30,Stride Staffing
+Jose Camacho,2025-04-17,14:00:00,22:55:00,0,Stride Staffing
+Ovidio,2025-04-17,14:00:00,22:55:00,30,Stride Staffing
+Alberto,2025-04-18,15:30:00,00:50:00,0,JJ Staffing
+Angel Vicencio,2025-04-18,09:30:00,23:00:00,30,JJ Staffing
+Ely,2025-04-18,10:30:00,00:50:00,30,Stride Staffing
+Franwyr,2025-04-18,09:30:00,01:00:00,30,Stride Staffing
+Hector,2025-04-18,09:25:00,23:40:00,30,Stride Staffing
+Jose Camacho,2025-04-18,15:32:00,00:50:00,0,Stride Staffing
+Jose Gamarra,2025-04-18,09:30:00,01:00:00,30,Stride Staffing
+Jose Moffi,2025-04-18,09:50:00,00:50:00,30,JJ Staffing
+Sergio,2025-04-18,09:30:00,01:00:00,30,Stride Staffing
+Elvis,2025-04-19,16:00:00,00:55:00,30,JJ Staffing
+Jose Moffi,2025-04-19,16:00:00,00:50:00,30,JJ Staffing
+Ovidio,2025-04-19,16:00:00,00:50:00,30,Stride Staffing
+Alberto,2025-04-20,16:06:00,22:16:00,0,JJ Staffing
+Elvis,2025-04-20,16:05:00,22:18:00,0,JJ Staffing
+Ely,2025-04-20,13:30:00,22:20:00,0,Stride Staffing
+Franwyr,2025-04-20,14:30:00,21:00:00,0,Stride Staffing
+Jean Navas,2025-04-20,13:30:00,22:16:00,30,JJ Staffing
+Jonathan,2025-04-20,12:30:00,23:20:00,30,Stride Staffing
+Jose Camacho,2025-04-20,13:25:00,22:17:00,0,Stride Staffing
+Jose Gamarra,2025-04-20,14:30:00,21:00:00,0,Stride Staffing
+Juan,2025-04-20,13:08:00,22:18:00,30,JJ Staffing
+Ovidio,2025-04-20,13:30:00,22:15:00,30,Stride Staffing
+Sergio,2025-04-20,14:30:00,21:00:00,0,Stride Staffing
+Alberto,2025-04-21,09:30:00,18:15:00,30,JJ Staffing
+Jean Navas,2025-04-21,09:35:00,18:15:00,30,JJ Staffing
+Jonathan,2025-04-21,09:30:00,18:15:00,30,Stride Staffing
+Jose Camacho,2025-04-21,09:30:00,18:15:00,30,Stride Staffing
+Ana,2025-04-22,09:30:00,14:30:00,0,Stride Staffing
+Elvis,2025-04-22,11:30:00,17:00:00,30,JJ Staffing
+Ely,2025-04-22,10:05:00,17:04:00,30,Stride Staffing
+Franwyr,2025-04-22,10:00:00,19:35:00,30,Stride Staffing
+Jonathan,2025-04-22,13:00:00,18:25:00,0,Stride Staffing
+Jose Gamarra,2025-04-22,10:00:00,19:35:00,30,Stride Staffing
+Jose Moffi,2025-04-22,10:00:00,17:00:00,30,JJ Staffing
+Juan,2025-04-22,11:25:00,17:00:00,30,JJ Staffing
+Sergio,2025-04-22,10:00:00,19:35:00,30,Stride Staffing
+Alberto,2025-04-23,10:00:00,21:25:00,30,JJ Staffing
+Ana,2025-04-23,09:30:00,14:30:00,0,Stride Staffing
+Elvis,2025-04-23,10:00:00,21:25:00,30,JJ Staffing
+Ely,2025-04-23,10:20:00,17:30:00,30,Stride Staffing
+Jean Navas,2025-04-23,10:00:00,21:25:00,30,JJ Staffing
+Jonathan,2025-04-23,09:30:00,21:25:00,30,Stride Staffing
+Ovidio,2025-04-23,10:00:00,17:30:00,30,Stride Staffing
+Ana,2025-04-24,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-04-24,10:00:00,17:40:00,30,Stride Staffing
+Jose Gamarra,2025-04-24,10:00:00,17:40:00,30,Stride Staffing
+Jose Moffi,2025-04-24,09:00:00,17:40:00,30,JJ Staffing
+Ovidio,2025-04-24,10:00:00,17:40:00,30,Stride Staffing
+Sergio,2025-04-24,10:00:00,17:40:00,30,Stride Staffing
+Alberto,2025-04-25,10:00:00,22:30:00,30,JJ Staffing
+Ana,2025-04-25,09:30:00,14:30:00,0,Stride Staffing
+Elvis,2025-04-25,10:00:00,19:40:00,30,JJ Staffing
+Franwyr,2025-04-25,12:00:00,23:00:00,30,Stride Staffing
+Jean Navas,2025-04-25,10:00:00,19:40:00,30,JJ Staffing
+Jonathan,2025-04-25,09:30:00,20:55:00,30,Stride Staffing
+Jose Camacho,2025-04-25,12:00:00,22:30:00,0,Stride Staffing
+Jose Gamarra,2025-04-25,12:00:00,23:00:00,30,Stride Staffing
+Jose Moffi,2025-04-25,14:00:00,23:00:00,30,JJ Staffing
+Juan,2025-04-25,09:55:00,14:30:00,30,JJ Staffing
+Sergio,2025-04-25,12:00:00,23:00:00,30,Stride Staffing
+Elvis,2025-04-26,12:00:00,18:10:00,30,JJ Staffing
+Franwyr,2025-04-26,12:00:00,18:15:00,30,Stride Staffing
+Jose Gamarra,2025-04-26,12:00:00,18:15:00,30,Stride Staffing
+Jose Moffi,2025-04-26,09:00:00,18:10:00,30,JJ Staffing
+Sergio,2025-04-26,12:00:00,18:15:00,30,Stride Staffing
+Alberto,2025-04-27,15:00:00,20:45:00,30,JJ Staffing
+Edwin,2025-04-27,15:00:00,23:00:00,30,Stride Staffing
+Elvis,2025-04-27,15:00:00,20:45:00,30,JJ Staffing
+Franwyr,2025-04-27,14:00:00,22:30:00,30,Stride Staffing
+Jean Navas,2025-04-27,15:00:00,20:45:00,30,JJ Staffing
+Jonathan,2025-04-27,15:00:00,23:00:00,0,Stride Staffing
+Jose Camacho,2025-04-27,15:00:00,22:30:00,30,Stride Staffing
+Jose Gamarra,2025-04-27,14:00:00,22:30:00,30,Stride Staffing
+Jose Moffi,2025-04-27,14:00:00,20:45:00,30,JJ Staffing
+Juan,2025-04-27,14:55:00,18:40:00,30,JJ Staffing
+Sergio,2025-04-27,14:00:00,22:30:00,30,Stride Staffing
+Alberto,2025-04-28,12:00:00,18:35:00,30,JJ Staffing
+Ana,2025-04-28,09:30:00,14:30:00,0,Stride Staffing
+Jean Navas,2025-04-28,12:00:00,18:35:00,30,JJ Staffing
+Jonathan,2025-04-28,09:30:00,18:35:00,30,Stride Staffing
+Jose Camacho,2025-04-28,12:58:00,18:35:00,30,Stride Staffing
+Ana,2025-04-29,09:30:00,14:30:00,0,Stride Staffing
+Elvis,2025-04-29,11:00:00,20:15:00,30,JJ Staffing
+Franwyr,2025-04-29,11:00:00,20:15:00,30,Stride Staffing
+Jose Gamarra,2025-04-29,11:00:00,20:15:00,30,Stride Staffing
+Jose Moffi,2025-04-29,11:00:00,20:15:00,30,JJ Staffing
+Sergio,2025-04-29,11:00:00,20:15:00,30,Stride Staffing
+Alberto,2025-04-30,13:00:00,22:30:00,30,JJ Staffing
+Ana,2025-04-30,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-04-30,10:30:00,20:20:00,30,Stride Staffing
+Jean Navas,2025-04-30,13:00:00,22:30:00,30,JJ Staffing
+Jonathan,2025-04-30,10:00:00,20:20:00,30,Stride Staffing
+Jose Gamarra,2025-04-30,10:30:00,20:20:00,30,Stride Staffing
+Jose Moffi,2025-04-30,13:00:00,22:30:00,30,JJ Staffing
+Sergio,2025-04-30,10:30:00,20:20:00,30,Stride Staffing
+Ana,2025-05-01,09:30:00,14:30:00,0,Stride Staffing
+Alberto,2025-05-02,09:30:00,16:10:00,30,JJ Staffing
+Jonathan,2025-05-02,12:30:00,19:00:00,0,Stride Staffing
+Jose Moffi,2025-05-02,08:30:00,16:10:00,30,JJ Staffing
+Franwyr,2025-05-03,12:30:00,19:00:00,30,Stride Staffing
+Jose Gamarra,2025-05-03,12:30:00,19:00:00,30,Stride Staffing
+Sergio,2025-05-03,12:30:00,19:00:00,30,Stride Staffing
+Ana,2025-05-05,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-05-05,12:00:00,19:00:00,30,Stride Staffing
+Jose Gamarra,2025-05-05,12:00:00,19:00:00,30,Stride Staffing
+Jose Moffi,2025-05-05,12:00:00,19:00:00,30,JJ Staffing
+Sergio,2025-05-05,12:00:00,19:00:00,30,Stride Staffing
+Alberto,2025-05-06,12:00:00,19:00:00,0,JJ Staffing
+Ana,2025-05-06,09:30:00,14:30:00,0,Stride Staffing
+Jonathan,2025-05-06,12:00:00,19:00:00,0,Stride Staffing
+Ana,2025-05-07,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-05-07,09:30:00,17:15:00,30,Stride Staffing
+Jonathan,2025-05-07,13:00:00,21:00:00,0,Stride Staffing
+Jose Gamarra,2025-05-07,09:30:00,17:15:00,30,Stride Staffing
+Jose Moffi,2025-05-07,08:30:00,16:30:00,30,JJ Staffing
+Sergio,2025-05-07,09:30:00,17:15:00,30,Stride Staffing
+Alberto,2025-05-08,11:00:00,18:20:00,30,JJ Staffing
+Ana,2025-05-08,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-05-08,13:30:00,20:30:00,30,Stride Staffing
+Jose Gamarra,2025-05-08,13:30:00,20:30:00,30,Stride Staffing
+Jose Moffi,2025-05-08,13:30:00,20:30:00,30,JJ Staffing
+Sergio,2025-05-08,13:30:00,20:30:00,30,Stride Staffing
+Alberto,2025-05-09,12:00:00,18:30:00,30,JJ Staffing
+Franwyr,2025-05-10,11:00:00,19:30:00,30,Stride Staffing
+Jose Gamarra,2025-05-10,11:00:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-05-10,11:00:00,19:30:00,30,JJ Staffing
+Sergio,2025-05-10,11:00:00,19:30:00,30,Stride Staffing
+Alberto,2025-05-11,11:00:00,19:30:00,30,JJ Staffing
+Franwyr,2025-05-11,11:00:00,19:30:00,30,Stride Staffing
+Jose Gamarra,2025-05-11,11:00:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-05-11,11:00:00,19:30:00,30,JJ Staffing
+Sergio,2025-05-11,11:00:00,19:30:00,30,Stride Staffing
+Alberto,2025-05-12,10:00:00,18:30:00,30,JJ Staffing
+Ana,2025-05-12,09:30:00,14:30:00,0,Stride Staffing
+Ana,2025-05-13,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-05-13,11:00:00,19:30:00,30,Stride Staffing
+Jose Gamarra,2025-05-13,11:00:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-05-13,11:00:00,19:30:00,30,JJ Staffing
+Sergio,2025-05-13,11:00:00,19:30:00,30,Stride Staffing
+Alberto,2025-05-14,10:00:00,20:00:00,30,JJ Staffing
+Ana,2025-05-14,09:30:00,14:30:00,0,Stride Staffing
+Ana,2025-05-15,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-05-15,11:00:00,19:30:00,30,Stride Staffing
+Jose Gamarra,2025-05-15,11:00:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-05-15,10:00:00,18:30:00,30,JJ Staffing
+Sergio,2025-05-15,11:00:00,19:30:00,30,Stride Staffing
+Alberto,2025-05-16,11:00:00,18:00:00,30,JJ Staffing
+Franwyr,2025-05-16,11:00:00,19:30:00,30,Stride Staffing
+Jose Gamarra,2025-05-16,11:00:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-05-16,11:00:00,19:30:00,30,JJ Staffing
+Sergio,2025-05-16,11:00:00,19:30:00,30,Stride Staffing
+Alberto,2025-05-17,12:30:00,21:00:00,30,JJ Staffing
+Franwyr,2025-05-17,10:30:00,19:30:00,30,Stride Staffing
+Jose Gamarra,2025-05-17,10:30:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-05-17,12:30:00,21:00:00,30,JJ Staffing
+Sergio,2025-05-17,10:30:00,19:30:00,30,Stride Staffing
+Alberto,2025-05-18,12:30:00,21:00:00,30,JJ Staffing
+Franwyr,2025-05-18,10:00:00,18:00:00,30,Stride Staffing
+Jose Gamarra,2025-05-18,10:00:00,18:00:00,30,Stride Staffing
+Jose Moffi,2025-05-18,10:00:00,18:30:00,30,JJ Staffing
+Sergio,2025-05-18,10:00:00,18:00:00,30,Stride Staffing
+Ana,2025-05-19,09:30:00,14:30:00,0,Stride Staffing
+Jose Moffi,2025-05-19,09:30:00,18:00:00,30,JJ Staffing
+Alberto,2025-05-20,11:00:00,19:15:00,30,JJ Staffing
+Ana,2025-05-20,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-05-20,12:00:00,19:40:00,30,Stride Staffing
+Jose Gamarra,2025-05-20,12:00:00,19:40:00,30,Stride Staffing
+Sergio,2025-05-20,12:00:00,19:40:00,30,Stride Staffing
+Ana,2025-05-21,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-05-21,12:30:00,19:30:00,30,Stride Staffing
+Jose Gamarra,2025-05-21,12:30:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-05-21,12:30:00,19:30:00,30,JJ Staffing
+Sergio,2025-05-21,12:30:00,19:30:00,30,Stride Staffing
+Alberto,2025-05-22,12:00:00,19:00:00,30,JJ Staffing
+Ana,2025-05-22,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-05-22,12:00:00,19:00:00,30,Stride Staffing
+Jose Gamarra,2025-05-22,12:00:00,19:00:00,30,Stride Staffing
+Jose Moffi,2025-05-22,12:00:00,19:00:00,30,JJ Staffing
+Sergio,2025-05-22,12:00:00,19:00:00,30,Stride Staffing
+Alberto,2025-05-23,12:00:00,19:00:00,30,JJ Staffing
+Franwyr,2025-05-23,12:00:00,19:00:00,30,Stride Staffing
+Jose Gamarra,2025-05-23,12:00:00,19:00:00,30,Stride Staffing
+Jose Moffi,2025-05-23,12:00:00,19:00:00,30,JJ Staffing
+Sergio,2025-05-23,12:00:00,19:00:00,30,Stride Staffing
+Alberto,2025-05-24,12:00:00,19:15:00,30,JJ Staffing
+Franwyr,2025-05-24,12:00:00,18:50:00,30,Stride Staffing
+Jose Gamarra,2025-05-24,12:00:00,18:50:00,30,Stride Staffing
+Sergio,2025-05-24,12:00:00,18:50:00,30,Stride Staffing
+Alberto,2025-05-25,09:00:00,22:00:00,30,JJ Staffing
+Franwyr,2025-05-25,12:00:00,19:30:00,30,Stride Staffing
+Jose Gamarra,2025-05-25,12:00:00,19:30:00,30,Stride Staffing
+Jose Moffi,2025-05-25,09:00:00,22:00:00,30,JJ Staffing
+Sergio,2025-05-25,12:00:00,19:30:00,30,Stride Staffing
+Alberto,2025-05-26,13:00:00,19:00:00,30,JJ Staffing
+Ana,2025-05-26,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-05-26,13:00:00,19:00:00,30,Stride Staffing
+Jose Gamarra,2025-05-26,13:00:00,19:00:00,30,Stride Staffing
+Jose Moffi,2025-05-26,13:00:00,19:00:00,30,JJ Staffing
+Sergio,2025-05-26,13:00:00,19:00:00,30,Stride Staffing
+Alberto,2025-05-27,10:00:00,23:40:00,30,JJ Staffing
+Ana,2025-05-27,09:30:00,14:30:00,0,Stride Staffing
+Jean Navas,2025-05-27,10:10:00,23:40:00,30,JJ Staffing
+Jose Moffi,2025-05-27,10:27:00,23:40:00,30,JJ Staffing
+Ana,2025-05-28,09:30:00,14:30:00,0,Stride Staffing
+Exandri Castro,2025-05-28,12:45:00,23:15:00,30,JJ Staffing
+Francisco leonardi,2025-05-28,12:45:00,23:15:00,30,JJ Staffing
+Franwyr,2025-05-28,12:00:00,23:15:00,30,Stride Staffing
+Jean Navas,2025-05-28,13:00:00,23:15:00,30,JJ Staffing
+Jose Gamarra,2025-05-28,12:00:00,23:15:00,30,Stride Staffing
+Jose Moffi,2025-05-28,12:00:00,23:15:00,30,JJ Staffing
+Sergio,2025-05-28,12:00:00,23:15:00,30,Stride Staffing
+Alberto,2025-05-29,09:00:00,22:05:00,30,JJ Staffing
+Ana,2025-05-29,09:30:00,14:30:00,0,Stride Staffing
+Franwyr,2025-05-29,09:00:00,22:05:00,30,Stride Staffing
+Jose Gamarra,2025-05-29,09:00:00,22:05:00,30,Stride Staffing
+Pedro Martinez Gonzalez,2025-05-29,13:00:00,16:30:00,0,Stride Staffing
+Sergio,2025-05-29,09:00:00,22:05:00,30,Stride Staffing
+Yorge Mendoza,2025-05-29,13:00:00,16:00:00,0,Stride Staffing
+Alberto,2025-05-30,09:30:00,23:05:00,30,JJ Staffing
+Exandri Castro,2025-05-30,12:00:00,23:05:00,30,JJ Staffing
+Francisco leonardi,2025-05-30,11:42:00,23:05:00,30,JJ Staffing
+Franwyr,2025-05-30,09:30:00,23:05:00,30,Stride Staffing
+Jean Navas,2025-05-30,13:00:00,23:05:00,30,JJ Staffing
+Jose Gamarra,2025-05-30,09:30:00,23:05:00,30,Stride Staffing
+Jose Moffi,2025-05-30,13:00:00,23:05:00,30,JJ Staffing
+Sergio,2025-05-30,09:30:00,23:05:00,30,Stride Staffing
+Francisco leonardi,2025-05-31,12:53:00,16:54:00,30,JJ Staffing
+Franwyr,2025-05-31,11:00:00,16:55:00,0,Stride Staffing
+Jean Navas,2025-05-31,13:00:00,15:25:00,0,JJ Staffing
+Jose Gamarra,2025-05-31,11:00:00,16:55:00,0,Stride Staffing
+Jose Moffi,2025-05-31,13:00:00,16:55:00,0,JJ Staffing
+Sergio,2025-05-31,11:00:00,16:55:00,0,Stride Staffing
+Alberto,2025-06-01,13:00:00,16:30:00,0,JJ Staffing
+Bryan,2025-06-01,13:00:00,16:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-06-01,14:35:00,16:30:00,0,JJ Staffing
+Francisco leonardi,2025-06-01,13:00:00,16:30:00,0,JJ Staffing
+Jean Navas,2025-06-01,13:00:00,16:30:00,0,JJ Staffing
+Jose Leonados,2025-06-01,14:35:00,16:30:00,0,JJ Staffing
+Jose Moffi,2025-06-01,13:00:00,16:30:00,0,JJ Staffing
+Alberto,2025-06-02,09:00:00,19:25:00,30,JJ Staffing
+Ana,2025-06-02,09:30:00,14:30:00,0,Stride Staffing
+Bryan,2025-06-02,15:00:00,00:00:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-02,14:48:00,00:00:00,30,JJ Staffing
+Francisco leonardi,2025-06-02,12:42:00,00:00:00,30,JJ Staffing
+Franwyr,2025-06-02,09:00:00,19:25:00,30,Stride Staffing
+Jean Navas,2025-06-02,15:00:00,00:00:00,30,JJ Staffing
+Jose Gamarra,2025-06-02,09:00:00,19:25:00,30,Stride Staffing
+Jose Moffi,2025-06-02,15:00:00,00:00:00,30,JJ Staffing
+Sergio,2025-06-02,09:00:00,19:25:00,30,Stride Staffing
+Alberto,2025-06-03,14:30:00,23:20:00,30,JJ Staffing
+Bryan,2025-06-03,14:34:00,23:30:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-03,14:30:00,23:21:00,30,JJ Staffing
+Francisco leonardi,2025-06-03,14:30:00,23:21:00,30,JJ Staffing
+Franwyr,2025-06-03,09:30:00,22:30:00,30,Stride Staffing
+John Carlos Sandante,2025-06-03,13:15:00,23:15:00,30,Stride Staffing
+Jose Gamarra,2025-06-03,09:30:00,22:30:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-03,13:00:00,23:00:00,30,Stride Staffing
+Sergio,2025-06-03,09:30:00,22:30:00,30,Stride Staffing
+Alberto,2025-06-04,15:00:00,23:15:00,30,JJ Staffing
+Bryan,2025-06-04,14:30:00,22:30:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-04,08:30:00,21:20:00,30,JJ Staffing
+Enrique Finol,2025-06-04,09:30:00,14:00:00,0,Stride Staffing
+Francisco leonardi,2025-06-04,14:55:00,22:42:00,30,JJ Staffing
+Franwyr,2025-06-04,08:30:00,22:42:00,30,Stride Staffing
+Jean Navas,2025-06-04,15:00:00,22:45:00,30,JJ Staffing
+Jose Gamarra,2025-06-04,08:30:00,22:42:00,30,Stride Staffing
+Jose Moffi,2025-06-04,08:30:00,21:15:00,30,JJ Staffing
+Jose Oliva Davila,2025-06-04,15:00:00,22:45:00,30,Stride Staffing
+Sergio,2025-06-04,08:30:00,22:42:00,30,Stride Staffing
+Alberto,2025-06-05,12:30:00,23:55:00,30,JJ Staffing
+Ana,2025-06-05,09:30:00,14:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-06-05,13:00:00,22:35:00,30,JJ Staffing
+David Herrera,2025-06-05,13:40:00,23:35:00,30,JJ Staffing
+Edison Monzon,2025-06-05,13:30:00,23:30:00,30,JJ Staffing
+Enrique Finol,2025-06-05,15:30:00,23:55:00,30,Stride Staffing
+Eulice mujica,2025-06-05,13:15:00,22:40:00,30,JJ Staffing
+Franwyr,2025-06-05,09:30:00,22:00:00,30,Stride Staffing
+Jean Navas,2025-06-05,15:00:00,23:55:00,30,JJ Staffing
+John Carlos Sandante,2025-06-05,14:55:00,23:10:00,30,Stride Staffing
+Jose Gamarra,2025-06-05,09:30:00,22:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-05,15:00:00,00:00:00,30,Stride Staffing
+Sergio,2025-06-05,09:30:00,22:00:00,30,Stride Staffing
+Alberto,2025-06-06,09:30:00,21:05:00,30,JJ Staffing
+Ana,2025-06-06,14:47:00,20:00:00,0,Stride Staffing
+Bryan,2025-06-06,10:00:00,21:50:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-06,10:30:00,20:00:00,30,JJ Staffing
+David Herrera,2025-06-06,15:07:00,21:50:00,30,JJ Staffing
+Edison Monzon,2025-06-06,15:00:00,21:50:00,30,JJ Staffing
+Enrique Finol,2025-06-06,10:30:00,21:50:00,30,Stride Staffing
+Franwyr,2025-06-06,09:30:00,19:10:00,30,Stride Staffing
+James Tatum,2025-06-06,11:35:00,21:50:00,30,Stride Staffing
+Jean Navas,2025-06-06,10:30:00,22:20:00,30,JJ Staffing
+Jose Gamarra,2025-06-06,09:30:00,19:10:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-06,15:00:00,22:20:00,30,Stride Staffing
+Rene,2025-06-06,11:35:00,21:50:00,30,Stride Staffing
+Sergio,2025-06-06,09:30:00,19:10:00,30,Stride Staffing
+Alberto,2025-06-07,12:30:00,15:30:00,0,JJ Staffing
+Ana,2025-06-07,09:30:00,14:30:00,0,Stride Staffing
+Bryan,2025-06-07,12:30:00,15:30:00,0,Stride Staffing
+Enrique Finol,2025-06-07,13:10:00,15:30:00,0,Stride Staffing
+James Tatum,2025-06-07,12:19:00,15:30:00,30,Stride Staffing
+Jean Navas,2025-06-07,12:30:00,15:30:00,0,JJ Staffing
+Josue Hernandez,2025-06-07,14:00:00,16:00:00,0,Stride Staffing
+Ramon Aguirre,2025-06-07,14:00:00,16:00:00,0,Stride Staffing
+David Herrera,2025-06-08,13:05:00,16:30:00,0,JJ Staffing
+James Tatum,2025-06-08,13:00:00,16:30:00,0,Stride Staffing
+Josue Hernandez,2025-06-08,13:00:00,16:30:00,0,Stride Staffing
+Ramon Aguirre,2025-06-08,12:50:00,16:30:00,0,Stride Staffing
+Alberto,2025-06-09,10:06:00,18:00:00,30,JJ Staffing
+Ana,2025-06-09,15:00:00,20:00:00,0,Stride Staffing
+Bryan,2025-06-09,12:00:00,18:00:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-09,12:00:00,18:00:00,30,JJ Staffing
+Enrique Finol,2025-06-09,12:00:00,18:00:00,30,Stride Staffing
+Franwyr,2025-06-09,09:30:00,18:00:00,30,Stride Staffing
+James Tatum,2025-06-09,13:50:00,20:02:00,30,Stride Staffing
+Jean Navas,2025-06-09,12:30:00,20:00:00,30,JJ Staffing
+Jose Gamarra,2025-06-09,09:30:00,18:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-09,14:30:00,20:00:00,30,Stride Staffing
+Josue Hernandez,2025-06-09,14:30:00,20:00:00,30,Stride Staffing
+Ramon Aguirre,2025-06-09,14:25:00,20:00:00,30,Stride Staffing
+Sergio,2025-06-09,09:30:00,18:00:00,30,Stride Staffing
+Ana,2025-06-10,15:00:00,20:00:00,0,Stride Staffing
+David Herrera,2025-06-10,13:00:00,19:30:00,0,JJ Staffing
+Jose Oliva Davila,2025-06-10,13:00:00,19:30:00,0,Stride Staffing
+Josue Hernandez,2025-06-10,13:00:00,19:30:00,0,Stride Staffing
+Ramon Aguirre,2025-06-10,12:50:00,19:30:00,0,Stride Staffing
+Alberto,2025-06-11,12:00:00,22:11:00,30,JJ Staffing
+Ana,2025-06-11,15:00:00,20:00:00,0,Stride Staffing
+Franwyr,2025-06-11,12:00:00,22:11:00,30,Stride Staffing
+Jean Navas,2025-06-11,12:00:00,22:11:00,30,JJ Staffing
+Jose Gamarra,2025-06-11,12:00:00,22:11:00,30,Stride Staffing
+Sergio,2025-06-11,12:00:00,22:11:00,30,Stride Staffing
+Alberto,2025-06-12,09:00:00,17:00:00,30,JJ Staffing
+Ana,2025-06-12,15:00:00,21:00:00,0,Stride Staffing
+Bryan,2025-06-12,11:30:00,17:30:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-12,11:25:00,17:29:00,30,JJ Staffing
+Douglas Ordones,2025-06-12,13:30:00,19:35:00,0,Stride Staffing
+Enrique Finol,2025-06-12,11:30:00,19:00:00,30,Stride Staffing
+Franwyr,2025-06-12,09:00:00,17:00:00,30,Stride Staffing
+Jean Navas,2025-06-12,10:47:00,19:05:00,30,JJ Staffing
+Jose Gamarra,2025-06-12,09:00:00,17:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-12,15:00:00,21:00:00,0,Stride Staffing
+Josue Hernandez,2025-06-12,15:00:00,19:35:00,0,Stride Staffing
+Ramon Aguirre,2025-06-12,15:00:00,19:35:00,0,Stride Staffing
+Ruben Gonzalez,2025-06-12,13:30:00,14:48:00,0,Stride Staffing
+Sergio,2025-06-12,09:00:00,17:00:00,30,Stride Staffing
+Alberto,2025-06-13,09:00:00,17:30:00,30,JJ Staffing
+Douglas Ordones,2025-06-13,14:00:00,20:10:00,30,Stride Staffing
+Enrique Finol,2025-06-13,13:30:00,20:15:00,30,Stride Staffing
+Franwyr,2025-06-13,13:20:00,20:15:00,30,Stride Staffing
+Jean Navas,2025-06-13,13:30:00,20:15:00,30,JJ Staffing
+Jose Gamarra,2025-06-13,13:20:00,20:15:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-13,14:00:00,21:35:00,30,Stride Staffing
+Josue Hernandez,2025-06-13,13:40:00,20:15:00,10,Stride Staffing
+Ramon Aguirre,2025-06-13,13:55:00,20:15:00,15,Stride Staffing
+Sergio,2025-06-13,13:20:00,20:15:00,30,Stride Staffing
+Bryan,2025-06-14,13:00:00,17:00:00,0,Stride Staffing
+Danyer Urdaneta,2025-06-14,13:00:00,18:32:00,30,JJ Staffing
+Douglas Ordones,2025-06-14,13:00:00,18:50:00,30,Stride Staffing
+Enrique Finol,2025-06-14,13:00:00,18:45:00,30,Stride Staffing
+Jean Navas,2025-06-14,13:00:00,18:45:00,30,JJ Staffing
+Jose Oliva Davila,2025-06-14,09:30:00,20:05:00,30,Stride Staffing
+Josue Hernandez,2025-06-14,13:00:00,17:08:00,0,Stride Staffing
+Ramon Aguirre,2025-06-14,12:55:00,17:06:00,0,Stride Staffing
+Alberto,2025-06-15,12:00:00,19:55:00,30,JJ Staffing
+Enrique Finol,2025-06-15,11:50:00,18:30:00,0,Stride Staffing
+Franwyr,2025-06-15,12:00:00,20:54:00,30,Stride Staffing
+Jose Gamarra,2025-06-15,12:00:00,20:54:00,30,Stride Staffing
+Sergio,2025-06-15,12:00:00,20:54:00,30,Stride Staffing
+Alberto,2025-06-16,10:00:00,20:00:00,30,JJ Staffing
+Ana,2025-06-16,09:30:00,14:30:00,0,Stride Staffing
+Bryan,2025-06-16,14:00:00,22:15:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-16,14:00:00,22:15:00,30,JJ Staffing
+Franwyr,2025-06-16,09:30:00,20:00:00,30,Stride Staffing
+Jean Navas,2025-06-16,14:00:00,22:15:00,30,JJ Staffing
+Jose Gamarra,2025-06-16,09:30:00,20:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-16,14:00:00,22:15:00,30,Stride Staffing
+Sergio,2025-06-16,09:30:00,20:00:00,30,Stride Staffing
+Ana,2025-06-17,09:30:00,14:30:00,0,Stride Staffing
+Bryan,2025-06-17,14:30:00,22:30:00,0,Stride Staffing
+Enrique Finol,2025-06-17,12:30:00,22:30:00,0,Stride Staffing
+Franwyr,2025-06-17,09:00:00,22:30:00,30,Stride Staffing
+Jose Gamarra,2025-06-17,09:00:00,22:30:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-17,09:00:00,20:20:00,30,Stride Staffing
+Sergio,2025-06-17,09:00:00,22:30:00,30,Stride Staffing
+Alberto,2025-06-18,11:00:00,19:37:00,30,JJ Staffing
+Ana,2025-06-18,09:30:00,14:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-06-18,11:00:00,19:38:00,30,JJ Staffing
+Enrique Finol,2025-06-18,13:00:00,22:05:00,30,Stride Staffing
+Franwyr,2025-06-18,15:00:00,22:05:00,0,Stride Staffing
+Jean Navas,2025-06-18,11:00:00,19:37:00,30,JJ Staffing
+Jose Gamarra,2025-06-18,15:00:00,22:05:00,0,Stride Staffing
+Jose Oliva Davila,2025-06-18,15:00:00,22:05:00,30,Stride Staffing
+Sergio,2025-06-18,15:00:00,22:05:00,0,Stride Staffing
+Alberto,2025-06-19,13:00:00,20:20:00,30,JJ Staffing
+Ana,2025-06-19,09:30:00,14:30:00,0,Stride Staffing
+Bryan,2025-06-19,13:00:00,19:46:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-19,13:00:00,19:47:00,30,JJ Staffing
+Enrique Finol,2025-06-19,13:00:00,19:50:00,30,Stride Staffing
+Jean Navas,2025-06-19,13:00:00,19:47:00,30,JJ Staffing
+Alberto,2025-06-20,15:00:00,21:20:00,30,JJ Staffing
+Bryan,2025-06-20,15:00:00,21:18:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-20,15:00:00,21:20:00,30,JJ Staffing
+Jean Navas,2025-06-20,15:00:00,21:20:00,30,JJ Staffing
+Jose Oliva Davila,2025-06-20,10:30:00,19:00:00,30,Stride Staffing
+Enrique Finol,2025-06-21,12:00:00,20:30:00,30,Stride Staffing
+Franwyr,2025-06-21,12:00:00,22:25:00,30,Stride Staffing
+Jose Gamarra,2025-06-21,12:00:00,22:25:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-21,12:00:00,19:30:00,30,Stride Staffing
+Sergio,2025-06-21,12:00:00,22:25:00,30,Stride Staffing
+Alberto,2025-06-22,11:00:00,21:13:00,30,JJ Staffing
+Danyer Urdaneta,2025-06-22,11:00:00,17:00:00,30,JJ Staffing
+Enrique Finol,2025-06-22,11:00:00,17:00:00,30,Stride Staffing
+Jean Navas,2025-06-22,11:00:00,17:00:00,30,JJ Staffing
+Alberto,2025-06-23,14:00:00,19:40:00,30,JJ Staffing
+Ana,2025-06-23,09:30:00,14:30:00,0,Stride Staffing
+Bryan,2025-06-23,14:00:00,19:36:00,30,Stride Staffing
+Franwyr,2025-06-23,11:00:00,18:45:00,30,Stride Staffing
+Jean Navas,2025-06-23,14:00:00,19:40:00,30,JJ Staffing
+Jesus Cordova,2025-06-23,14:00:00,19:40:00,30,Stride Staffing
+Jose Gamarra,2025-06-23,11:00:00,18:45:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-23,09:30:00,17:30:00,30,Stride Staffing
+Sergio,2025-06-23,11:00:00,18:45:00,30,Stride Staffing
+Alberto,2025-06-24,13:00:00,21:55:00,30,JJ Staffing
+Ana,2025-06-24,09:30:00,14:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-06-24,13:00:00,21:55:00,30,JJ Staffing
+Enrique Finol,2025-06-24,10:30:00,19:05:00,30,Stride Staffing
+Franwyr,2025-06-24,10:30:00,19:00:00,30,Stride Staffing
+Jean Navas,2025-06-24,13:00:00,21:55:00,30,JJ Staffing
+Jose Gamarra,2025-06-24,10:30:00,19:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-24,09:30:00,18:00:00,30,Stride Staffing
+Sergio,2025-06-24,10:30:00,19:00:00,30,Stride Staffing
+Alberto,2025-06-25,13:00:00,19:30:00,30,JJ Staffing
+Ana,2025-06-25,09:30:00,14:30:00,0,Stride Staffing
+Bryan,2025-06-25,13:00:00,18:38:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-25,13:00:00,19:30:00,30,JJ Staffing
+Enrique Finol,2025-06-25,09:40:00,18:00:00,30,Stride Staffing
+Isaiah Romero,2025-06-25,13:30:00,18:50:00,30,Stride Staffing
+Jean Navas,2025-06-25,13:00:00,19:30:00,30,JJ Staffing
+Jesus Cordova,2025-06-25,13:00:00,18:38:00,30,Stride Staffing
+Alberto,2025-06-26,13:00:00,20:25:00,30,JJ Staffing
+Ana,2025-06-26,09:30:00,14:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-06-26,13:00:00,20:25:00,30,JJ Staffing
+Franwyr,2025-06-26,10:30:00,18:40:00,30,Stride Staffing
+Jean Navas,2025-06-26,13:00:00,20:25:00,30,JJ Staffing
+Jose Gamarra,2025-06-26,10:30:00,18:40:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-26,10:00:00,18:45:00,30,Stride Staffing
+Sergio,2025-06-26,10:30:00,18:40:00,30,Stride Staffing
+Alberto,2025-06-27,15:15:00,20:30:00,0,JJ Staffing
+Bryan,2025-06-27,15:00:00,20:30:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-27,15:00:00,20:30:00,30,JJ Staffing
+Franwyr,2025-06-27,09:30:00,15:00:00,30,Stride Staffing
+Jesus Cordova,2025-06-27,10:30:00,15:03:00,30,Stride Staffing
+Jose Gamarra,2025-06-27,09:30:00,15:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-27,09:30:00,15:00:00,30,Stride Staffing
+Sergio,2025-06-27,09:30:00,15:00:00,30,Stride Staffing
+Bryan,2025-06-28,13:00:00,17:30:00,0,Stride Staffing
+Jesus Cordova,2025-06-28,13:00:00,17:30:00,0,Stride Staffing
+Jose Oliva Davila,2025-06-28,13:00:00,17:30:00,0,Stride Staffing
+Bryan,2025-06-29,12:00:00,18:30:00,30,Stride Staffing
+Danyer Urdaneta,2025-06-29,12:00:00,18:30:00,0,JJ Staffing
+Franwyr,2025-06-29,08:30:00,21:05:00,30,Stride Staffing
+Jesus Cordova,2025-06-29,12:00:00,17:30:00,0,Stride Staffing
+Jose Gamarra,2025-06-29,08:30:00,21:05:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-29,08:30:00,17:00:00,0,Stride Staffing
+Sergio,2025-06-29,08:30:00,21:05:00,30,Stride Staffing
+Ana,2025-06-30,09:30:00,14:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-06-30,13:30:00,20:03:00,30,JJ Staffing
+Franwyr,2025-06-30,09:30:00,18:00:00,30,Stride Staffing
+Jesus Cordova,2025-06-30,09:30:00,18:00:00,30,Stride Staffing
+Jose Gamarra,2025-06-30,09:30:00,18:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-06-30,09:30:00,18:10:00,30,Stride Staffing
+Joseph,2025-06-30,13:30:00,20:00:00,30,Stride Staffing
+Mark Gonzalez,2025-06-30,13:30:00,15:00:00,0,Stride Staffing
+Sergio,2025-06-30,09:30:00,18:00:00,30,Stride Staffing
+Ana,2025-07-01,09:30:00,14:30:00,0,Stride Staffing
+Bryan,2025-07-01,13:00:00,19:52:00,30,Stride Staffing
+Franwyr,2025-07-01,11:30:00,19:00:00,30,Stride Staffing
+Jose Gamarra,2025-07-01,11:30:00,19:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-01,11:00:00,19:00:00,30,Stride Staffing
+Joseph,2025-07-01,13:30:00,20:00:00,30,Stride Staffing
+Sergio,2025-07-01,11:30:00,19:00:00,30,Stride Staffing
+Ana,2025-07-02,09:30:00,14:30:00,0,Stride Staffing
+Bryan,2025-07-02,12:00:00,20:30:00,30,Stride Staffing
+Danyer Urdaneta,2025-07-02,12:00:00,20:30:00,30,JJ Staffing
+Franwyr,2025-07-02,09:30:00,18:30:00,30,Stride Staffing
+Jesus Cordova,2025-07-02,09:30:00,18:30:00,30,Stride Staffing
+Jose Gamarra,2025-07-02,09:30:00,18:30:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-02,09:30:00,19:40:00,30,Stride Staffing
+Sergio,2025-07-02,09:30:00,18:30:00,30,Stride Staffing
+Adrian Mondragon,2025-07-03,10:30:00,21:05:00,30,Stride Staffing
+Ana,2025-07-03,09:30:00,14:30:00,0,Stride Staffing
+Bryan,2025-07-03,14:00:00,21:04:00,30,Stride Staffing
+Claudio Salazar,2025-07-03,14:00:00,21:05:00,30,Stride Staffing
+Danyer Urdaneta,2025-07-03,14:00:00,21:07:00,30,JJ Staffing
+Franwyr,2025-07-03,09:30:00,19:50:00,30,Stride Staffing
+Jaime Aguero,2025-07-03,10:30:00,13:30:00,0,Stride Staffing
+Jesus Cordova,2025-07-03,09:30:00,19:50:00,30,Stride Staffing
+Jose Gamarra,2025-07-03,09:30:00,19:50:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-03,09:30:00,18:00:00,30,Stride Staffing
+Ramiro Alvarez,2025-07-03,14:00:00,21:05:00,30,Stride Staffing
+Ricardo Rojas,2025-07-03,14:00:00,21:08:00,0,Stride Staffing
+Sergio,2025-07-03,09:30:00,19:50:00,30,Stride Staffing
+Adrian Mondragon,2025-07-04,11:45:00,18:03:00,30,Stride Staffing
+Bryan,2025-07-04,12:00:00,18:00:00,30,Stride Staffing
+Claudio Salazar,2025-07-04,12:00:00,18:04:00,30,Stride Staffing
+Franwyr,2025-07-04,12:00:00,18:00:00,30,Stride Staffing
+Jesus Cordova,2025-07-04,12:00:00,18:00:00,30,Stride Staffing
+Jose Gamarra,2025-07-04,12:00:00,18:00:00,30,Stride Staffing
+Ramiro Alvarez,2025-07-04,11:45:00,18:05:00,30,Stride Staffing
+Ricardo Rojas,2025-07-04,12:00:00,18:03:00,30,Stride Staffing
+Sergio,2025-07-04,12:00:00,18:00:00,30,Stride Staffing
+Adrian Mondragon,2025-07-05,12:55:00,19:34:00,30,Stride Staffing
+Danyer Urdaneta,2025-07-05,13:00:00,19:30:00,30,JJ Staffing
+Franwyr,2025-07-05,09:30:00,13:00:00,0,Stride Staffing
+Jesus Cordova,2025-07-05,09:30:00,13:30:00,30,Stride Staffing
+Jose Gamarra,2025-07-05,09:30:00,13:00:00,0,Stride Staffing
+Jose Oliva Davila,2025-07-05,09:30:00,17:00:00,30,Stride Staffing
+Ramiro Alvarez,2025-07-05,12:40:00,19:35:00,30,Stride Staffing
+Ricardo Rojas,2025-07-05,13:00:00,19:35:00,30,Stride Staffing
+Sergio,2025-07-05,09:30:00,13:00:00,0,Stride Staffing
+Adrian Mondragon,2025-07-06,10:28:00,18:37:00,30,Stride Staffing
+Bryan,2025-07-06,13:00:00,18:41:00,30,Stride Staffing
+Claudio Salazar,2025-07-06,09:30:00,18:37:00,30,Stride Staffing
+Danyer Urdaneta,2025-07-06,09:30:00,18:40:00,30,JJ Staffing
+Jesus Cordova,2025-07-06,09:30:00,15:00:00,30,Stride Staffing
+Ramiro Alvarez,2025-07-06,12:45:00,18:45:00,30,Stride Staffing
+Ana,2025-07-06,09:30:00,14:30:00,0,Stride Staffing
+Adrian Mondragon,2025-07-07,13:25:00,01:09:00,30,Stride Staffing
+Danyer Urdaneta,2025-07-07,13:30:00,23:35:00,30,JJ Staffing
+Franwyr,2025-07-07,10:00:00,23:30:00,30,Stride Staffing
+Jesus Cordova,2025-07-07,10:00:00,23:30:00,30,Stride Staffing
+Jose Gamarra,2025-07-07,10:00:00,23:30:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-07,09:00:00,19:30:00,30,Stride Staffing
+Ramiro Alvarez,2025-07-07,13:25:00,23:30:00,30,Stride Staffing
+Ricardo Rojas,2025-07-07,13:30:00,23:35:00,30,Stride Staffing
+Sergio,2025-07-07,10:00:00,23:30:00,30,Stride Staffing
+Ana,2025-07-07,09:30:00,14:30:00,0,Stride Staffing
+Jose Oliva Davila,2025-07-08,09:30:00,19:30:00,30,Stride Staffing
+Jose Gamarra,2025-07-08,10:00:00,23:20:00,30,Stride Staffing
+Sergio,2025-07-08,10:00:00,23:20:00,30,Stride Staffing
+Franwyr,2025-07-08,10:00:00,23:20:00,30,Stride Staffing
+Jesus Cordova,2025-07-08,10:00:00,23:20:00,30,Stride Staffing
+Claudio Salazar,2025-07-08,13:30:00,23:22:00,30,Stride Staffing
+Adrian Mondragon,2025-07-08,10:00:00,16:26:00,30,Stride Staffing
+Ramiro Alvarez,2025-07-08,14:30:00,22:35:00,30,Stride Staffing
+Ana,2025-07-08,09:30:00,14:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-07-08,14:35:00,23:23:00,30,JJ Staffing
+Ricardo Rojas,2025-07-08,14:34:00,23:23:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-09,09:30:00,18:00:00,30,Stride Staffing
+Adrian Mondragon,2025-07-09,13:55:00,23:15:00,30,Stride Staffing
+Ramiro Alvarez,2025-07-09,13:55:00,21:25:00,30,Stride Staffing
+Ricardo Rojas,2025-07-09,14:00:00,23:15:00,30,Stride Staffing
+Jose Gamarra,2025-07-09,10:00:00,18:15:00,30,Stride Staffing
+Sergio,2025-07-09,10:00:00,18:15:00,30,Stride Staffing
+Franwyr,2025-07-09,10:00:00,18:15:00,30,Stride Staffing
+Jesus Cordova,2025-07-09,10:00:00,18:15:00,30,Stride Staffing
+Claudio Salazar,2025-07-09,14:00:00,23:13:00,30,Stride Staffing
+Ana,2025-07-09,09:30:00,14:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-07-09,14:00:00,23:15:00,30,JJ Staffing
+Ana,2025-07-10,09:30:00,14:30:00,0,Stride Staffing
+Jose Gamarra,2025-07-10,12:00:00,00:12:00,30,Stride Staffing
+Sergio,2025-07-10,12:00:00,00:12:00,30,Stride Staffing
+Franwyr,2025-07-10,12:00:00,00:12:00,30,Stride Staffing
+Jesus Cordova,2025-07-10,12:00:00,00:12:00,30,Stride Staffing
+Claudio Salazar,2025-07-10,12:01:00,00:11:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-10,09:30:00,19:30:00,30,Stride Staffing
+Danyer Urdaneta,2025-07-11,13:00:00,19:05:00,30,JJ Staffing
+Ricardo Rojas,2025-07-11,13:00:00,19:05:00,30,Stride Staffing
+Jose Gamarra,2025-07-11,12:00:00,18:20:00,30,Stride Staffing
+Sergio,2025-07-11,12:00:00,18:20:00,30,Stride Staffing
+Franwyr,2025-07-11,12:00:00,18:20:00,30,Stride Staffing
+Jesus Cordova,2025-07-11,12:00:00,18:20:00,30,Stride Staffing
+Claudio Salazar,2025-07-11,13:05:00,19:37:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-11,10:00:00,19:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-12,12:00:00,20:15:00,0,Stride Staffing
+Ramiro Alvarez,2025-07-12,11:55:00,20:30:00,30,Stride Staffing
+Ricardo Rojas,2025-07-12,12:00:00,20:15:00,0,Stride Staffing
+Claudio Salazar,2025-07-12,12:00:00,21:05:00,0,Stride Staffing
+Danyer Urdaneta,2025-07-12,12:00:00,20:10:00,30,JJ Staffing
+Jose Gamarra,2025-07-13,09:30:00,21:00:00,30,Stride Staffing
+Sergio,2025-07-13,09:30:00,21:00:00,30,Stride Staffing
+Franwyr,2025-07-13,09:30:00,21:00:00,30,Stride Staffing
+Ramiro Alvarez,2025-07-13,16:55:00,21:15:00,0,Stride Staffing
+Jose Oliva Davila,2025-07-14,07:30:00,17:00:00,30,Stride Staffing
+Jose Gamarra,2025-07-14,08:00:00,22:00:00,30,Stride Staffing
+Sergio,2025-07-14,08:00:00,22:00:00,30,Stride Staffing
+Franwyr,2025-07-14,08:00:00,22:00:00,30,Stride Staffing
+Claudio Salazar,2025-07-14,14:30:00,22:32:00,30,Stride Staffing
+Jesus Cordova,2025-07-14,07:40:00,22:00:00,30,Stride Staffing
+Adrian Mondragon,2025-07-14,14:30:00,22:32:00,30,Stride Staffing
+Danyer Urdaneta,2025-07-14,14:30:00,22:32:00,30,JJ Staffing
+Ana,2025-07-14,09:30:00,14:30:00,0,Stride Staffing
+Jose Oliva Davila,2025-07-15,09:30:00,18:00:00,30,Stride Staffing
+Jose Gamarra,2025-07-15,16:00:00,01:40:00,30,Stride Staffing
+Sergio,2025-07-15,16:00:00,01:40:00,30,Stride Staffing
+Franwyr,2025-07-15,16:00:00,01:40:00,0,Stride Staffing
+Claudio Salazar,2025-07-15,15:00:00,01:36:00,30,Stride Staffing
+Jesus Cordova,2025-07-15,16:00:00,01:40:00,30,Stride Staffing
+Adrian Mondragon,2025-07-15,10:30:00,00:46:00,30,Stride Staffing
+Danyer Urdaneta,2025-07-15,10:30:00,00:47:00,30,JJ Staffing
+Ana,2025-07-15,09:30:00,14:30:00,0,Stride Staffing
+Yoansy,2025-07-15,15:00:00,01:30:00,30,Stride Staffing
+Jose Gamarra,2025-07-16,12:00:00,21:05:00,30,Stride Staffing
+Sergio,2025-07-16,12:00:00,21:05:00,30,Stride Staffing
+Franwyr,2025-07-16,12:00:00,21:05:00,30,Stride Staffing
+Adrian Mondragon,2025-07-16,15:21:00,23:13:00,0,Stride Staffing
+Claudio Salazar,2025-07-16,09:33:00,18:00:00,30,Stride Staffing
+Ana,2025-07-16,09:30:00,14:30:00,0,Stride Staffing
+Pier,2025-07-16,15:05:00,21:05:00,30,Stride Staffing
+Deivis,2025-07-16,15:06:00,21:09:00,30,Stride Staffing
+Jorge Perez,2025-07-16,11:00:00,18:37:00,30,JJ Staffing
+Ana,2025-07-17,09:30:00,14:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-07-17,16:37:00,02:10:00,30,JJ Staffing
+Yadian Serrano,2025-07-17,12:43:00,21:00:00,30,Staffing for Texans
+Jose A. Quevedo,2025-07-17,12:43:00,21:00:00,30,Staffing for Texans
+Michael Cruz,2025-07-17,12:43:00,21:07:00,30,Staffing for Texans
+Dirimo Vega,2025-07-17,12:43:00,21:00:00,30,Staffing for Texans
+Brando Ortega,2025-07-17,12:43:00,21:00:00,30,Staffing for Texans
+Jesus Cordova,2025-07-17,10:00:00,02:10:00,30,Stride Staffing
+Yoansy,2025-07-17,16:00:00,00:20:00,30,Stride Staffing
+Claudio Salazar,2025-07-17,14:00:00,02:09:00,30,Stride Staffing
+Pier,2025-07-17,15:50:00,00:30:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-17,09:30:00,18:00:00,30,Stride Staffing
+Jose Gamarra,2025-07-17,12:00:00,17:50:00,30,Stride Staffing
+Sergio,2025-07-17,12:00:00,17:50:00,30,Stride Staffing
+Franwyr,2025-07-17,12:00:00,17:50:00,30,Stride Staffing
+Jorge Perez,2025-07-17,10:06:00,21:00:00,30,JJ Staffing
+Danyer Urdaneta,2025-07-18,16:00:00,01:37:00,30,JJ Staffing
+Yadian Serrano,2025-07-18,13:30:00,22:03:00,30,Staffing for Texans
+Jose A. Quevedo,2025-07-18,13:30:00,22:10:00,30,Staffing for Texans
+Michael Cruz,2025-07-18,13:35:00,22:07:00,30,Staffing for Texans
+Dirimo Vega,2025-07-18,13:30:00,22:04:00,30,Staffing for Texans
+Brando Ortega,2025-07-18,13:30:00,22:03:00,30,Staffing for Texans
+Jesus Cordova,2025-07-18,13:37:00,20:00:00,0,Stride Staffing
+Yoansy,2025-07-18,16:00:00,01:30:00,30,Stride Staffing
+Claudio Salazar,2025-07-18,12:30:00,19:33:00,30,Stride Staffing
+Adrian Mondragon,2025-07-18,15:43:00,01:36:00,30,Stride Staffing
+Oliver,2025-07-18,13:40:00,23:50:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-18,09:30:00,18:00:00,30,Stride Staffing
+Jose Gamarra,2025-07-18,09:30:00,19:30:00,30,Stride Staffing
+Sergio,2025-07-18,09:30:00,19:30:00,30,Stride Staffing
+Franwyr,2025-07-18,09:30:00,19:30:00,30,Stride Staffing
+Jorge Perez,2025-07-18,16:02:00,00:40:00,30,JJ Staffing
+Danyer Urdaneta,2025-07-19,09:30:00,14:37:00,30,JJ Staffing
+Yadian Serrano,2025-07-19,11:00:00,17:35:00,30,Staffing for Texans
+Michael Cruz,2025-07-19,14:34:00,21:30:00,30,Staffing for Texans
+Dirimo Vega,2025-07-19,11:00:00,17:35:00,30,Staffing for Texans
+Brando Ortega,2025-07-19,11:00:00,17:36:00,30,Staffing for Texans
+Adrian Mondragon,2025-07-19,13:25:00,23:00:00,30,Stride Staffing
+Oliver,2025-07-19,09:30:00,17:36:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-19,09:30:00,17:00:00,30,Stride Staffing
+Jose Gamarra,2025-07-19,10:00:00,17:05:00,30,Stride Staffing
+Sergio,2025-07-19,10:00:00,17:05:00,30,Stride Staffing
+Franwyr,2025-07-19,10:00:00,17:05:00,30,Stride Staffing
+Ismel Benitez Perez,2025-07-20,10:36:00,19:00:00,30,Staffing for Texans
+Alfredo Millamizar,2025-07-20,11:00:00,18:30:00,0,Staffing for Texans
+Yadian Serrano,2025-07-20,09:30:00,18:10:00,30,Staffing for Texans
+Michael Cruz,2025-07-20,09:56:00,17:32:00,30,Staffing for Texans
+Brando Ortega,2025-07-20,09:30:00,18:11:00,30,Staffing for Texans
+Jesus Cordova,2025-07-20,08:30:00,19:00:00,30,Stride Staffing
+Claudio Salazar,2025-07-20,09:31:00,18:57:00,30,Stride Staffing
+Adrian Mondragon,2025-07-20,14:24:00,22:23:00,30,Stride Staffing
+Oliver,2025-07-20,19:28:00,21:20:00,30,Stride Staffing
+Jorge Perez,2025-07-20,08:40:00,19:00:00,30,JJ Staffing
+Luis Perez,2025-07-16,11:00:00,18:38:00,30,JJ Staffing
+Luis Valero,2025-07-16,11:00:00,18:35:00,30,JJ Staffing
+Luis Valero,2025-07-17,10:00:00,11:43:00,0,JJ Staffing
+Brayan Uzcategui,2025-07-16,11:00:00,18:35:00,30,JJ Staffing
+Kennett Acevedo,2025-07-14,11:00:00,20:30:00,30,Pro Staffing
+Miguel Yepez,2025-07-18,10:30:00,19:10:00,30,Pro Staffing
+Miguel Yepez,2025-07-19,13:30:00,21:30:00,30,Pro Staffing
+Miguel Yepez,2025-07-20,17:30:00,22:30:00,30,Pro Staffing
+Jose Castillo,2025-07-18,10:30:00,19:43:00,30,Pro Staffing
+Jonathan Venzuela,2025-07-16,15:00:00,21:04:00,30,Pro Staffing
+Jonathan Venzuela,2025-07-17,16:00:00,00:25:00,30,Pro Staffing
+Jonathan Venzuela,2025-07-18,12:00:00,20:30:00,30,Pro Staffing
+Jonathan Venzuela,2025-07-19,13:30:00,21:30:00,30,Pro Staffing
+Armando Vazquez,2025-07-16,15:35:00,21:05:00,30,Pro Staffing
+Jose Villalobos,2025-07-16,15:35:00,21:05:00,30,Pro Staffing
+Christian Amaya,2025-07-16,15:35:00,21:05:00,30,Pro Staffing
+Irian Gonzalez,2025-07-19,16:00:00,21:30:00,30,Pro Staffing
+Irian Gonzalez,2025-07-20,14:30:00,22:23:00,30,Pro Staffing
+Kennett Acevedo,2025-07-13,10:30:00,21:02:00,30,Pro Staffing
+Yahoska Alvarez,2025-07-13,10:30:00,13:00:00,0,Pro Staffing
+Marvin Martinez,2025-07-13,10:30:00,21:02:00,30,Pro Staffing
+Profilio Ortiz,2025-07-13,10:30:00,21:02:00,30,Pro Staffing
+Alfonso Costilla,2025-07-13,10:30:00,21:02:00,30,Pro Staffing
+Alfonso Costilla,2025-07-14,11:08:00,22:14:00,30,Pro Staffing
+Marvin Martinez,2025-07-14,11:16:00,19:40:00,30,Pro Staffing
+Jose Oliva Davila,2025-07-21,08:30:00,18:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-22,09:30:00,14:40:00,0,Stride Staffing
+Claudio Salazar,2025-07-21,13:00:00,21:17:00,30,Stride Staffing
+Jose Gamarra,2025-07-21,08:30:00,20:40:00,30,Stride Staffing
+Sergio,2025-07-21,08:30:00,20:40:00,30,Stride Staffing
+Franwyr,2025-07-21,08:30:00,20:40:00,30,Stride Staffing
+Jose Gamarra,2025-07-22,11:00:00,14:40:00,30,Stride Staffing
+Sergio,2025-07-22,11:00:00,14:40:00,30,Stride Staffing
+Franwyr,2025-07-22,11:00:00,14:40:00,0,Stride Staffing
+Jesus Cordova,2025-07-22,11:30:00,14:40:00,30,Stride Staffing
+Jose Castillo,2025-07-21,13:00:00,20:45:00,30,Pro Staffing
+Jose Castillo,2025-07-22,09:50:00,15:00:00,30,Pro Staffing
+Irian Gonzalez,2025-07-21,12:58:00,20:42:00,30,Pro Staffing
+Irian Gonzalez,2025-07-22,09:40:00,15:00:00,30,Pro Staffing
+Yonathan Pirela,2025-07-21,12:58:00,16:00:00,0,Pro Staffing
+Miguel Yepez,2025-07-21,14:40:00,20:45:00,30,Pro Staffing
+Alex Torres,2025-07-21,10:30:00,18:30:00,30,Staffing for Texans
+Michael Cruz,2025-07-21,09:30:00,18:31:00,64,Staffing for Texans
+Misael Sanchez,2025-07-21,09:30:00,18:00:00,30,Staffing for Texans
+Hugo Macias,2025-07-21,11:12:00,18:00:00,30,Staffing for Texans
+Jose Chicas,2025-07-21,13:50:00,20:47:00,30,Staffing for Texans
+Jorge Perez,2025-07-22,12:54:00,22:42:00,30,JJ Staffing
+Danyer Urdaneta,2025-07-22,13:00:00,22:41:00,30,JJ Staffing
+Alex Torres,2025-07-22,09:46:00,15:00:00,30,Staffing for Texans
+Michael Cruz,2025-07-22,13:00:00,21:34:00,30,Staffing for Texans
+Misael Sanchez,2025-07-22,13:00:00,22:43:00,30,Staffing for Texans
+Hugo Macias,2025-07-22,11:00:00,15:00:00,30,Staffing for Texans
+Cristian Diaz,2025-07-21,13:48:00,20:45:00,30,Staffing for Texans
+Cristian Diaz,2025-07-22,12:46:00,15:50:00,30,Staffing for Texans
+David Diaz,2025-07-21,13:48:00,20:45:00,30,Staffing for Texans
+Erardo Diaz,2025-07-21,13:48:00,20:45:00,30,Staffing for Texans
+Erardo Diaz,2025-07-22,12:46:00,22:42:00,30,Staffing for Texans
+Ismel Benitez Perez,2025-07-21,09:30:00,18:00:00,30,Staffing for Texans
+Ismel Benitez Perez,2025-07-22,09:30:00,14:50:00,30,Staffing for Texans
+Carlos Mendoza,2025-07-21,13:45:00,21:00:00,30,Staffing for Texans
+Jose Oliva Davila,2025-07-23,09:30:00,18:00:00,30,Stride Staffing
+Claudio Salazar,2025-07-23,14:30:00,21:32:00,30,Stride Staffing
+Jose Gamarra,2025-07-23,11:00:00,18:40:00,30,Stride Staffing
+Sergio,2025-07-23,11:00:00,18:40:00,30,Stride Staffing
+Franwyr,2025-07-23,11:00:00,18:40:00,30,Stride Staffing
+Jesus Cordova,2025-07-23,11:00:00,18:40:00,30,Stride Staffing
+Adrian Mondragon,2025-07-22,12:47:00,17:05:00,30,Stride Staffing
+Jorge Perez,2025-07-23,14:27:00,21:02:00,30,JJ Staffing
+Danyer Urdaneta,2025-07-23,14:30:00,21:00:00,30,JJ Staffing
+Irian Gonzalez,2025-07-23,11:00:00,18:41:00,30,Pro Staffing
+Brando Ortega,2025-07-23,11:00:00,16:00:00,0,Pro Staffing
+Cristian Diaz,2025-07-23,14:25:00,21:30:00,30,Staffing for Texans
+Erardo Diaz,2025-07-23,14:25:00,21:30:00,30,Staffing for Texans
+David Diaz,2025-07-23,14:25:00,21:30:00,30,Staffing for Texans
+Jose Gamarra,2025-07-24,09:30:00,20:00:00,30,Stride Staffing
+Sergio,2025-07-24,09:30:00,20:00:00,30,Stride Staffing
+Franwyr,2025-07-24,09:30:00,20:00:00,30,Stride Staffing
+Jose Gamarra,2025-07-25,09:30:00,18:30:00,30,Stride Staffing
+Sergio,2025-07-25,09:30:00,18:30:00,30,Stride Staffing
+Franwyr,2025-07-25,09:30:00,18:30:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-24,09:30:00,20:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-25,09:30:00,21:10:00,30,Stride Staffing
+Ismel Benitez Perez,2025-07-23,09:30:00,16:30:00,30,Staffing for Texans
+David Diaz,2025-07-24,13:55:00,21:25:00,30,Staffing for Texans
+Erardo Diaz,2025-07-24,13:55:00,21:25:00,30,Staffing for Texans
+Cristian Diaz,2025-07-24,13:55:00,21:25:00,30,Staffing for Texans
+Hugo Macias,2025-07-24,09:30:00,18:00:00,30,Staffing for Texans
+Aron Walton,2025-07-25,14:00:00,22:32:00,30,Staffing for Texans
+Hugo Macias,2025-07-25,10:30:00,18:30:00,30,Staffing for Texans
+Misael Sanchez,2025-07-25,10:30:00,18:30:00,30,Staffing for Texans
+Aron Walton,2025-07-26,10:57:00,21:47:00,30,Staffing for Texans
+Ismel Benitez Perez,2025-07-26,11:00:00,20:10:00,30,Staffing for Texans
+Misael Sanchez,2025-07-26,10:57:00,21:05:00,30,Staffing for Texans
+Hector Marquez,2025-07-27,09:30:00,18:35:00,30,Staffing for Texans
+Gaudencio Garcia,2025-07-27,14:30:00,19:30:00,30,Staffing for Texans
+Aron Walton,2025-07-27,14:30:00,04:24:00,30,Staffing for Texans
+Gerardo Navarro,2025-07-27,11:13:00,20:00:00,30,Staffing for Texans
+Ismel Benitez Perez,2025-07-27,11:00:00,20:00:00,30,Staffing for Texans
+Misael Sanchez,2025-07-27,10:52:00,19:24:00,30,Staffing for Texans
+Alex Torres,2025-07-24,09:30:00,18:30:00,30,Staffing for Texans
+Alex Torres,2025-07-25,10:30:00,18:30:00,30,Staffing for Texans
+Alex Torres,2025-07-27,14:30:00,16:38:00,30,Staffing for Texans
+Mohamud Abdulkadir,2025-07-27,14:30:00,22:00:00,30,Staffing for Texans
+Gaudencio Garcia,2025-07-27,11:00:00,19:30:00,30,Staffing for Texans
+Ana,2025-07-21,09:30:00,14:30:00,0,Stride Staffing
+Ana,2025-07-22,09:30:00,14:30:00,0,Stride Staffing
+Ana,2025-07-23,09:30:00,14:30:00,0,Stride Staffing
+Ana,2025-07-24,09:30:00,14:30:00,0,Stride Staffing
+David Sandoval,2025-07-26,13:30:00,21:00:00,0,Stride Staffing
+David Sandoval,2025-07-27,13:30:00,22:00:00,30,Stride Staffing
+Aaron Griffin,2025-07-26,12:00:00,00:00:00,30,Staffing for Texans
+Aaron Griffin,2025-07-27,09:30:00,18:00:00,30,Staffing for Texans
+Jorge Perez,2025-07-25,14:10:00,22:32:00,30,JJ Staffing
+Jorge Perez,2025-07-26,09:40:00,19:09:00,30,JJ Staffing
+Jorge Perez,2025-07-27,09:32:00,17:55:00,30,JJ Staffing
+Danyer Urdaneta,2025-07-25,14:00:00,22:33:00,30,JJ Staffing
+Danyer Urdaneta,2025-07-26,09:39:00,00:13:00,30,JJ Staffing
+Danyer Urdaneta,2025-07-27,09:30:00,19:22:00,30,JJ Staffing
+Wendery Maestre,2025-07-17,10:00:00,11:43:00,0,JJ Staffing
+Eddy Rivera,2025-07-27,11:00:00,19:15:00,30,Staffing for Texans
+Wilver Leal,2025-07-25,14:00:00,22:34:00,30,Pro Staffing
+Wilver Leal,2025-07-26,13:00:00,21:00:00,30,Pro Staffing
+Miguel Yepez,2025-07-24,14:00:00,21:25:00,30,Pro Staffing
+Miguel Yepez,2025-07-25,14:00:00,22:34:00,30,Pro Staffing
+Miguel Yepez,2025-07-26,13:00:00,21:00:00,30,Pro Staffing
+Jose Castillo,2025-07-24,14:00:00,21:25:00,30,Pro Staffing
+Edixon Javier Mendoza,2025-07-25,15:00:00,22:34:00,30,Pro Staffing
+Axel Torres,2025-07-21,10:30:00,18:30:00,30,Staffing for Texans
+Axel Torres,2025-07-22,09:46:00,15:00:00,30,Staffing for Texans
+Axel Torres,2025-07-24,09:30:00,18:30:00,30,Staffing for Texans
+Axel Torres,2025-07-25,10:30:00,18:30:00,30,Staffing for Texans
+Axel Torres,2025-07-27,14:30:00,04:38:00,30,Staffing for Texans
+Jose Oliva Davila,2025-07-28,08:30:00,17:00:00,30,Stride Staffing
+Jose Oliva Davila,2025-07-29,09:30:00,18:00:00,30,Stride Staffing
+David Sandoval,2025-07-28,09:30:00,18:30:00,30,Stride Staffing
+David Sandoval,2025-07-29,11:00:00,21:15:00,30,Stride Staffing
+Jose Gamarra,2025-07-28,08:50:00,20:30:00,30,Stride Staffing
+Sergio,2025-07-28,08:50:00,20:30:00,30,Stride Staffing
+Franwyr,2025-07-28,08:50:00,20:30:00,30,Stride Staffing
+Axel Torres,2025-07-28,16:10:00,22:50:00,30,Staffing for Texans
+Axel Torres,2025-07-29,09:50:00,20:10:00,30,Staffing for Texans
+Dante Medina,2025-07-28,09:30:00,18:42:00,30,Staffing for Texans
+Dante Medina,2025-07-29,10:44:00,14:09:00,30,Staffing for Texans
+Mark Garcia,2025-07-28,15:50:00,22:45:00,30,Staffing for Texans
+Mark Garcia,2025-07-29,13:55:00,20:00:00,30,Staffing for Texans
+Misael Sanchez,2025-07-28,16:00:00,22:48:00,30,Staffing for Texans
+Misael Sanchez,2025-07-29,14:00:00,21:15:00,30,Staffing for Texans
+Aron Walton,2025-07-28,16:00:00,22:48:00,30,Staffing for Texans
+Hector Marquez,2025-07-28,09:30:00,18:00:00,30,Staffing for Texans
+Hector Marquez,2025-07-29,14:00:00,21:15:00,0,Staffing for Texans
+Ismel Benitez Perez,2025-07-28,09:30:00,18:00:00,30,Staffing for Texans
+Ismel Benitez Perez,2025-07-29,09:30:00,18:00:00,30,Staffing for Texans
+Gaudencio Garcia,2025-07-28,15:51:00,23:00:00,30,Staffing for Texans
+Ana,2025-07-28,09:30:00,14:30:00,0,Stride Staffing
+Wilver Leal,2025-07-28,09:30:00,21:38:00,30,Pro Staffing
+Ana,2025-07-29,09:30:00,14:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-07-29,11:00:00,21:17:00,30,Pro Staffing
+Jose Oliva Davila,2025-07-30,09:30:00,18:00:00,30,Stride Staffing
+Jose Gamarra,2025-07-30,11:00:00,20:20:00,30,Stride Staffing
+Sergio,2025-07-30,11:00:00,20:20:00,30,Stride Staffing
+Franwyr,2025-07-30,11:00:00,20:20:00,30,Stride Staffing
+Ana,2025-07-30,09:30:00,14:30:00,0,Stride Staffing
+Danyer Urdaneta,2025-07-30,12:30:00,20:45:00,30,Pro Staffing
+Jorge Perez,2025-07-30,09:30:00,18:01:00,30,Pro Staffing
+Wilver Leal,2025-07-30,14:00:00,22:48:00,0,Pro Staffing
+Aron Walton,2025-07-30,14:00:00,20:41:00,30,Staffing for Texans
+Ismel Benitez Perez,2025-07-30,14:00:00,20:43:00,30,Staffing for Texans
+Aaron Griffin,2025-07-28,16:00:00,22:48:00,0,Staffing for Texans
+Aaron Griffin,2025-07-29,14:00:00,21:15:00,0,Staffing for Texans
+Jose Oliva Davila,2025-07-31,09:30:00,18:00:00,30,Stride Staffing
+Jose Gamarra,2025-07-31,10:45:00,19:25:00,30,Stride Staffing
+Sergio,2025-07-31,10:45:00,19:25:00,30,Stride Staffing
+Franwyr,2025-07-31,10:45:00,19:25:00,30,Stride Staffing
+Ana,2025-07-31,09:30:00,14:30:00,0,Stride Staffing
+David Sandoval,2025-07-31,14:00:00,22:00:00,30,Stride Staffing
+Luis A. Copete Meza,2025-07-31,14:00:00,22:11:00,30,Staffing for Texans
+Axel Torres,2025-07-31,14:30:00,22:15:00,30,Staffing for Texans
+Mark Garcia,2025-07-31,10:58:00,19:30:00,30,Staffing for Texans
+Hector Marquez,2025-07-31,13:45:00,22:11:00,30,Staffing for Texans
+Aaron Griffin,2025-07-31,11:50:00,21:00:00,30,Staffing for Texans

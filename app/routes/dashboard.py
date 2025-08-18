@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
 from datetime import datetime
-from ..utils import process_timesheet, forecast_labor_needs
+from ..utils import process_timesheet, forecast_labor_needs, ensure_worker_wage_rate
 from ..validation import validate_timesheet_data, normalize_position, get_base_rate_for_position, get_markup_for_agency
 from ..models import TimesheetEntry, WageRate, Worker
 from .. import db
@@ -278,25 +278,26 @@ def upload():
                             db.session.add(worker)
                         
                         # --- Sync WageRate table with automatic rate setting ---
-                        wage_rate_exists = WageRate.query.filter_by(worker_id=worker_id, agency=agency).first()
-                        if not wage_rate_exists and position:
+                        if position and agency:
                             try:
-                                base_rate = get_base_rate_for_position(position)
-                                markup = get_markup_for_agency(agency)
-                                effective_date = worker_first_dates[worker_id]
+                                # Check if wage rate already exists for this worker
+                                existing_wage = WageRate.query.filter_by(worker_id=worker_id).first()
                                 
-                                wage_rate = WageRate(
-                                    worker_id=worker_id, 
-                                    agency=agency, 
-                                    base_rate=base_rate, 
-                                    role=position, 
-                                    markup=markup, 
-                                    effective_date=effective_date
-                                )
-                                db.session.add(wage_rate)
-                                wage_rates_created += 1
+                                if not existing_wage:
+                                    # Use the new utility function to create wage rate
+                                    # It will automatically use hire date and handle agency transfers
+                                    ensure_worker_wage_rate(worker_id, position, agency)
+                                    wage_rates_created += 1
+                                else:
+                                    # Update existing wage rate if this represents newer data
+                                    # The utility function will handle agency transfers automatically
+                                    ensure_worker_wage_rate(worker_id, position, agency)
+                                    
                             except ValueError as e:
                                 flash(f'Warning: Could not set wage rate for {worker_id}: {str(e)}', 'warning')
+                            except Exception as e:
+                                current_app.logger.error(f'Error creating wage rate for {worker_id}: {str(e)}')
+                                flash(f'Warning: Could not set wage rate for {worker_id}', 'warning')
                 db.session.commit()
                 # Also update in-memory DataFrame for analytics
                 df['worker_id'] = df['worker_id'].astype(str).str.strip()
@@ -433,6 +434,10 @@ def delete_wage_rate(wage_rate_id):
 @dashboard_bp.route('/predict', methods=['GET'])
 def predict():
     show_all = request.args.get('show_all', '0') == '1'
+    # Get filter parameters to pass to template
+    worker_filter = request.args.get('worker', '')
+    week_filter = request.args.get('week', '')
+    agency_filter = request.args.get('agency', '')
     df = current_app.config.get('TIMESHEET_DF')
     if df is None or df.empty:
         entries = TimesheetEntry.query.all()
@@ -447,7 +452,7 @@ def predict():
                 'previous_regular': 0,
                 'previous_overtime': 0
             }
-            return render_template('dashboard.html', summary=None, predictions=None, worker_filter='', week_filter='', show_all=show_all, is_forecast=True, chart_data=chart_data)
+            return render_template('dashboard.html', summary=None, predictions=None, worker_filter=worker_filter, week_filter=week_filter, show_all=show_all, is_forecast=True, chart_data=chart_data, agency_filter=agency_filter, agencies=[])
         df = pd.DataFrame([
             {
                 'worker_id': e.worker_id,
@@ -477,7 +482,10 @@ def predict():
         active_workers = {w.worker_id for w in Worker.query.filter_by(is_active=True).all()}
         predictions = predictions[predictions['worker_id'].isin(active_workers)]
     
-    return render_template('dashboard.html', summary=None, predictions=predictions, worker_filter='', week_filter='', show_all=show_all, is_forecast=True, chart_data=chart_data)
+    # Get list of available agencies for filter dropdown
+    agencies = sorted(df['Agency'].dropna().unique().tolist()) if 'Agency' in df.columns else []
+    
+    return render_template('dashboard.html', summary=None, predictions=predictions, worker_filter=worker_filter, week_filter=week_filter, show_all=show_all, is_forecast=True, chart_data=chart_data, agency_filter=agency_filter, agencies=agencies)
 
 @dashboard_bp.route('/workers', methods=['GET', 'POST'])
 def manage_workers():

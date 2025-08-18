@@ -16,26 +16,26 @@
     </div>
   </form>
   <div class="d-flex flex-wrap gap-2">
-    <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Forecast next week's labor needs">
+    <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=('1' if show_all else '0'), week=week_filter, worker=worker_filter, agency=agency_filter) }}" data-bs-toggle="tooltip" title="Forecast next week's labor needs">
       <i class="bi bi-graph-up me-1"></i>Labor Forecast
     </a>
     {% if is_forecast %}
       {% if show_all %}
-        <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
+        <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=0, week=week_filter, worker=worker_filter, agency=agency_filter) }}" data-bs-toggle="tooltip" title="Show only active workers">
           <i class="bi bi-person-check me-1"></i>Active Workers
         </a>
       {% else %}
-        <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
+        <a class="btn btn-primary" href="{{ url_for('dashboard.predict', show_all=1, week=week_filter, worker=worker_filter, agency=agency_filter) }}" data-bs-toggle="tooltip" title="Show all workers">
           <i class="bi bi-people me-1"></i>All Workers
         </a>
       {% endif %}
     {% else %}
       {% if show_all %}
-        <a class="btn btn-primary" href="{{ url_for('dashboard.dashboard', show_all=0) }}" data-bs-toggle="tooltip" title="Show only active workers">
+        <a class="btn btn-primary" href="{{ url_for('dashboard.dashboard', show_all=0, week=week_filter, worker=worker_filter, agency=agency_filter) }}" data-bs-toggle="tooltip" title="Show only active workers">
           <i class="bi bi-person-check me-1"></i>Active Workers
         </a>
       {% else %}
-        <a class="btn btn-primary" href="{{ url_for('dashboard.dashboard', show_all=1) }}" data-bs-toggle="tooltip" title="Show all workers">
+        <a class="btn btn-primary" href="{{ url_for('dashboard.dashboard', show_all=1, week=week_filter, worker=worker_filter, agency=agency_filter) }}" data-bs-toggle="tooltip" title="Show all workers">
           <i class="bi bi-people me-1"></i>All Workers
         </a>
       {% endif %}
@@ -142,12 +142,14 @@
 {% if summary is not none and not summary.empty %}
 <div class="container-fluid mb-3">
   <form method="get" action="{{ url_for('dashboard.dashboard') }}">
+    <!-- Hidden field to preserve show_all setting -->
+    <input type="hidden" name="show_all" value="{{ '1' if show_all else '0' }}" />
     <div class="row g-2 align-items-end">
       <div class="col-md-3">
         <label for="agency_filter" class="form-label mb-0 fw-semibold">
           <i class="bi bi-building me-1"></i>Agency
         </label>
-        <select id="agency_filter" name="agency" class="form-select form-select-sm" onchange="this.form.form.submit()">
+        <select id="agency_filter" name="agency" class="form-select form-select-sm" onchange="this.form.submit()">
           <option value="">All Agencies</option>
           {% for agency in agencies %}
           <option value="{{ agency }}" {% if agency_filter == agency %}selected{% endif %}>{{ agency }}</option>
